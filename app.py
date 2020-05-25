@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, render_template, url_for, flash, redirect
+from flask import Flask, render_template, url_for, flash, redirect, session
 from forms import RegistrationForm, LoginForm
 if os.path.exists('env.py'):
     import env
@@ -16,10 +16,10 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-def ndex():
+def index():
+    form = LoginForm()
     if 'username' in session:
         return 'you are logged in as ' + session['username']
-    
     return render_template('login.html', title='Login', form=form)
 
 
