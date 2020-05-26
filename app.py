@@ -42,7 +42,7 @@ def about():
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if 'username' in session:
-        flash('You are already logged in!')
+        flash(f"Chill out {form.username.data} you're already logged in!")
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -53,24 +53,38 @@ def register():
             flash(f'Welcome back {form.username.data}!', 'success')
             return redirect(url_for('home'))
         else:
-            new_account = { 'username': request.form['username']}
+            new_account = {'username': request.form['username']}
             account.insert_one(new_account)
             session['username'] = request.form['username']
             flash(f'Welcome to the family {form.username.data}!', 'success')
             return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
 
+#login
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    if 'username' in session:
+        flash("Chill out, you're already logged in!")
+        return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
-        if form.username.data == "fujeh":
-            flash('you have been logged in!', 'success')
+        account = mongo.db.users
+        existing_account = mongo.db.users.find_one({
+                                                'username': request.form['username']})
+        if existing_account:
+            flash(f'Welcome back {form.username.data}!', 'success')
             return redirect(url_for('home'))
         else:
-            flash('Login unsucessful. Please register.', 'danger')
+            flash('Please register first, to get blending!', 'danger')
+            return redirect(url_for('register'))
     return render_template('login.html', title='Login', form=form)
+
+
+@app.route("/logout")
+def logout():
+    session.pop("username",  None)
+    return redirect(url_for("home"))  
 
 
 if __name__ == "__main__":
