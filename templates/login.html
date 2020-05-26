@@ -5,21 +5,20 @@
     <fieldset class="form-group">
       <legend class="border-bottom mb-4">Log In</legend>
       <div class="form-group">
-        {{ form.username.label(class="form-control-label") }} 
-            {% if form.username.errors %} 
-                {{ form.username(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-fedback">
-                    {% for errors in form.username.errors %}
-                        <span>{{ error }} </span>
-                    {% endfor %}
-                </div>
-                {% else %} 
-            {{ form.username(class="form-control form-control-lg") }} 
-            {% endif %}
+        {{ form.username.label(class="form-control-label") }} {% if
+        form.username.errors %} {{ form.username(class="form-control
+        form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.username.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %} {{ form.username(class="form-control form-control-lg") }} {%
+        endif %}
       </div>
       <div class="form-check">
-      {{ form.remember(class="form-check-input") }}
-      {{ form.remember.label(class="form-check-label") }}
+        {{ form.remember(class="form-check-input") }}
+        {{ form.remember.label(class="form-check-label") }}
       </div>
     </fieldset>
     <div class="form-group">
@@ -29,8 +28,8 @@
 </div>
 <div class="border-top pt-3">
   <small class="text-muted">
-    Need an Account?
-    <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now!</a>
+    Already Registered?
+    <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
   </small>
 </div>
 
