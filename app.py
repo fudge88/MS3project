@@ -1,7 +1,7 @@
 import os
 import json
 from flask import Flask, render_template, url_for, flash, redirect, session, request
-from forms import RegistrationForm, LoginForm, PostForm
+from forms import RegistrationForm, LoginForm
 if os.path.exists('env.py'):
     import env
 from flask_pymongo import PyMongo
@@ -21,11 +21,6 @@ def index():
     if 'username' in session:
         return 'you are logged in as ' + session['username']
     return render_template('login.html', title='Login', form=form)
-
-
-@app.route('/get_drinks')
-def get_drinks():
-    return render_template('display.html', drinks=mongo.db.drinks.find())
 
 
 @app.route("/home")
@@ -87,15 +82,7 @@ def logout():
     return redirect(url_for("home"))  
 
 
-@app.route("/newdrink/new", methods=['GET', 'POST'])
-def newdrink():
-    form = PostForm()
-    if form.validate_on_submit():
-        flash('Thank you for adding your Smoothie!', 'success')
-        return redirect(url_for('home'))
-    return render_template('create_drink.html', title='Create Drink', form=form)
-
-
+#crud
 
 
 

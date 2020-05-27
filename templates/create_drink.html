@@ -1,27 +1,26 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="content-section">
+<section class="container">
 <h1>New Recipe</h1>
-  <form method="POST" action="">
-    {{ form.hidden_tag() }}
-    <div class="row">
+  <form method="POST" action="{{ url_for('insert_drink') }}">
+   
         <!--Recipe Name-->
-        <div class="col-12 input-field">
+        <div class="form-group col-12">
+            <label for="drink_name">Smoothie Name</label>
             {{ form.drink_name(id="drink_name", placeholder="Smoothie name goes here", class="validate", minlength="4", maxlength="30") }}
-            <label for="drink_name">Smoothie Name  <i class="fas fa-question-circle tooltipped" data-position="top" data-tooltip="4-30 characters"></i></label>
         </div>
-        </div>
-        <div class="row">
+       
+       
         <!--Description-->
-        <div class="col-12 input-field">
+        <div class="form-group col-12">
+            <label for="description">Description </label>
             {{ form.description(id="description", placeholder="Smoothie description goes here", class="validate", minlength="4", maxlength="300") }}
-            <label for="description">Description  <i class="fas fa-question-circle tooltipped" data-position="top" data-tooltip="4-300 characters"></i></label>
         </div>
-        </div>
-
+       
         
         <!-- Serves-->
-        <div class="input-field col s12 m6 l4">
+        <div class="form-group">
+            <label for="serves">Number of Servings</label>
             <select id="serves" name="serves" required>
           <option selected disabled value="">Serves...</option>
           <option value="1">1</option>
@@ -29,49 +28,51 @@
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
-            <label for="serves">Number of Servings</label>
             </select>
         </div>
 
+
         <!-- Prep_Time-->
-        <div class="input-field col s12 m6 l4">
+        <div class="form-group">
+        <label for="serves">Preperation Time (mins)</label>
         <select id="prep_time" name="prep_time" required>
           <option selected disabled value="">Prep time</option>
           <option value="1">5 mins</option>
           <option value="2">10 mins</option>
           <option value="3">20mins</option>
         </select>
-            <label for="serves">Preperation Time (mins)</label>
         </div>
 
+
         <!-- Category-->
-        <div class="input-field col s12 m6 l4">
+        <div class="form-group">
+        <label for="category_name">Choose category</label>
         <select id="category_name" name="prep_time" required>
         <option selected disabled value="">Choose Category</option>
-          {% for cat in categories %}
-          <option value="{{ cat.category_name }}">{{ cat.category_name }}</option>
+          {% for category in categories %}
+          <option value="{{ category.category_name }}">{{ category.category_name }}</option>
           {% endfor %}
         </select>
-            <label for="category_name">Choose category</label>
         </div>
 
         <!--Ingredients-->
-        <div class="form-group input-field">
+        <div class="form-group">
+         <label for="ingredients">Ingredients</label>
             {{ form.ingredients(id="ingredients", placeholder="Add each ingredient on a new line", class="validate") }}
-            <label for="ingredients">Ingredients  <i class="fas fa-question-circle tooltipped"></i></label>
+           
         </div>
 
         <!--Directions-->
-        <div class="input-field">
-            {{ form.directions(id="directions", placeholder="Directeions go here", class="validate") }}
-            <label for="directions">Directions  <i class="fas fa-question-circle tooltipped"></i></label>
+        <div class="form-group">        
+            <label for="directions">Directions</label>
+            {{ form.directions(id="directions", placeholder="Directions go here", class="validate") }}
         </div>
 
 
         <!--Img_URL-->
-        <div class="input-field">
+        <div class="form-group">
+        <label for="img_url">Img_URL</label>
             {{ form.img_url(id="img_url", placeholder="Paste your image URL here", class="validate") }}
-            <label for="img_url">Img_URL  <i class="fas fa-question-circle tooltipped"></i></label>
         </div>
 
 
@@ -79,9 +80,9 @@
         <div class="form-group">
       {{ form.submit(class="btn btn-outline-info") }}
         </div>
-    </div>
+    
   </form>
-</div>
+</section>
 
 
 {% endblock %}

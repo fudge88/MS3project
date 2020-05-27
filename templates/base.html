@@ -6,13 +6,11 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
     
-    <!-- materialize CDN -->
-
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" type="text/css">
     
-    
+    <script src="https://kit.fontawesome.com/e89976506e.js" crossorigin="anonymous"></script>
+
     <title>Document</title>
   </head>
   <body>
@@ -30,7 +28,7 @@
     <li><a href="{{url_for('about')}}">About</a></li>
     <li><a href="{{url_for('login')}}">Login</a></li>
      <li><a href="{{url_for('register')}}">Register</a></li>
-     <li><a href="{{url_for('newdrink')}}">Add Drink</a></li>
+     <li><a href="{{url_for('insert_drink')}}">Add Drink</a></li>
      <li><a href="{{url_for('get_drinks')}}">Display</a></li>
      <li><a href="{{url_for('logout')}}">Logout</a></li>
     </ul>
@@ -53,7 +51,7 @@
     <li><a href="{{url_for('about')}}">About</a></li>
     <li><a href="{{url_for('login')}}">Login</a></li>
      <li><a href="{{url_for('register')}}">Register</a></li>
-     <li><a href="{{url_for('newdrink')}}">Add Drink</a></li>
+     <li><a href="{{url_for('insert_drink')}}">Add Drink</a></li>
      <li><a href="{{url_for('get_drinks')}}">Display</a></li>
      <li><a href="{{url_for('logout')}}">Logout</a></li>
       </ul>
