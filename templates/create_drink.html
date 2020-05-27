@@ -11,25 +11,15 @@
             <label for="drink_name">Smoothie Name  <i class="fas fa-question-circle tooltipped" data-position="top" data-tooltip="4-30 characters"></i></label>
         </div>
         </div>
-<div class="row">
+        <div class="row">
         <!--Description-->
         <div class="col-12 input-field">
             {{ form.description(id="description", placeholder="Smoothie description goes here", class="validate", minlength="4", maxlength="300") }}
             <label for="description">Description  <i class="fas fa-question-circle tooltipped" data-position="top" data-tooltip="4-300 characters"></i></label>
         </div>
         </div>
-        <!--Ingredients-->
-        <div class="form-group input-field">
-            {{ form.ingredients(id="ingredients", placeholder="please add each ingredient on a new line", class="validate") }}
-            <label for="ingredients">Ingredients  <i class="fas fa-question-circle tooltipped"></i></label>
-        </div>
 
-        <!--Directions-->
-        <div class="input-field">
-            {{ form.directions(id="directions", placeholder="Directeions go here", class="validate") }}
-            <label for="directions">Directions  <i class="fas fa-question-circle tooltipped"></i></label>
-        </div>
-
+        
         <!-- Serves-->
         <div class="input-field col s12 m6 l4">
             <select id="serves" name="serves" required>
@@ -54,12 +44,6 @@
             <label for="serves">Preperation Time (mins)</label>
         </div>
 
-        <!--Img_URL-->
-        <div class="input-field">
-            {{ form.img_url(id="img_url", placeholder="Paste your image URL here", class="validate") }}
-            <label for="img_url">Img_URL  <i class="fas fa-question-circle tooltipped"></i></label>
-        </div>
-
         <!-- Category-->
         <div class="input-field col s12 m6 l4">
         <select id="category_name" name="prep_time" required>
@@ -70,6 +54,27 @@
         </select>
             <label for="category_name">Choose category</label>
         </div>
+
+        <!--Ingredients-->
+        <div class="form-group input-field">
+            {{ form.ingredients(id="ingredients", placeholder="Add each ingredient on a new line", class="validate") }}
+            <label for="ingredients">Ingredients  <i class="fas fa-question-circle tooltipped"></i></label>
+        </div>
+
+        <!--Directions-->
+        <div class="input-field">
+            {{ form.directions(id="directions", placeholder="Directeions go here", class="validate") }}
+            <label for="directions">Directions  <i class="fas fa-question-circle tooltipped"></i></label>
+        </div>
+
+
+        <!--Img_URL-->
+        <div class="input-field">
+            {{ form.img_url(id="img_url", placeholder="Paste your image URL here", class="validate") }}
+            <label for="img_url">Img_URL  <i class="fas fa-question-circle tooltipped"></i></label>
+        </div>
+
+
    
         <div class="form-group">
       {{ form.submit(class="btn btn-outline-info") }}
@@ -77,16 +82,6 @@
     </div>
   </form>
 </div>
-<div>
-{% with messages = get_flashed_messages() %} 
-            {% if messages %} 
-                {% for message in messages %}
-                    <p class="error-message">
-                    {{ message }}
-                    </p>
-                {% endfor %} 
-            {% endif %} 
-        {% endwith %}
-        </div>
+
 
 {% endblock %}
