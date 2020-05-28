@@ -12,3 +12,20 @@ class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=5, max=15)])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+
+class PostForm(FlaskForm):
+    drink_name = StringField('Smoothie Name',
+                              validators=[DataRequired()])
+    description = TextAreaField('Smoothie Description',
+                                       validators=[DataRequired()])
+    ingredients = TextAreaField('Ingredients',
+                                       validators=[DataRequired()])
+    directions = TextAreaField('Directions',
+                                       validators=[DataRequired()])
+    servings = IntegerField('Number of Servings', validators=[DataRequired()])
+    prep_time = IntegerField('Prep Time (mins)',
+                                validators=[DataRequired()])
+    image = StringField('Smoothie Image', validators=[DataRequired()])
+    category_name = IntegerField('Smoothie category',
+                                validators=[DataRequired()])
+    submit = SubmitField('Add Recipe')

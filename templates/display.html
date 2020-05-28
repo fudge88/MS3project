@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-{%  block content %}
-    <div>
-    <h1>Display</h1>
-    {% for drink in drinks %} {{drink.drink_name}} {{drink.description}}
-{{drink.ingredients}} {{drink.directions}} {{drink.calories}} {{drink.serves}}
-{{drink.prep_time}} {{drink.img_url}} {{drink.category_id}} {% endfor %} 
-    </div>
-{% endblock %}
