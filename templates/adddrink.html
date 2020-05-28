@@ -6,6 +6,7 @@
     
     <fieldset class="form-group">
       <legend class="border-bottom mb-4">Add My Smoothie!</legend>
+<!--drink name-->
       <div class="form-group">
         {{ form.drink_name.label(class="form-control-label") }} 
         {% if form.drink_name.errors %} 
@@ -18,21 +19,11 @@
         {% else %} {{ form.drink_name(class="form-control form-control-lg") }} 
         {% endif %}
       </div>
-    </fieldset>
-    <div class="form-group">
-      {{ form.submit(class="btn btn-outline-info") }}
-    </div>
-  </form>
 
-<div class="container">
-<h2 class="centre">Add my Smoothie!</h2>
-  <form action="{{ url_for('insert_drink') }}" method="POST" class="needs-validation" novalidate>
-    <div class="form-row">
-      <div class="col-md-6 mb-4">
-        {{ form.drink_name(id="drink_name", placeholder="Smoothie name", class="validate", minlength="4", maxlength="20") }}
-      </div>
-
-      <div class="col-md-2 mb-2">
+<!--select options-->
+<!--choose category select option-->
+<div class="row">
+<div class="col-md-4 mb-4">
         <select class="custom-select" id="validationDefault02 category"
           name="category_name" required>
           <option selected disabled value="">Category</option>
@@ -44,8 +35,8 @@
           Please select a valid category
         </div>
       </div>
-
-      <div class="col-md-2 mb-2">
+<!--prep_time select option-->
+      <div class="col-md-4 mb-4">
         <select class="custom-select" id="validationDefault03 prep_time" name="prep_time" required>
           <option selected disabled value="">Prep time</option>
           <option value="1">5 mins</option>
@@ -57,7 +48,8 @@
         </div>
       </div>
 
-      <div class="col-md-2 mb-2">
+<!--serving select option-->
+      <div class="col-md-4 mb-4">
         <select class="custom-select" id="validationDefault04 serves" name="serves" required>
           <option selected disabled value="">Serves...</option>
           <option value="1">1</option>
@@ -70,28 +62,71 @@
           Please select a valid option
         </div>
       </div>
-    </div>
+      </div>
+   
 
-    <div class="form-group">
-      <textarea class="form-control" rows="3" placeholder="Smoothie Description"
-        id="validationDefault05 description" name="description" required></textarea>
-    </div>
+<!--drink image-->
+      <div class="form-group">
+        {{ form.img_url.label(class="form-control-label") }} 
+        {% if form.img_url.errors %} 
+        {{ form.img_url(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.img_url.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %} {{ form.img_url(class="form-control form-control-lg") }} 
+        {% endif %}
+      </div>
 
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Image URL"
-        id="validationDefault06 img_url" name="img_url" required/>
-    </div>
 
-    <div class="form-group">
-      <textarea class="form-control" id="validationDefault07 ingredients"
-        name="ingredients" rows="5" placeholder="Ingredients" required></textarea>
-    </div>
+<!--drink description-->
+      <div class="form-group">
+        {{ form.description.label(class="form-control-label") }} 
+        {% if form.description.errors %} 
+        {{ form.description(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.description.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %} {{ form.description(class="form-control form-control-lg") }} 
+        {% endif %}
+      </div>
 
+<!--drink ingredients-->
+      <div class="form-group">
+        {{ form.ingredients.label(class="form-control-label") }} 
+        {% if form.ingredients.errors %} 
+        {{ form.ingredients(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.ingredients.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %} {{ form.ingredients(class="form-control form-control-lg") }} 
+        {% endif %}
+      </div>
+
+<!--drink directions-->
+      <div class="form-group">
+        {{ form.directions.label(class="form-control-label") }} 
+        {% if form.directions.errors %} 
+        {{ form.directions(class="form-control form-control-lg is-invalid") }}
+        <div class="invalid-feedback">
+          {% for error in form.directions.errors %}
+          <span>{{ error }}</span>
+          {% endfor %}
+        </div>
+        {% else %} {{ form.directions(class="form-control form-control-lg") }} 
+        {% endif %}
+      </div>
+
+<!-- submit button-->
+    </fieldset>
     <div class="form-group">
-      <textarea class="form-control" id="validationDefault08 directions"
-        name="directions" rows="3" placeholder="Directions" required></textarea>
+      {{ form.submit(class="btn btn-outline-info") }}
     </div>
-    <button class="btn btn-warning" type="submit" name="action">Add Smoothie</button>
   </form>
-</div>
+
 {% endblock %}

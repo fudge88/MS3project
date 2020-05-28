@@ -22,10 +22,10 @@ class PostForm(FlaskForm):
                                        validators=[DataRequired()])
     directions = TextAreaField('Directions',
                                        validators=[DataRequired()])
-    servings = IntegerField('Number of Servings', validators=[DataRequired()])
+    serves = IntegerField('Number of Servings', validators=[DataRequired()])
     prep_time = IntegerField('Prep Time (mins)',
                                 validators=[DataRequired()])
-    image = StringField('Smoothie Image', validators=[DataRequired()])
+    img_url = StringField('Smoothie Image', validators=[DataRequired()])
     category_name = IntegerField('Smoothie category',
                                 validators=[DataRequired()])
     submit = SubmitField('Add Recipe')

@@ -92,6 +92,9 @@ def get_drinks():
 @app.route('/add_drinks')
 def add_drinks():
     form = PostForm()
+    if form.validate_on_submit():
+        flash('Your Smoothie has been added to the collection!')
+        return redirect(url_for('home'))
     return render_template('adddrink.html', 
                             categories=mongo.db.drink_categories.find(), form=form, title='New Smoothie')
 
