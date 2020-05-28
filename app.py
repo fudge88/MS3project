@@ -1,6 +1,6 @@
 import os
 import json
-from flask import Flask, render_template, url_for, flash, redirect, session, request
+from flask import Flask, render_template, url_for, flash, redirect, session, request, abort
 from forms import RegistrationForm, LoginForm, PostForm
 if os.path.exists('env.py'):
     import env
@@ -122,10 +122,33 @@ def view_card(card_id):
     drink_card = mongo.db.drinks.find_one({"_id": ObjectId(card_id)})
     return render_template("viewcard.html", drink_card=drink_card,
                            title='Smoothie Details')
+# does not redirect - check viewcard.html
 
 
+@app.route('/edit_drink/<drink_id>', methods=['GET', 'POST'])
+def edit_drink(drink_id):
+    if request.method == 'POST':
+        drink = mongo.db.drinks.find_one({"_id": ObjectId(drink_id)})
+        mongo.db.drinks.update_one(drink, {'$set': request.form.to_dict()})
+    return render_template('editdrinks.html', drink=mongo.db.drinks.find_one({"_id": ObjectId(drink_id)}),
+                            categories=mongo.db.drink_categories.find())
 
 
+@app.route('/update_drink/<drink_id>', methods=['POST'])
+def update_drink(drink_id):
+    drinks = mongo.db.drinks
+    drinks.update({'_id': ObjectId(drink_id)},
+    {
+        'drink_name':request.form.get('drink_name'),
+        'description':request.form.get('description'),
+        'ingredients': request.form.get('ingredients'),
+        'directions': request.form.get('directions'),
+        'serves':request.form.get('serves'),
+        'prep_time':request.form.get('prep_time'),
+       'img_url':request.form.get('img_url'),
+       'category_name': request.form.get('category_name')
+   })
+    return redirect(url_for(get_drinks))
 
 
 
