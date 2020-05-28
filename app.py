@@ -102,7 +102,7 @@ def add_drinks():
 @app.route('/insert_drink', methods=['POST'])
 def insert_drink():
     if request.method == 'POST':
-        new_recipe = {
+        new_smoothie = {
             "drink_name": request.form.get("drink_name").strip(),
             "description": request.form.get("description"),
             "ingredients": request.form.get("ingredients"),
@@ -113,7 +113,7 @@ def insert_drink():
             "category_name": request.form.get("category_name")
         }
     drinks = mongo.db.drinks
-    drinks.insert_one(request.form.to_dict())
+    drinks.insert_one(new_smoothie)
     return redirect(url_for('get_drinks'))
 
 
@@ -126,13 +126,28 @@ def view_card(card_id):
 
 @app.route('/edit_drink/<drink_id>', methods=['GET', 'POST'])
 def edit_drink(drink_id):
+    drinks = mongo.db.drinks
+    drink = mongo.db.drinks.find_one_or_404({"_id": ObjectId(drink_id)})
+    form = PostForm
     if request.method == 'POST':
-        drink = mongo.db.drinks.find_one({"_id": ObjectId(drink_id)})
-        mongo.db.drinks.update_one(drink, {'$set': request.form.to_dict()})
-    return render_template('editdrinks.html', drink=mongo.db.drinks.find_one({"_id": ObjectId(drink_id)}),
-                            categories=mongo.db.drink_categories.find())
+        new_smoothie = {
+            "drink_name": request.form.get("drink_name").strip(),
+            "description": request.form.get("description"),
+            "ingredients": request.form.get("ingredients"),
+            "directions": request.form.get("directions"),
+            "serves": request.form.get("serves"),
+            "prep_time": request.form.get("prep_time"),
+            "img_url": request.form.get("img_url"),
+            "category_name": request.form.get("category_name")
+        }
+        drinks.update_one(drink, {'$set': request.form.to_dict()})
+        return redirect(url_for('get_drinks'))
 
+    return render_template('editdrinks.html', drink=mongo.db.drinks.find_one(
+                              {"_id": ObjectId(drink_id)}),
+                                categories=mongo.db.drink_categories.find())
 
+"""
 @app.route('/update_drink/<drink_id>', methods=['GET', 'POST'])
 def update_drink(drink_id):
     drinks = mongo.db.drinks
@@ -150,7 +165,7 @@ def update_drink(drink_id):
         'category_name': request.form.get('category_name')
    })
     return redirect(url_for('get_drinks'))
-
+"""
 
 
 
