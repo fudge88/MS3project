@@ -37,7 +37,7 @@ def about():
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if 'username' in session:
-        flash(f"Chill out {form.username.data} you're already logged in!")
+        flash("Chill out, you're already logged in!")
         return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -101,6 +101,17 @@ def add_drinks():
 
 @app.route('/insert_drink', methods=['POST'])
 def insert_drink():
+    if request.method == 'POST':
+        new_recipe = {
+            "drink_name": request.form.get("drink_name").strip(),
+            "description": request.form.get("description"),
+            "ingredients": request.form.get("ingredients"),
+            "directions": request.form.get("directions"),
+            "serves": request.form.get("serves"),
+            "prep_time": request.form.get("prep_time"),
+            "img_url": request.form.get("img_url"),
+            "category_name": request.form.get("category_name")
+        }
     drinks = mongo.db.drinks
     drinks.insert_one(request.form.to_dict())
     return redirect(url_for('get_drinks'))

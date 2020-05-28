@@ -2,21 +2,18 @@
 <h2>drinks</h2>
 
 
-<div class="container">
+<div class="content-section">
   <div class="card">
     {% for drink in drinks %}
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator img-position" src="{{drink.img_url}}">
+    <div>
+      <img src="{{drink.img_url}}">
     </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">{{drink.drink_name}}<i class="fas fa-caret-down right-span"></i></span>
+    <div>
+      <p> {{drink.drink_name}} <i class="fas fa-caret-down right-span"></i></p>
       <p><a href="#">Get the recipie</a></p>
-    </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">{{drink.drink_name}}<i class="fas fa-times right-span"></i></span>
       <p>{{drink.description}}</p>
     </div>
-              <div class="card-btns">
+        <div>
           <a href="" type="button" class="btn btn-success"><i class="fas fa-pen"></i></a>
           <a href="" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
           </div>
