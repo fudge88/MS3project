@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+<h2>view specific drink</h2>
+<div class="content-section">
+  <div class="card">
+    <div>
+      <img src="{{drink.img_url}}">
+    </div>
+    <div>
+      <p> {{drink.drink_name}} <i class="fas fa-caret-down right-span"></i></p>
+      <p>{{drink.category_name}}</p>
+      <p>{{drink.description}}</p>
+        <p>{{drink.ingredients}}</p>
+          <p>{{drink.directions}}</p>
+            <p>{{drink.serves}}</p>
+              <p>{{drink.prep_time}}</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

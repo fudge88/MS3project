@@ -117,7 +117,11 @@ def insert_drink():
     return redirect(url_for('get_drinks'))
 
 
-
+@app.route('/view_card/<card_id>')
+def view_card(card_id):
+    drink_card = mongo.db.drinks.find_one({"_id": ObjectId(card_id)})
+    return render_template("viewcard.html", drink_card=drink_card,
+                           title='Smoothie Details')
 
 
 
