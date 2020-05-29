@@ -91,10 +91,14 @@ def get_drinks():
 
 @app.route('/add_drinks')
 def add_drinks():
-    form = PostForm()
-    if form.validate_on_submit():
-        flash('Your Smoothie has been added to the collection!')
-        return redirect(url_for('home'))
+    if 'username' not in session:
+        flash('Please LogIn to add Smoothie')
+        return redirect(url_for('login'))
+    else:
+        form = PostForm()
+        if form.validate_on_submit():
+            flash('Your Smoothie has been added to the collection!')
+            return redirect(url_for('home'))
     return render_template('adddrink.html', 
                             categories=mongo.db.drink_categories.find(), form=form, title='New Smoothie')
 
@@ -155,6 +159,11 @@ def delete_drink(drink_id):
     flash('Your Smoothie has been deleted!', 'success')
     return redirect(url_for('get_drinks'))
 
+"""
+@app.route("/user_drinks/<str:username>")
+def user_drinks(username):
+    return render_template('index.html')
+"""
 
 if __name__ == "__main__":
         app.run(host=os.environ.get("IP", "0.0.0.0"),

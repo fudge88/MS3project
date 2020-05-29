@@ -1,3 +1,7 @@
 body{
     background-color: rgba(196, 191, 191, 0.733);
 }
+
+.card img{
+    width: 100%;
+}
