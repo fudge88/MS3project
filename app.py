@@ -119,8 +119,8 @@ def insert_drink():
 
 @app.route('/view_card/<card_id>')
 def view_card(card_id):
-    drink_card = mongo.db.drinks.find_one({"_id": ObjectId(card_id)})
-    return render_template("viewcard.html", drink_card=drink_card,
+    drink_id = mongo.db.drinks.find_one({"_id": ObjectId(card_id)})
+    return render_template("viewcard.html", drink_id=drink_id,
                            title='Smoothie Details')
 
 
@@ -141,32 +141,19 @@ def edit_drink(drink_id):
             "category_name": request.form.get("category_name")
         }
         drinks.update_one(drink, {'$set': request.form.to_dict()})
+        flash('Your Smoothie has been updated!', 'success')
         return redirect(url_for('get_drinks'))
 
     return render_template('editdrinks.html', drink=mongo.db.drinks.find_one(
                               {"_id": ObjectId(drink_id)}),
                                 categories=mongo.db.drink_categories.find())
 
-"""
-@app.route('/update_drink/<drink_id>', methods=['GET', 'POST'])
-def update_drink(drink_id):
-    drinks = mongo.db.drinks
-    drink = mongo.db.drinks.find_one({"_id": ObjectId(drink_id)}),
-    if request.method == 'POST':
-        drinks.update({"_id": ObjectId(drink_id)},
-    {
-        'drink_name': request.form.get('drink_name'),
-        'description': request.form.get('description'),
-        'ingredients': request.form.get('ingredients'),
-        'directions': request.form.get('directions'),
-        'serves': request.form.get('serves'),
-        'prep_time': request.form.get('prep_time'),
-        'img_url': request.form.get('img_url'),
-        'category_name': request.form.get('category_name')
-   })
-    return redirect(url_for('get_drinks'))
-"""
 
+@app.route('/delete_drink/<drink_id>', methods=['POST'])
+def delete_drink(drink_id):
+    mongo.db.drinks.remove({'_id': ObjectId(drink_id)})
+    flash('Your Smoothie has been deleted!', 'success')
+    return redirect(url_for('get_drinks'))
 
 
 if __name__ == "__main__":
