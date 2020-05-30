@@ -1,70 +1,19 @@
 {% extends 'base.html' %} {% block content %}
 
-
-<div class="content-section">
 <h2>view specific drink</h2>
+<div class="content-section">
   <div class="card">
     <div>
-      <img src="{{drink_id.img_url}}" />
+      <img src="{{drink_id.img_url}}">
     </div>
     <div>
-      <p>
-      <h1>sdlkfjsdlkfjsdflkj</h1>
-        {{drink_id.drink_name}} <i class="fas fa-caret-down right-span"></i>
-      </p>
+      <p> {{drink_id.drink_name}} <i class="fas fa-caret-down right-span"></i></p>
       <p>{{drink_id.category_name}}</p>
       <p>{{drink_id.description}}</p>
-      <p>{{drink_id.ingredients}}</p>
-      <p>{{drink_id.directions}}</p>
-      <p>{{drink_id.serves}}</p>
-      <p>{{drink_id.prep_time}}</p>
-    </div>
-  <form action="{{ url_for('edit_drink', drink_id=drink_id._id) }}" method="POST">
-    <button class="btn btn-success" type="submit">
-      <i class="fas fa-pen"></i>
-    </button>
-  </form>
-  <button
-    class="btn btn-danger" type="submit" name="action" data-toggle="modal" data-target="#deleteModal">
-    <i class="fas fa-trash-alt"></i>
-  </button>
-</div>
- </div>
-<div
-  class="modal fade"
-  id="deleteModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="deleteModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Delete Smoothie!?</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure? Once its gone, its gone!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Cancel
-        </button>
-        <form
-          action="{{ url_for('delete_drink', drink_id=drink_id._id) }}" method="POST">
-          <button class="btn btn-danger" type="submit" value="Delete">
-            Delete
-          </button>
-        </form>
-      </div>
+        <p>{{drink_id.ingredients}}</p>
+          <p>{{drink_id.directions}}</p>
+            <p>{{drink_id.serves}}</p>
+              <p>{{drink_id.prep_time}}</p>
     </div>
   </div>
 </div>

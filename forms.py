@@ -13,6 +13,7 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
+
 class PostForm(FlaskForm):
     drink_name = StringField('Smoothie Name',
                               validators=[DataRequired()])
