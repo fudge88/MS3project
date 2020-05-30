@@ -5,3 +5,18 @@ body{
 .card img{
     width: 100%;
 }
+
+.navBar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: #0000009e;
+}
+
+.logo{
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 20px;
+}

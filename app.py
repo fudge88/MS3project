@@ -68,6 +68,7 @@ def login():
         existing_account = mongo.db.users.find_one({
                                                 'username': request.form['username']})
         if existing_account:
+            session['username'] =request.form['username']
             flash(f'Welcome back {form.username.data}!', 'success')
             return redirect(url_for('home'))
         else:
@@ -92,21 +93,20 @@ def get_drinks():
 @app.route('/add_drinks')
 def add_drinks():
     if 'username' not in session:
-        flash('Please LogIn to add Smoothie')
+        flash('Please LogIn to add Smoothie', 'danger')
         return redirect(url_for('login'))
-    else:
-        form = PostForm()
-        if form.validate_on_submit():
-            flash('Your Smoothie has been added to the collection!')
-        return redirect(url_for('home'))
+    form = PostForm()
+    categories = mongo.db.drink_categories.find()
     return render_template('adddrink.html', 
-                            categories=mongo.db.drink_categories.find(), form=form, title='New Smoothie')
+                            categories=categories, form=form, title='New Smoothie')
 
 
 @app.route('/insert_drink', methods=['POST'])
 def insert_drink():
+    form = LoginForm()
+    drinks = mongo.db.drinks
     if request.method == 'POST':
-        new_smoothie = {
+        drinks.insert_one({"username": session['username'], 
             "drink_name": request.form.get("drink_name").strip(),
             "description": request.form.get("description"),
             "ingredients": request.form.get("ingredients"),
@@ -115,10 +115,12 @@ def insert_drink():
             "prep_time": request.form.get("prep_time"),
             "img_url": request.form.get("img_url"),
             "category_name": request.form.get("category_name")
-        }
-    drinks = mongo.db.drinks
-    drinks.insert_one(new_smoothie)
+        })
+    if form.validate_on_submit():
+        flash('Your Smoothie has been added to the collection!')
+        return redirect(url_for('home'))
     return redirect(url_for('get_drinks'))
+
 
 @app.route('/view_card/<card_id>')
 def view_card(card_id):
@@ -146,6 +148,9 @@ def edit_drink(drink_id):
         }
         drinks.update_one(drink, {'$set': request.form.to_dict()})
         return redirect(url_for('get_drinks'))
+    else:
+        flash('Not allowed, you can only edit your own smoothie!', 'danger')
+        return redirect(url_for('home'))
 
     return render_template('editdrinks.html', drink=mongo.db.drinks.find_one(
                               {"_id": ObjectId(drink_id)}),
@@ -153,7 +158,9 @@ def edit_drink(drink_id):
 
 
 @app.route('/delete_drink/<drink_id>', methods=['GET'])
-def delete_drink(drink_id):
+def delete_drink(drink_id): 
+    drinks = mongo.db.drinks.find_one({'_id': ObjectId(drink_id)})
+    if session['username'] == drinks['username']:
         mongo.db.drinks.remove({'_id': ObjectId(drink_id)})
         flash('Your Smoothie has been deleted!', 'success')
         return redirect(url_for('get_drinks'))
