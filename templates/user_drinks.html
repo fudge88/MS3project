@@ -1,19 +1,17 @@
 {% extends 'base.html' %} {% block content %}
-<h2>drinks</h2>
-
-
 <div class="content-section">
+<h2>{{ username }}'s collection of drinks!</h2>
   <div class="card">
-    {% for drink in drinks %}
+    {% for drinks in my_drinks %}
     <div>
-      <img src="{{drink.img_url}}">
+      <img src="{{my_drinks.img_url}}">
     </div>
     <div>
-      <p> {{drink.drink_name}} <i class="fas fa-caret-down right-span"></i></p>
+      <p> {{my_drinks.drink_name}} <i class="fas fa-caret-down right-span"></i></p>
       <p><a href="{{ url_for('view_card', card_id=drink._id) }}">Lets check go!</a></p>
-      <p>{{drink.description}}</p>
+      <p>{{my_drinks.description}}</p>
 <p>{{username}}</p>
-<p>Author: {{drink.username}}</p>
+<p>{{my_drinks.username}}</p>
 
     </div>
         <div>

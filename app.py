@@ -129,7 +129,6 @@ def view_card(card_id):
                            title='Smoothie Details')
 
 
-
 @app.route('/edit_drink/<drink_id>', methods=['GET', 'POST'])
 def edit_drink(drink_id):
     drinks = mongo.db.drinks
@@ -165,6 +164,15 @@ def delete_drink(drink_id):
         flash('Your Smoothie has been deleted!', 'success')
         return redirect(url_for('get_drinks'))
 
+
+@app.route('/my_drinks')
+def my_drinks():
+    user_post = mongo.db.users.find_one({'username': session['username']})['_id']
+    user_id = mongo.db.users.find_one({'username': session['username']})['username']
+    my_drinks = mongo.db.drinks.find({'username': user_post})
+    return render_template("user_drinks.html", my_drinks=my_drinks,
+                           username=user_id,
+                           title='My Drinks')
 
 if __name__ == "__main__":
         app.run(host=os.environ.get("IP", "0.0.0.0"),

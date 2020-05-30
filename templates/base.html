@@ -24,22 +24,22 @@
       </span>
       <ul class="navbar-navLinks">
     <li><a href="{{url_for('home')}}">Home</a></li>
-    <li><a href="{{url_for('get_drinks')}}">Smoothies</a></li>
     <li><a href="{{url_for('about')}}">About</a></li>
+    <li><a href="{{url_for('get_drinks')}}">Smoothies</a></li>
     <li><a href="{{url_for('login')}}">Login</a></li>
       </ul>
     </nav>
     <div id="side-menuBar" class="side-navBar">
       <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
     <li><a href="{{url_for('register')}}">Register</a></li>
-     <li><a href="{{url_for('add_drinks')}}">create</a></li>
+    <li><a href="{{url_for('my_drinks')}}">My Smoothies</a></li>
+     <li><a href="{{url_for('add_drinks')}}">Quick Add</a></li>
      <li><a href="{{url_for('logout')}}">Logout</a></li>
     </div>
 </header> 
 
-<main role="main" class="container">
+<main role="main">
     <div class="row">
-        <div class="col-md-8">
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                     {% for category, message in messages %}
@@ -48,10 +48,10 @@
             </div>
                     {% endfor %}
                 {% endif %}
-            {% endwith %}
+            {% endwith %} </div>
         {% block content %} {% endblock %}
-        </div>
-    </div>
+      
+   
 </main>
 
  <script>
