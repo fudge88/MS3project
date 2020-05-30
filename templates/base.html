@@ -14,112 +14,56 @@
     <title>Document</title>
   </head>
   <body>
+
 <header>
-<nav class="navBar">
-<div class="logo">
-<h4>TuttiSmooti</h4>
-</div>
-<ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Login</a></li>
-</ul>
-</nav>
-</header>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li><a href="{{url_for('home')}}">Home</a></li>
-    <li><a href="{{url_for('about')}}">About</a></li>
-    <li><a href="{{url_for('login')}}">Login</a></li>
-     <li><a href="{{url_for('register')}}">Register</a></li>
-     <li><a href="{{url_for('get_drinks')}}">Display</a></li>
-     <li><a href="{{url_for('logout')}}">Logout</a></li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-
-
-
-
-  <nav>
-    <div class="nav-wrapper">
-      <a href="{{url_for('home')}}" class="brand-logo">Logo</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul class="right hide-on-med-and-down">
+    <nav class="navBar">
+      <span class="open-sideMenu">
+        <a href="" onclick="openSlideMenu()"
+          >
+        <svg width="30" height="30"></svg><i class="fas fa-glass-whiskey"></i></a>
+      </span>
+      <ul class="navbar-navLinks">
     <li><a href="{{url_for('home')}}">Home</a></li>
+    <li><a href="{{url_for('get_drinks')}}">Smoothies</a></li>
     <li><a href="{{url_for('about')}}">About</a></li>
     <li><a href="{{url_for('login')}}">Login</a></li>
-     <li><a href="{{url_for('register')}}">Register</a></li>
-     <li><a href="{{url_for('get_drinks')}}">Display</a></li>
-     <li><a href="{{url_for('logout')}}">Logout</a></li>
       </ul>
+    </nav>
+    <div id="side-menuBar" class="side-navBar">
+      <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+    <li><a href="{{url_for('register')}}">Register</a></li>
+     <li><a href="{{url_for('add_drinks')}}">create</a></li>
+     <li><a href="{{url_for('logout')}}">Logout</a></li>
     </div>
-  </nav>
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="{{url_for('home')}}">Home</a></li>
-    <li><a href="{{url_for('add_drinks')}}">create</a></li>
-  </ul>
+</header> 
 
-</header>          
-
-        
-    <main role="main" class="container">
+<main role="main" class="container">
     <div class="row">
-    <div class="col-md-8">
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        {% for category, message in messages %}
-        <div class="alert alert-{{ category }}">
-        {{ message }}
+        <div class="col-md-8">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                        {{ message }}
+            </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        {% block content %} {% endblock %}
         </div>
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
-      {% block content %} {% endblock %}
-      </div>
-      <div class="col-md-4">
-      <div class="content-section">
-      <h3>Sidebar</h3>
-      <p>some info
-      <ul>
-      <li>create</li>
-      <li>read</li>
-      <li>udate</li>
-      <li>delete</li>
-      </ul>
-      </p>
-      </div>
-      </div>
-      </div>
-    </main>
+    </div>
+</main>
 
+ <script>
+      function openSlideMenu() {
+        document.getElementById("side-menuBar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+      }
+      function closeSlideMenu() {
+        document.getElementById("side-menuBar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+      }
+    </script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -1,22 +1,87 @@
+*{
+    margin: 0x;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 body{
-    background-color: rgba(196, 191, 191, 0.733);
+    background-color: #c4bfbfbb;
 }
 
 .card img{
     width: 100%;
 }
-
 .navBar{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 8vh;
     background-color: #0000009e;
+    overflow: hidden;
+    height: 63px;
 }
 
-.logo{
+
+.navBar a{
+    float:left;
+    display: block;
     color: white;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 20px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+.navBar ul{
+    margin: 8px 0 0 0;
+    list-style: none;
+}
+
+.navBar a:hover{
+    background-color: #dddddd;
+    color: black;
+}
+
+.side-navBar{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    opacity: 0.9;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+.side-navBar a{
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    font-size: 22px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.side-navBar a:hover{
+    color: #fff;
+}
+
+.side-navBar .btn-close{
+    position: absolute;
+    top: 0;
+    right: 22px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main{
+    transition: margin-left 0.5s;
+    padding:20px;
+    overflow: hidden;
+    width: 100%;
+}
+
+
+@media(max-width:568px){
+    .navBar-navLink{display: none}
 }
