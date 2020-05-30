@@ -122,9 +122,7 @@ def insert_drink():
 
 @app.route('/view_card/<card_id>')
 def view_card(card_id):
-    drink_card = mongo.db.drinks.find_one({"_id": ObjectId(card_id)})
-    if request.method == 'POST':
-        return redirect(url_for('edit_drink', drink_id=drink_id))
+    drink_id = mongo.db.drinks.find_one({"_id": ObjectId(card_id)})
     return render_template("viewcard.html", drink_id=drink_id,
                            title='Smoothie Details')
 
@@ -152,6 +150,13 @@ def edit_drink(drink_id):
     return render_template('editdrinks.html', drink=mongo.db.drinks.find_one(
                               {"_id": ObjectId(drink_id)}),
                                 categories=mongo.db.drink_categories.find())
+
+
+@app.route('/delete_drink/<drink_id>', methods=['GET'])
+def delete_drink(drink_id):
+        mongo.db.drinks.remove({'_id': ObjectId(drink_id)})
+        flash('Your Smoothie has been deleted!', 'success')
+        return redirect(url_for('get_drinks'))
 
 
 if __name__ == "__main__":
