@@ -1,27 +1,65 @@
 {% extends 'base.html' %} {% block content %}
-<h2>catalogue of drinks</h2>
 
-
-<div class="container">
-  <div class="card">
-    {% for drink in drinks %}
-    <div>
-      <img src="{{drink.img_url}}">
+<header class="smoothieshead text-white text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <h2 class="mb-4">Having a smoothie kind of day?</h2>
+        <h5>Did you know, you can target health benefits with the ingredients you choose to blend!</h5>
+         <a href="{{ url_for('about') }}"
+                >Find out more here</a
+              >
+      </div>
     </div>
-    <div>
-      <p> {{drink.drink_name}} <i class="fas fa-caret-down right-span"></i></p>
-      <p><a href="{{ url_for('view_card', card_id=drink._id) }}">Lets check go!</a></p>
-      <p>{{drink.description}}</p>
-<p>{{username}}</p>
-<p>Author: {{drink.username}}</p>
-
-    </div>
-        <div>
-          <a href="{{ url_for('edit_drink', drink_id=drink._id) }}" type="button" class="btn btn-success"><i class="fas fa-pen"></i></a>
-          <a href="{{ url_for('delete_drink', drink_id=drink._id) }}" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
-          </div>
-     {% endfor %}
   </div>
-</div>
+</header>
+<br>
+
+<section class="">
+  <div class="container">
+    <div class="row">
+      {% for drink in drinks %}
+      <div class="col-4">
+        <div class="card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator img-position" src="{{drink.img_url}}" />
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"
+              >{{drink.drink_name}}<i class="fas fa-caret-down right-span"></i
+            ></span>
+            <p>
+              <a href="{{ url_for('view_card', card_id=drink._id) }}"
+                >Get the Recipie!</a
+              >
+            </p>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"
+              >{{drink.drink_name}}<i class="fas fa-times right-span"></i
+            ></span>
+            <p>{{drink.description}}</p>
+            <small>Author: {{drink.username}}</small>
+          </div>
+          <div class="card-btns">
+            <a
+              href="{{ url_for('edit_drink', drink_id=drink._id) }}"
+              type="button"
+              class="btn btn-success"
+              ><i class="fas fa-pen"></i
+            ></a>
+            <a
+              href="{{ url_for('delete_drink', drink_id=drink._id) }}"
+              type="button"
+              class="btn btn-danger"
+              ><i class="fas fa-trash-alt"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
 {% endblock %}
