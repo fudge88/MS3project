@@ -1,9 +1,11 @@
 {% extends 'base.html' %} {% block content %}
+<section class="register-container text-white text-center">
+<div class="jumbotron">
 <div class="content-section">
   <form method="POST" action="">
     {{ form.hidden_tag() }}
     <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Join the TootiSmootie Family</legend>
+      <legend class="border-bottom mb-4">Create a username to register</legend>
       <div class="form-group">
         {{ form.username.label(class="form-control-label") }} {% if
         form.username.errors %} {{ form.username(class="form-control
@@ -18,7 +20,7 @@
       </div>
     </fieldset>
     <div class="form-group">
-      {{ form.submit(class="btn btn-outline-info") }}
+      {{ form.submit(class="btn btn-block btn-lg btn-warning hvr-buzz") }}
     </div>
   </form>
 </div>
@@ -28,5 +30,7 @@
     <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
   </small>
 </div>
+</div>
+</section>
 
 {% endblock %}

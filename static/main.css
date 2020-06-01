@@ -236,6 +236,18 @@ text-align: center;
   justify-content: center;
 }
 
+.register-container{
+      height: 100vh;
+  background: url("/static/img/registerimg1.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .jumbotron{
     background-color: #111111b8;
     border-radius: 20px;
