@@ -7,14 +7,40 @@
         <h2 class="mb-4">Having a smoothie kind of day?</h2>
         <h5>Did you know, you can target health benefits with the ingredients you choose to blend!</h5>
          <a href="{{ url_for('about') }}"
-                >Find out more here</a
-              >
+                >Find out more here</a>
       </div>
     </div>
   </div>
 </header>
-<br>
+<!--category bar-->
 
+<section>
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Searching for something in particular?</a>
+  </li>
+  <li class="nav-item">
+    <div class="dropdown">
+  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Browse Categories
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Protein Smoothies</a>
+    <a class="dropdown-item" href="#">Dessert Smoothies</a>
+    <a class="dropdown-item" href="#">Vegan Smoothies</a>
+  </div>
+</div>
+  </li>
+  <li class="nav-item">
+    <button type="button" class="btn btn-success">Add Smoothie</button>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ url_for('register') }}"> Not Registered?</a>
+  </li>
+</ul>
+</section>
+
+<!--smoothie cards-->
 <section class="">
   <div class="container">
     <div class="row">

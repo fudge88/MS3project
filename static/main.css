@@ -20,6 +20,16 @@ body{
 .card img{
     width: 100%;
 }
+
+.nav .btn {
+    margin-right: 25px;
+}
+
+.justify-content-center {
+    justify-content: space-between;
+    padding: 15px 60px;
+}
+
 .navBar{
     background-color: #111111b8;
     overflow: hidden;
