@@ -65,7 +65,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         account = mongo.db.users
-        existing_account = mongo.db.users.find_one({
+        existing_account = account.find_one({
                                                 'username': request.form['username']})
         if existing_account:
             session['username'] =request.form['username']
@@ -118,7 +118,7 @@ def insert_drink():
         })
     if form.validate_on_submit():
         flash('Your Smoothie has been added to the collection!')
-        return redirect(url_for('home'))
+        return redirect(url_for('my_drinks'))
     return redirect(url_for('get_drinks'))
 
 
@@ -157,13 +157,15 @@ def edit_drink(drink_id):
 
 
 @app.route('/delete_drink/<drink_id>', methods=['GET'])
-def delete_drink(drink_id): 
+def delete_drink(drink_id):
     drinks = mongo.db.drinks.find_one({'_id': ObjectId(drink_id)})
     if session['username'] == drinks['username']:
         mongo.db.drinks.remove({'_id': ObjectId(drink_id)})
         flash('Your Smoothie has been deleted!', 'success')
         return redirect(url_for('get_drinks'))
-
+    else:
+        flash('Not allowed, you can only delete your own smoothie!', 'danger')
+        return redirect(url_for('home'))
 
 @app.route('/my_drinks')
 def my_drinks():

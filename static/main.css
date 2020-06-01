@@ -99,13 +99,23 @@ body{
 header.masthead{
     position:relative;
     background-color:#343a40;
-    background:url(../img/headerimg1.jpg) no-repeat center center;
+    background:url(/static/img/headerimg1.jpg) no-repeat center center;
     background-size:cover;
     padding-top:8rem;
     padding-bottom:8rem;
     }
     
-header.masthead .overlay{
+/*header.masthead .overlay{
+    position:absolute;
+    background-color:#212529;
+    height:100%;
+    width:100%;
+    top:0;
+    left:0;
+    opacity:.3;
+}*/
+
+.overlay{
     position:absolute;
     background-color:#212529;
     height:100%;
@@ -114,7 +124,6 @@ header.masthead .overlay{
     left:0;
     opacity:.3;
 }
-
 
 .btn,
 .form-control-lg {
@@ -210,6 +219,31 @@ header.masthead h1{
 .card-btns{
 text-align: center;
 }
+
+.text-muted {
+    color: #d0d2d8!important;
+}
+
+.login-container {
+  height: 100vh;
+  background: url("/static/img/loginimg1.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jumbotron{
+    background-color: #111111b8;
+    border-radius: 20px;
+    padding: 3em 8em;
+}
+
+
+
 
 @media (min-width:768px){
     header.masthead{
