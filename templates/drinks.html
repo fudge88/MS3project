@@ -6,7 +6,7 @@
       <div class="col-xl-9 mx-auto">
         <h2 class="mb-4">Having a smoothie kind of day?</h2>
         <h5>Did you know, you can target health benefits with the ingredients you choose to blend!</h5>
-         <a href="{{ url_for('about') }}"
+         <a href=""
                 >Find out more here</a>
       </div>
     </div>
@@ -24,10 +24,12 @@
   <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Browse Categories
   </button>
+
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="#">Protein Smoothies</a>
-    <a class="dropdown-item" href="#">Dessert Smoothies</a>
-    <a class="dropdown-item" href="#">Vegan Smoothies</a>
+  {%  for cat in categories %}
+    <a class="dropdown-item" href="{{ url_for('browse_category', category=cat.category_name) }}">{{ cat.category_name }}</a>
+
+    {% endfor %}
   </div>
 </div>
   </li>
