@@ -28,10 +28,6 @@ def home():
     return render_template('index.html')
 
 
-@app.route("/about")
-def about():
-    return render_template('about.html', title='About')
-
 #User Register 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -60,7 +56,7 @@ def register():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if 'username' in session:
-        flash("Chill out, you're already logged in!")
+        flash("You are already logged in!")
         return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
@@ -88,13 +84,14 @@ def logout():
 def get_drinks():
     return render_template('drinks.html', drinks=mongo.db.drinks.find())
 
-
+######################################################### How to?????-
+################# 1 route for all 3 categories or 1 for each category??????
 @app.route('/browse_category/<browse_category>')
 def browse_category(browse_category):
     drinks = mongo.db.drinks
-    category = drinks.category_name.find()
+    category = drinks.find({'category_name': 'Protein'})
     return render_template('drinks.html', categories=category, drinks=drinks)
-
+##########################################################
 
 @app.route('/add_drinks')
 def add_drinks():
@@ -113,7 +110,7 @@ def insert_drink():
     drinks = mongo.db.drinks
     if request.method == 'POST':
         drinks.insert_one({"username": session['username'], 
-            "drink_name": request.form.get("drink_name").strip(),
+            "drink_name": request.form.get("drink_name"),
             "description": request.form.get("description"),
             "ingredients": request.form.get("ingredients"),
             "directions": request.form.get("directions"),
@@ -135,14 +132,16 @@ def view_card(card_id):
                            title='Smoothie Details')
 
 
-@app.route('/edit_drink/<drink_id>', methods=['GET', 'POST'])
-def edit_drink(drink_id):
-    drinks = mongo.db.drinks
-    drink = mongo.db.drinks.find_one_or_404({"_id": ObjectId(drink_id)})
-    form = PostForm
+@app.route('/edit_drink', methods=['POST'])
+def edit_drink():
+    if session.get('username', None) is not None:
+        username = session.get('username')
+        user = mongo.db.users[username]
+        form = LoginForm()
+        drinks = mongo.db.drinks
     if request.method == 'POST':
-        new_smoothie = {
-            "drink_name": request.form.get("drink_name").strip(),
+        drinks.update_one({'username': session['username'],
+            "drink_name": request.form.get("drink_name"),
             "description": request.form.get("description"),
             "ingredients": request.form.get("ingredients"),
             "directions": request.form.get("directions"),
@@ -150,18 +149,44 @@ def edit_drink(drink_id):
             "prep_time": request.form.get("prep_time"),
             "img_url": request.form.get("img_url"),
             "category_name": request.form.get("category_name")
-        }
-        drinks.update_one(drink, {'$set': request.form.to_dict()})
-        return redirect(url_for('get_drinks'))
+        })
+    if form.validate_on_submit():
+        flash('Your Smoothie has been updated!')
+        return redirect(url_for('my_drinks'), user=user)
     else:
         flash('Not allowed, you can only edit your own smoothie!', 'danger')
         return redirect(url_for('home'))
+    return redirect(url_for('get_drinks'))
 
-    return render_template('editdrinks.html', drink=mongo.db.drinks.find_one(
-                              {"_id": ObjectId(drink_id)}),
-                                categories=mongo.db.drink_categories.find())
+###################################need to add sessions- also does not allow edit????
+# @app.route('/edit_drink/<drink_id>', methods=['GET', 'POST'])
+# def edit_drink(drink_id):
+#     drinks = mongo.db.drinks
+#     drink = mongo.db.drinks.find_one_or_404({"_id": ObjectId(drink_id)})
+#     form = PostForm
+#     if request.method == 'POST':
+#         new_smoothie = {
+#             "drink_name": request.form.get("drink_name").strip(),
+#             "description": request.form.get("description"),
+#             "ingredients": request.form.get("ingredients"),
+#             "directions": request.form.get("directions"),
+#             "serves": request.form.get("serves"),
+#             "prep_time": request.form.get("prep_time"),
+#             "img_url": request.form.get("img_url"),
+#             "category_name": request.form.get("category_name")
+#         }
+#         drinks.update_one(drink, {'$set': request.form.to_dict()})
+#         return redirect(url_for('get_drinks'))
+#     else:
+#         flash('Not allowed, you can only edit your own smoothie!', 'danger')
+#         return redirect(url_for('home'))
+
+#     return render_template('editdrinks.html', drink=mongo.db.drinks.find_one(
+#                               {"_id": ObjectId(drink_id)}),
+#                                 categories=mongo.db.drink_categories.find())
 
 
+#######################does not redirect to home when deleteing someone elses post????
 @app.route('/delete_drink/<drink_id>', methods=['GET'])
 def delete_drink(drink_id):
     drinks = mongo.db.drinks.find_one({'_id': ObjectId(drink_id)})
@@ -173,11 +198,14 @@ def delete_drink(drink_id):
         flash('Not allowed, you can only delete your own smoothie!', 'danger')
         return redirect(url_for('home'))
 
+
+
+####################################### how to pull users posts only???
 @app.route('/my_drinks')
-def my_drinks():
+def my_drinks(my_drinks):
     user_post = mongo.db.users.find_one({'username': session['username']})['_id']
     user_id = mongo.db.users.find_one({'username': session['username']})['username']
-    my_drinks = mongo.db.drinks.find({'username': user_post})
+    my_drinks = mongo.db.drinks.find({'username': session[user_post]})
     return render_template("user_drinks.html", my_drinks=my_drinks,
                            username=user_id,
                            title='My Drinks')
