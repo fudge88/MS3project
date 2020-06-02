@@ -83,11 +83,17 @@ def logout():
     return redirect(url_for("home"))  
 
 
-
 @app.route('/')
 @app.route('/get_drinks')
 def get_drinks():
     return render_template('drinks.html', drinks=mongo.db.drinks.find())
+
+
+@app.route('/browse_category/<browse_category>')
+def browse_category(browse_category):
+    drinks = mongo.db.drinks
+    category = drinks.category_name.find()
+    return render_template('drinks.html', categories=category, drinks=drinks)
 
 
 @app.route('/add_drinks')

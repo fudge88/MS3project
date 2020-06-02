@@ -1,21 +1,53 @@
 {% extends 'base.html' %} {% block content %}
-
-<h2>view specific drink</h2>
-<div class="content-section">
-  <div class="card">
-    <div>
-      <img src="{{drink_id.img_url}}">
+<!-- <section class="container">
+<div class="row featurette">
+<h3>{{drink_id.drink_name}}</h3>
+<div class="col-md-7">
+    <p>{{drink_id.description}}</p>
+    <br>
+    <p>{{drink_id.ingredients}}</p>
+    <br>
+    <p>{{drink_id.directions}}</p>
     </div>
+    <br>
     <div>
-        <p> {{drink_id.drink_name}} <i class="fas fa-caret-down right-span"></i></p>
-        <p>{{drink_id.category_name}}</p>
-        <p>{{drink_id.description}}</p>
-        <p>{{drink_id.ingredients}}</p>
-        <p>{{drink_id.directions}}</p>
-        <p>{{drink_id.serves}}</p>
-        <p>{{drink_id.prep_time}}</p>
+    <span>{{drink_id.serves}}<i class="fas fa-user"></i> 
+    {{drink_id.prep_time}}<i class="fas fa-clock"></i></span>
     </div>
-  </div>
+    
+    <div class="col-md-5">
+        <img class="featurette-image image-responsive" src="{{drink_id.img_url}}" 
+        alt="Image Here">
+    </div>
 </div>
+</section> -->
 
+<section class="view-container text-white">
+<div class="jumbotron">
+<div class="media">
+  <div class="media-body">
+    <h5 class="mt-0 mb-1">{{drink_id.drink_name}}</h5>
+    <br>
+   <div class="">
+    <p>{{drink_id.description}}</p>
+    <br>
+    <p>{{drink_id.ingredients}}</p>
+    <br>
+    <p>{{drink_id.directions}}</p>
+    </div>
+    <br>
+    <div>
+    <span>{{drink_id.serves}}  <i class="fas fa-user"></i> 
+    {{drink_id.prep_time}}  <i class="fas fa-clock"></i></span>
+    </div>
+    <br>
+    <hr>
+    <a class="btn btn-secondary" href="{{url_for('get_drinks')}}" role="button">Back</a>
+  </div>
+  <div class="row viewimg">
+  <img src="{{drink_id.img_url}}" class="card-img-view" alt="...">
+</div>
+</div>
+</div>
+</section>
 {% endblock %}

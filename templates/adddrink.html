@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
-
+<section class="add-container text-white">
+<div class="jumbotron">
 
 <form method="POST" action="{{ url_for('insert_drink') }}">
     
@@ -125,8 +126,9 @@
 <!-- submit button-->
     </fieldset>
     <div class="form-group">
-      {{ form.submit(class="btn btn-outline-info") }}
+      {{ form.submit(class="btn btn-warning") }}
     </div>
   </form>
-
+</div>
+</section>
 {% endblock %}

@@ -74,31 +74,8 @@
     </div>
     <!-- <a href="" class="btn btn-warning" type="submit" name="action">Updated</a> -->
     <button class="btn btn-warning" type="submit" name="action">Update</button>
-    <button class="btn btn-warning" type="submit" name="action" data-toggle="modal" 
-    data-target="#deleteModal">Delete</button>
+
   </form>
 </div>
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">Delete Smoothie?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure? Once its gone, its gone.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-<form action="" method="POST">
-          <button class="btn btn-danger" type="submit" value="Delete">
-            Delete
-          </button>
-</form>
-      </div>
-    </div>
-  </div>
-</div>
+
 {% endblock %}
