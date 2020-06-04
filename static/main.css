@@ -214,6 +214,10 @@ header.masthead h1{
     margin-left: 50px;
 }
 
+.card-height{
+    height: 9rem;
+}
+
 .card-img-top {
     width: 100%;
     height: 15vw;
@@ -221,27 +225,28 @@ header.masthead h1{
 }
 
 .card{
-    width: 30rem;
-    padding: 5px 50px 40px 25px;
+    width: 20rem;
+    padding: 5px 20px 40px 20px;
     border: none;
+    height: 35rem;
+    margin-bottom: 5rem;
 }
 
+.card-btns .btn{
+    width: 5rem;
+}
 
 .img-position{
     overflow: hidden;
     background-size: cover;
     background-position: center;
     border-radius: 10px;
-
 }
 
-
-.cards{
-    display: inline-grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 48px;
-    border-radius: 15px;
+.card-title {
+    height: 4rem;
 }
+
 
 .right-span{
     float: right;

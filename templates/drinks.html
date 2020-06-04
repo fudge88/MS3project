@@ -28,7 +28,6 @@
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
   {%  for cat in categories %}
     <a class="dropdown-item" href="{{ url_for('browse_category', category=cat.category_name) }}">{{ cat.category_name }}</a>
-
     {% endfor %}
   </div>
 </div>
@@ -56,20 +55,21 @@
           <br>
             <h5 class="card-title mb-0">
             {{drink.drink_name}}</h5>
-            <p class="mb-0"> Category: {{ drink.category_name }} </p>
-            <a href="{{ url_for('view_card', card_id=drink._id) }}">Get the Recipie!</a>
             
-          </div>
-          <div class="card-reveal">
+            <a href="{{ url_for('view_card', card_id=drink._id) }}">Get the Recipie!</a>
+          
+          <div class="card-height">
             <p>{{drink.description}}</p>
-            <small>By: {{drink.username}}</small>
           </div>
+          </div>
+          <p class="mb-0"> Category: {{ drink.category_name }} </p>
+            <small>By: {{drink.username}}</small>
           <hr>
           <div class="card-btns">
             <a href="{{ url_for('edit_drink', drink_id=drink._id) }}"
               type="button" class="btn btn-success"><i class="fas fa-pen"></i>
               </a>
-            <a href="{{ url_for('delete_drink', drink_id=drink._id) }}"
+            <a href=""
               type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash-alt"></i>
               </a>
           </div>
@@ -118,7 +118,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Delete</button>
+        <a href="{{ url_for('delete_drink', drink_id=drink._id) }}" type="button" class="btn btn-danger">Delete</a>
       </div>
     </div>
   </div>
