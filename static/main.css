@@ -142,6 +142,11 @@ header.masthead{
     opacity:.3;
 }
 
+.form-row{
+    display: flex;
+    flex-direction: row;
+}
+
 .btn,
 .form-control-lg {
     border-radius: 10px;

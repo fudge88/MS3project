@@ -18,7 +18,8 @@ mongo = PyMongo(app)
 
 @app.route("/home")
 def home():
-    return render_template('index.html')
+    form = RegistrationForm()
+    return render_template('index.html', form=form)
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -31,6 +32,9 @@ def register():
         if form.validate_on_submit():
             account = mongo.db.users
             existing_account = mongo.db.users.find_one({
+                'username': request.form['username']
+            })
+        existing_account = mongo.db.users.find_one({
                 'username': request.form['username']
             })
         if existing_account:
