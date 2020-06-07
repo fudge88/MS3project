@@ -116,11 +116,14 @@
       <div class="modal-body">
         Are you sure? Once its gone, its gone.
       </div>
+      {% for drink in drinks %}
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <a href="{{ url_for('delete_drink', drink_id=drinks._id) }}" type="button" class="btn btn-danger">Delete</a>
+        <a href="{{ url_for('delete_drink', drink_id=drink._id) }}" type="button" class="btn btn-danger">Delete</a>
       </div>
+      {% endfor %}
     </div>
   </div>
 </div>
+
 {% endblock %}
