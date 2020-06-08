@@ -1,25 +1,44 @@
 {% extends 'base.html' %} {% block content %}
-<div class="content-section">
-<h2>{{ username }}'s collection of drinks!</h2>
-  <div class="card">
-    {% for drinks in my_drinks %}
-    <div>
-      <img src="{{my_drinks.img_url}}">
-    </div>
-    <div>
-      <p> {{my_drinks.drink_name}} <i class="fas fa-caret-down right-span"></i></p>
-      <p><a href="{{ url_for('view_card', card_id=drink._id) }}">Lets check go!</a></p>
-      <p>{{my_drinks.description}}</p>
-<p>{{username}}</p>
-<p>{{my_drinks.username}}</p>
 
-    </div>
-        <div>
-          <a href="{{ url_for('edit_drink', drink_id=drink._id) }}" type="button" class="btn btn-success"><i class="fas fa-pen"></i></a>
-          <a href="{{ url_for('delete_drink', drink_id=drink._id) }}" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+<h1>user drinks</h1>
+<!--smoothie cards-->
+<section class="container-fluid">
+  <div class="">
+    <div class="row">
+      {% for drink in drinks %}
+      <div class="col-lg-3 col-md-4 col-12">
+        <div class="card">
+          <div class="card-image">
+            <img class="card-img-top img-position" src="{{drink.img_url}}" />
           </div>
-     {% endfor %}
+          <div class="card-content">
+          <br>
+            <h5 class="card-title mb-0">
+            {{drink.drink_name}}</h5>
+            
+            <a href="{{ url_for('view_card', card_id=drink._id) }}">Get the Recipie!</a>
+          
+          <div class="card-height">
+            <p>{{drink.description}}</p>
+          </div>
+          </div>
+          <p class="mb-0"> Category: {{ drink.category_name }} </p>
+            <small>By: {{drink.username}}</small>
+          <hr>
+          <div class="card-btns">
+            <a href="{{ url_for('edit_drink', drink_id=drink._id) }}"
+              type="button" class="btn btn-success"><i class="fas fa-pen"></i>
+              </a>
+            <a href=""
+              type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash-alt"></i>
+              </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
-</div>
+</section>
+
 
 {% endblock %}

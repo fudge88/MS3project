@@ -26,22 +26,24 @@
     <li><a href="{{url_for('get_drinks')}}">Smoothies</a></li>
     <li><a href="{{url_for('register')}}">Register</a></li>
     </ul>
-    <a href="{{url_for('login')}}" class=" btn navBar-btn btn-warning">Login</a>
+    <button class="navBar-btn btn-warning"><a href="{{url_for('login')}}">Login</a></button>
     </nav>
     <div id="side-menuBar" class="side-navBar">
       <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
-    <li><a href="">My Smoothies</a></li>
+    {% for drink in drink %}
+    <li><a href="{{url_for('user_posts, posts=drink._id')}}">My Smoothies</a></li>
+    {% endfor %}
      <li><a href="{{url_for('add_drinks')}}">Quick Add</a></li>
      <li><a href="{{url_for('logout')}}">Logout</a></li>
     </div>
 </header> 
 
-<main role="main">
+<div role="main">
     <div class="row">
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                     {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">
+            <div class="col-md-6 offset-md-3 alert-message alert alert-{{ category }}">
                         {{ message }}
             </div>
                     {% endfor %}
@@ -50,7 +52,7 @@
         {% block content %} {% endblock %}
       
    
-</main>
+</div>
   <!-- Footer -->
     <footer class="footer bg-light">
       <div class="container">
@@ -58,11 +60,11 @@
           <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
             <ul class="list-inline mb-2 footer-links">
               <li class="list-inline-item hvr-grow">
-                <a href="#">Recipes</a>
+                <a href="{{url_for('get_drinks')}}">Recipes</a>
               </li>
               <li class="list-inline-item">&sdot;</li>
               <li class="list-inline-item hvr-grow">
-                <a href="#">Contact</a>
+                <a href="{{url_for('login')}}">Login</a>
               </li>
             </ul>
             <p class="text-muted small mb-4 mb-lg-0">
@@ -72,17 +74,17 @@
           <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
             <ul class="list-inline mb-0 footer-icons">
               <li class="list-inline-item mr-3">
-                <a href="#">
+                <a href="https://www.facebook.com/" target="_blank">
                   <i class="fab fa-facebook fa-2x fa-fw hvr-grow"></i>
                 </a>
               </li>
               <li class="list-inline-item mr-3">
-                <a href="#">
+                <a href="https://twitter.com/explore" target="_blank">
                   <i class="fab fa-twitter-square fa-2x fa-fw hvr-grow"></i>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
+                <a href="https://www.instagram.com/" target="_blank">
                   <i class="fab fa-instagram fa-2x fa-fw hvr-grow"></i>
                 </a>
               </li>

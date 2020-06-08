@@ -142,8 +142,13 @@ header.masthead{
     opacity:.3;
 }
 
+.alert-message{
+    text-align: center;
+    z-index: 3041;
+    top: 10rem;
+}
 
-a .navBar-btn{
+.navBar-btn a{
     color: black;
     padding-top: 7px;
 }
