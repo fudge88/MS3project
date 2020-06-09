@@ -166,6 +166,8 @@ def edit_drink(drink_id):
         )
 
 
+
+
 @app.route('/delete_drink/<drink_id>', methods=['GET'])
 def delete_drink(drink_id):
     drinks = mongo.db.drinks.find_one({'_id': ObjectId(drink_id)})
@@ -178,14 +180,16 @@ def delete_drink(drink_id):
         return redirect(url_for('home'))
 
 
-@app.route('/drinks/<posts>', methods=['GET'])
-def user_posts(posts):
-    # drinks = mongo.db.drinks.find()
-    drinks = mongo.db.users.find({'_id': ObjectId(posts)})
-    if session['username'] == drinks['username']:
-        mongo.db.drinks.find({'_id': ObjectId(posts)})
-        return render_template(
-            'user_drinks.html', posts=posts, drinks=drinks
+
+
+@app.route('/drinks', methods=['GET'])
+def user_posts():
+    drinks = mongo.db.drinks.find({'username': session['username']})
+    #drinks = mongo.db.users.find({'_id': ObjectId(posts)})
+    # if session['username'] == drinks['username']:
+        # mongo.db.drinks.find({'_id': ObjectId(posts)})
+    return render_template(
+            'user_drinks.html', drinks=drinks
             )
 
 
