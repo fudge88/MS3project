@@ -30,9 +30,9 @@
     </nav>
     <div id="side-menuBar" class="side-navBar">
       <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
-    {% for drink in drink %}
-    <li><a href="{{url_for('user_posts, posts=drink._id')}}">My Smoothies</a></li>
-    {% endfor %}
+   
+    <li><a href="">My Smoothies</a></li>
+    
      <li><a href="{{url_for('add_drinks')}}">Quick Add</a></li>
      <li><a href="{{url_for('logout')}}">Logout</a></li>
     </div>
