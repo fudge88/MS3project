@@ -35,9 +35,9 @@ def register():
             existing_account = mongo.db.users.find_one({
                 'username': request.form['username']
             })
-        existing_account = mongo.db.users.find_one({
-                'username': request.form['username']
-            })
+        else:
+            flash(f'Not Allowed', 'danger')
+            return redirect(url_for('register'))
         if existing_account:
             flash(f'Welcome back {form.username.data}!', 'success')
             return redirect(url_for('home'))
@@ -47,7 +47,9 @@ def register():
             session['username'] = request.form['username']
             flash(f'Welcome to the family {form.username.data}!', 'success')
             return redirect(url_for('home'))
-    return render_template('register.html', title='Register', form=form, drinks=drinks)
+    return render_template(
+        'register.html', title='Register', form=form, drinks=drinks
+        )
 
 
 @app.route("/login", methods=['GET', 'POST'])
@@ -69,7 +71,9 @@ def login():
         else:
             flash('Please register first, to get blending!', 'danger')
             return redirect(url_for('register'))
-    return render_template('login.html', title='Login', form=form, drinks=drinks)
+    return render_template(
+        'login.html', title='Login', form=form, drinks=drinks
+        )
 
 
 @app.route("/logout")
@@ -141,31 +145,25 @@ def view_card(card_id):
 def edit_drink(drink_id):
     drink = mongo.db.drinks.find_one({"_id": ObjectId(drink_id)})
     if request.method == 'POST':
-        if session['username'] == drink.username:
-            update_smoothie = {
-                "drink_name": request.form.get("drink_name"),
-                "description": request.form.get("description"),
-                "ingredients": request.form.get("ingredients"),
-                "directions": request.form.get("directions"),
-                "serves": request.form.get("serves"),
-                "prep_time": request.form.get("prep_time"),
-                "img_url": request.form.get("img_url"),
-                "category_name": request.form.get("category_name")
-            }
-            mongo.db.drinks.update(
+        update_smoothie = {
+            "username": session['username'],
+            "drink_name": request.form.get("drink_name"),
+            "description": request.form.get("description"),
+            "ingredients": request.form.get("ingredients"),
+            "directions": request.form.get("directions"),
+            "serves": request.form.get("serves"),
+            "prep_time": request.form.get("prep_time"),
+            "img_url": request.form.get("img_url"),
+            "category_name": request.form.get("category_name")
+        }
+        mongo.db.drinks.update(
                 {"_id": ObjectId(drink_id)}, update_smoothie
             )
-            return redirect(url_for('get_drinks'))
-        else:
-            flash('You can only edit your own smoothie!', 'danger')
-            return redirect(url_for('home'))
-
+        return redirect(url_for('get_drinks'))
     return render_template(
         'editdrinks.html', drink=drink, drinks=drinks,
         categories=mongo.db.drink_categories.find()
         )
-
-
 
 
 @app.route('/delete_drink/<drink_id>', methods=['GET'])
@@ -185,12 +183,11 @@ def delete_drink(drink_id):
 @app.route('/drinks', methods=['GET'])
 def user_posts():
     drinks = mongo.db.drinks.find({'username': session['username']})
-    #drinks = mongo.db.users.find({'_id': ObjectId(posts)})
-    # if session['username'] == drinks['username']:
-        # mongo.db.drinks.find({'_id': ObjectId(posts)})
     return render_template(
             'user_drinks.html', drinks=drinks
             )
+
+
 
 
 if __name__ == "__main__":

@@ -336,9 +336,13 @@ height: 100vh;
 .jumbotron{
     background-color: #111111b8;
     border-radius: 20px;
-    padding: 3em 8em;
+    padding: 3em 3em;
+    width: 70%;
 }
 
+.formbox{
+    height: 80%;
+}
 
 
 

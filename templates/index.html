@@ -10,23 +10,27 @@
       <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
         <form method="POST" action="{{url_for('register')}}">
           {{ form.hidden_tag() }}
-            <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  {% if form.username.errors %} 
-                  {{ form.username(class="form-control form-control-lg is-invalid") }}
-                  <div class="invalid-feedback">
-                    {% for error in form.username.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                  </div>
-                  {% else %} 
-                  {{ form.username(class="form-control form-control-lg") }} 
-                  {% endif %}
-                </div>
+          <div class="form-row">
+            <div class="col-12 col-md-9 mb-2 mb-md-0">
+              {% if form.username.errors %} {{ form.username(class="form-control
+              form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.username.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
               </div>
+              {% else %} {{ form.username(class="form-control form-control-lg")
+              }} {% endif %}
+            </div>
+          <!-- </div> -->
           <div class="col-12 col-md-3">
-            <button type="submit" class="btn btn-block btn-lg btn-warning hvr-buzz">Sign Up!
-            </button>
+          <button
+            type="submit"
+            class="btn btn-block btn-lg btn-warning hvr-buzz"
+          >
+            Sign Up!
+          </button>
+          </div>
           </div>
         </form>
       </div>
@@ -126,22 +130,25 @@
       <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
         <form method="POST" action="{{url_for('register')}}">
           {{ form.hidden_tag() }}
-            <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-                  {% if form.username.errors %} 
-                  {{ form.username(class="form-control form-control-lg is-invalid") }}
-                  <div class="invalid-feedback">
-                    {% for error in form.username.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                  </div>
-                  {% else %} 
-                  {{ form.username(class="form-control form-control-lg") }} 
-                  {% endif %}
-                </div>
+          <div class="form-row">
+            <div class="col-12 col-md-9 mb-2 mb-md-0">
+              {% if form.username.errors %} {{ form.username(class="form-control
+              form-control-lg is-invalid") }}
+              <div class="invalid-feedback">
+                {% for error in form.username.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
               </div>
+              {% else %} {{ form.username(class="form-control form-control-lg")
+              }} {% endif %}
+            </div>
+          </div>
           <div class="col-12 col-md-3">
-            <button type="submit" class="btn btn-block btn-lg btn-warning hvr-buzz">Sign Up!
+            <button
+              type="submit"
+              class="btn btn-block btn-lg btn-warning hvr-buzz"
+            >
+              Sign Up!
             </button>
           </div>
         </form>
