@@ -178,16 +178,12 @@ def delete_drink(drink_id):
         return redirect(url_for('home'))
 
 
-
-
 @app.route('/drinks', methods=['GET'])
 def user_posts():
     drinks = mongo.db.drinks.find({'username': session['username']})
     return render_template(
             'user_drinks.html', drinks=drinks
             )
-
-
 
 
 if __name__ == "__main__":

@@ -102,7 +102,23 @@ body{
 
 
 /*home page*/
+.posts-heading{
+    font-size: 5rem;
+}
 
+.user_posts{
+    position:relative;
+    background-color:#343a40;
+    background:url(/static/img/postsimg.jpg) no-repeat center center;
+    background-size:cover;
+    padding-top:20rem;
+    padding-bottom:20rem;
+    margin-bottom: 4rem;
+}
+
+.col-lg-3{
+padding-bottom: 5rem;
+}
 
 header.masthead{
     position:relative;
@@ -344,7 +360,10 @@ height: 100vh;
     height: 80%;
 }
 
-
+.login-button{
+    width: 8rem;
+    display: inline;
+}
 
 @media (min-width:768px){
     header.masthead{
@@ -352,7 +371,7 @@ height: 100vh;
         padding-bottom:12rem;
         }
     header.masthead h1{
-        font-size:3rem;
+        font-size:4rem;
         }
     }
         
@@ -406,7 +425,7 @@ height: 100vh;
     }
     
 footer.footer{
-    padding-top:2rem;
+    padding-top:3rem;
     padding-bottom:2rem;
     }
 

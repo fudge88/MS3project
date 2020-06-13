@@ -1,37 +1,59 @@
 {% extends 'base.html' %} {% block content %}
+<!--header-->
+<header class="user_posts text-white text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 mx-auto">
+        <h2 class="mb-4 posts-heading">welcome back!</h2>
+        <h2>Your dashboard's here to give you more control!</h2>
+        <a type="button" class="btn btn-block btn-lg btn-warning mt-4" href="{{url_for('add_drinks')}}">Quick Add</a>
+      </div>
+    </div>
+  </div>
+</header>
 
-<h1>user drinks</h1>
 <!--smoothie cards-->
 <section class="container-fluid">
   <div class="">
     <div class="row">
       {% for drink in drinks %}
-      <div class="col-lg-3 col-md-4 col-12">
+      <div class="col-lg-3 col-md-4 col-12"> 
         <div class="card">
           <div class="card-image">
             <img class="card-img-top img-position" src="{{drink.img_url}}" />
           </div>
           <div class="card-content">
-          <br>
+            <br />
             <h5 class="card-title mb-0">
-            {{drink.drink_name}}</h5>
-            
-            <a href="{{ url_for('view_card', card_id=drink._id) }}">Get the Recipie!</a>
-          
-          <div class="card-height">
-            <p>{{drink.description}}</p>
+              {{ loop.index }}. {{drink.drink_name}}
+            </h5>
+
+            <a href="{{ url_for('view_card', card_id=drink._id) }}"
+              >Get the Recipie!</a
+            >
+
+            <div class="card-height">
+              <p>{{drink.description}}</p>
+            </div>
           </div>
-          </div>
-          <p class="mb-0"> Category: {{ drink.category_name }} </p>
-            <small>By: {{drink.username}}</small>
-          <hr>
+          <p class="mb-0">Category: {{ drink.category_name }}</p>
+          <small>By: {{drink.username}}</small>
+          <hr />
           <div class="card-btns">
-            <a href="{{ url_for('edit_drink', drink_id=drink._id) }}"
-              type="button" class="btn btn-success"><i class="fas fa-pen"></i>
-              </a>
-            <a href=""
-              type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash-alt"></i>
-              </a>
+            <a
+              href="{{ url_for('edit_drink', drink_id=drink._id) }}"
+              type="button"
+              class="btn btn-success"
+              ><i class="fas fa-pen"></i>
+            </a>
+            <a
+              href=""
+              type="button"
+              class="btn btn-danger"
+              data-toggle="modal"
+              data-target="#deleteModal"
+              ><i class="fas fa-trash-alt"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -39,6 +61,5 @@
     </div>
   </div>
 </section>
-
 
 {% endblock %}

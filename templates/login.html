@@ -18,16 +18,16 @@
         {% else %} {{ form.username(class="form-control form-control-lg") }} {%
         endif %}
       </div>
-<div class="border-top pt-3">
+    </fieldset>
+    <div class="form-group">
+      {{ form.submit(class="btn btn-block btn-lg btn-warning hvr-buzz") }}
+    </div>
+    <div class="border-top pt-3">
   <small class="text-muted">
     Not Registered?
     <a class="ml-2" href="{{ url_for('register') }}">Sign Up</a>
   </small>
 </div>
-    </fieldset>
-    <div class="form-group">
-      {{ form.submit(class="btn btn-block btn-lg btn-warning hvr-buzz") }}
-    </div>
   </form>
  </div>
 </div>
