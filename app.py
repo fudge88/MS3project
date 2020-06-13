@@ -172,7 +172,7 @@ def delete_drink(drink_id):
     if session['username'] == drinks['username']:
         mongo.db.drinks.remove({'_id': ObjectId(drink_id)})
         flash('Your Smoothie has been deleted!', 'success')
-        return redirect(url_for('get_drinks'))
+        return redirect(url_for('user_posts'))
     else:
         flash('Not allowed, you can only delete your own smoothie!', 'danger')
         return redirect(url_for('home'))

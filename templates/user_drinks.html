@@ -4,9 +4,9 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
-        <h2 class="mb-4 posts-heading">welcome back!</h2>
+        <h2 class="mb-4 posts-heading">welcome back {{session['username']}}!</h2>
         <h2>Your dashboard's here to give you more control!</h2>
-        <a type="button" class="btn btn-block btn-lg btn-warning mt-4" href="{{url_for('add_drinks')}}">Quick Add</a>
+        <a type="button" class="btn btn-lg btn-warning mt-4" href="{{url_for('add_drinks')}}">Quick Add</a>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
             <h5 class="card-title mb-0">
             {{ loop.index }}. {{drink.drink_name}}</h5>
             
-            <a href="{{ url_for('view_card', card_id=drink._id) }}">Get the Recipie!</a>
+            <a href="{{ url_for('view_card', card_id=drink._id) }}">See the Recipie!</a>
           
           <div class="card-height">
             <p>{{drink.description}}</p>
