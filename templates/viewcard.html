@@ -1,27 +1,44 @@
 {% extends 'base.html' %} {% block content %}
 <section class="add-container text-white">
   <div class="container-view">
-  <div style="text-align:center">
-    <h2>{{drink_id.drink_name}}</h2>
-    <p>Add and Reduce ingredients according to taste</p>
-  </div>
-  <div class="row">
-    <div class="column">
-      <img src="{{drink_id.img_url}}" style="width:100%">
+    <div style="text-align: center;">
+      <h2>{{drink_id.drink_name}}</h2>
+      <p>Add and Reduce ingredients according to taste</p>
     </div>
-    <div class="column">
-    <p>{{drink_id.description}}</p>
-    <br>
-    <p>{{drink_id.ingredients}}</p>
-    <br>
-    <p>{{drink_id.directions}}</p>
-    <br>
-     <span>{{drink_id.serves}}  <i class="fas fa-user"></i> 
-    {{drink_id.prep_time}}  <i class="fas fa-clock"></i></span>
-        <a class="btn btn-secondary" style="float:right" href="{{url_for('get_drinks')}}" role="button">Back</a>
+    <div class="row">
+      <div class="column">
+      {% if drink_id.image %}
+        <img src="{{drink_id.img_url}}" style="width: 100%;" />
+        {% else %}
+        <img src="{{url_for('static', filename='img/error-img.jpg')}}" style="width: 100%;" />
+        {% endif %}
+      </div>
+      <div class="column">
+        <p>{{drink_id.description}}</p>
+        <br />
+        <ul>
+          {% for ingredient in drink_id.ingredients %}
+          <li>{{ingredient}}</li>
+          {% endfor %}
+        </ul>
+        <br />
+        <p>{{drink_id.directions}}</p>
+        <br />
+        <span
+          >{{drink_id.serves}}
+          <i class="fas fa-user"></i> {{drink_id.prep_time}}
+          <i class="fas fa-clock"></i
+        ></span>
+        <a
+          class="btn btn-secondary"
+          style="float: right;"
+          href="{{url_for('get_drinks')}}"
+          role="button"
+          >Back</a
+        >
+      </div>
     </div>
   </div>
-</div>
 </section>
 
 {% endblock %}
