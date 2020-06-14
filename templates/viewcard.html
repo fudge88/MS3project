@@ -3,7 +3,8 @@
   <div class="container-view">
     <div style="text-align: center;">
       <h2>{{drink_id.drink_name}}</h2>
-      <p>Add and Reduce ingredients according to taste</p>
+      <span class="mr-5"><i class="fas fa-clock"></i> <strong>Total Time: </strong>{{drink_id.prep_time}} mins</span>
+        <span><i class="fas fa-user"></i> <strong>Yield: </strong>{{drink_id.serves}} serving</span>
     </div>
     <div class="row">
       <div class="column">
@@ -24,11 +25,6 @@
         <br />
         <p>{{drink_id.directions}}</p>
         <br />
-        <span
-          >{{drink_id.serves}}
-          <i class="fas fa-user"></i> {{drink_id.prep_time}}
-          <i class="fas fa-clock"></i
-        ></span>
         <a
           class="btn btn-secondary"
           style="float: right;"
