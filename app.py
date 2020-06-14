@@ -4,8 +4,9 @@ from flask import Flask, render_template, url_for, flash, redirect, session, req
 from forms import RegistrationForm, LoginForm, PostForm
 if os.path.exists('env.py'):
     import env
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
+import math
 
 
 app = Flask(__name__)
@@ -85,9 +86,18 @@ def logout():
 @app.route('/')
 @app.route('/get_drinks')
 def get_drinks():
+    categories = mongo.db.drink_categories.find()
+    limit_per_page = 12
+    drink_page = int(request.args.get('drink_page', 1))
+    drink_numbers = mongo.db.drinks.count()
+    page_number = range(1, int(math.ceil(drink_numbers / limit_per_page)) + 1)
+    drinks = mongo.db.drinks.find().sort('_id', pymongo.ASCENDING).skip(
+        (drink_page - 1)*limit_per_page).limit(limit_per_page)
+
     return render_template(
-        'drinks.html', drinks=mongo.db.drinks.find(),
-        categories=mongo.db.drink_categories.find()
+        'drinks.html', drinks=drinks,
+        categories=categories, page_number=page_number,
+        drink_page=drink_page, drink_numbers=drink_numbers
         )
 
 
