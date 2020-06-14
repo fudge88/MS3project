@@ -25,6 +25,7 @@ body{
 .justify-content-center {
     justify-content: space-between;
     padding: 15px 60px;
+    margin-bottom: -3rem;
 }
 
 .navBar{
