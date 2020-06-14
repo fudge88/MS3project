@@ -81,6 +81,10 @@ body{
     margin-left: 50px;
 }
 
+.allergens{
+    color: #e9ecef;
+}
+
 #main{
     transition: margin-left 0.5s;
     padding:20px;

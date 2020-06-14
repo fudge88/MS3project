@@ -3,8 +3,8 @@
   <div class="container-view">
     <div style="text-align: center;">
       <h2>{{drink_id.drink_name}}</h2>
-      <span class="mr-5"><i class="fas fa-clock"></i> <strong>Total Time: </strong>{{drink_id.prep_time}} mins</span>
-        <span><i class="fas fa-user"></i> <strong>Yield: </strong>{{drink_id.serves}} serving</span>
+      <a href="https://erudus.com/14-major-food-allergens-for-eu-food-information-for-consumers/" target="_blank" class="allergens"
+                >Confused about the ingredients? click here for allergens <i class="fas fa-file-medical"></i></a>
     </div>
     <div class="row">
       <div class="column">
@@ -25,6 +25,8 @@
         <br />
         <p>{{drink_id.directions}}</p>
         <br />
+         <span class="mr-5"><i class="fas fa-clock"></i> <strong>Total Time: </strong>{{drink_id.prep_time}} mins</span>
+        <span><i class="fas fa-user"></i> <strong>Yield: </strong>{{drink_id.serves}} serving</span>
         <a
           class="btn btn-secondary"
           style="float: right;"
