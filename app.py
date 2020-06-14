@@ -97,7 +97,8 @@ def get_drinks():
     return render_template(
         'drinks.html', drinks=drinks,
         categories=categories, page_number=page_number,
-        drink_page=drink_page, drink_numbers=drink_numbers
+        drink_page=drink_page, drink_numbers=drink_numbers,
+        limit_per_page=limit_per_page
         )
 
 
@@ -169,6 +170,7 @@ def edit_drink(drink_id):
         mongo.db.drinks.update(
                 {"_id": ObjectId(drink_id)}, update_smoothie
             )
+        print(request.form.get("ingredients"))
         return redirect(url_for('get_drinks'))
     return render_template(
         'editdrinks.html', drink=drink, drinks=drinks,

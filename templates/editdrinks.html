@@ -65,7 +65,10 @@
 
     <div class="form-group">
       <textarea class="form-control" id="validationDefault07 ingredients"
-        name="ingredients" rows="5" placeholder="Ingredients" required >{{drink.ingredients}}</textarea>
+        name="ingredients" rows="5" placeholder="Ingredients" required >{% for ingredient in drink.ingredients -%}
+{{ingredient + "\n"}}
+{%- endfor %}
+        </textarea>
     </div>
 
     <div class="form-group">

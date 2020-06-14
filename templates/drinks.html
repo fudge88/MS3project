@@ -3,10 +3,16 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
-      <h1 class="mb-3">Tutti Smooti & Co.</h1>
-        <h5>Did you know, you can target health benefits with the ingredients you choose to blend!</h5>
-         <a href="https://thatsmyjamok.com/23-important-benefits-of-drinking-healthy-smoothies/" target="_blank"
-                >Find out more here</a>
+        <h1 class="mb-3">Tutti Smooti & Co.</h1>
+        <h5>
+          Did you know, you can target health benefits with the ingredients you
+          choose to blend!
+        </h5>
+        <a
+          href="https://thatsmyjamok.com/23-important-benefits-of-drinking-healthy-smoothies/"
+          target="_blank"
+          >Find out more here</a
+        >
       </div>
     </div>
   </div>
@@ -14,30 +20,45 @@
 <!--category bar-->
 
 <section>
-<ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Searching for something in particular?</a>
-  </li>
-  <li class="nav-item">
-    <div class="dropdown">
-  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Browse Categories
-  </button>
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+        >Searching for something in particular?</a
+      >
+    </li>
+    <li class="nav-item">
+      <div class="dropdown">
+        <button
+          class="btn btn-warning dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Browse Categories
+        </button>
 
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-  {%  for cat in categories %}
-    <a class="dropdown-item" href="{{ url_for('browse_category', category=cat.category_name) }}">{{ cat.category_name }}</a>
-    {% endfor %}
-  </div>
-</div>
-  </li>
-  <li class="nav-item">
-    <a class="btn btn-success" href="{{url_for('add_drinks')}}" role="button">Add Smoothie</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="{{ url_for('register') }}"> Not Registered?</a>
-  </li>
-</ul>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          {% for cat in categories %}
+          <a
+            class="dropdown-item"
+            href="{{ url_for('browse_category', category=cat.category_name) }}"
+            >{{ cat.category_name }}</a
+          >
+          {% endfor %}
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="btn btn-success" href="{{url_for('add_drinks')}}" role="button"
+        >Add Smoothie</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('register') }}"> Not Registered?</a>
+    </li>
+  </ul>
 </section>
 
 <!--smoothie cards-->
@@ -51,40 +72,53 @@
             <img class="card-img-top img-position" src="{{drink.img_url}}" />
           </div>
           <div class="card-content">
-          <br>
+            <br />
             <h5 class="card-title mb-0">
-            {{drink.drink_name}}</h5>
-          <div class="card-height">
-            <p>{{drink.description}}</p>
+              {{drink.drink_name}}
+            </h5>
+            <div class="card-height">
+              <p>{{drink.description}}</p>
+            </div>
           </div>
-          </div>
-          <p class="mb-0"> Category: {{ drink.category_name }} </p>
-            <small>By: {{drink.username}}</small>
-            <br>
-            <a href="{{ url_for('view_card', card_id=drink._id) }}" type="button" class="btn btn-success" >Get the Recipie!</a>
+          <p class="mb-0">Category: {{ drink.category_name }}</p>
+          <small>By: {{drink.username}}</small>
+          <br />
+          <a
+            href="{{ url_for('view_card', card_id=drink._id) }}"
+            type="button"
+            class="btn btn-success"
+            >Get the Recipie!</a
+          >
         </div>
       </div>
       {% endfor %}
     </div>
 
-
     <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a></li>
-    {% for page_num in page_number %} 
-    {% if page_num == drink_page %}
-    <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
-    {% else %}
-    <li class="page-item"><a class="page-link" href="{{ url_for('get_drinks', drink_page=page_num) }}">{{ page_num }}</a></li>
-    {% endif %} 
-    {% endfor %}
-    <li class="page-item"><a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
+      <ul class="pagination justify-content-center">
+        <li class="page-item {% if request.args.get('drink_page')|int == 1 %} disabled {% endif %}">
+
+          <a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int -1) }}" tabindex="-1" aria-disabled="true"
+            >Previous</a
+          >
+        </li>
+        {% for page_num in page_number %} {% if page_num == drink_page %}
+        <li class="page-item active">
+          <a class="page-link" href="#">{{ page_num }}</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+          <a
+            class="page-link"
+            href="{{ url_for('get_drinks', drink_page=page_num) }}"
+            >{{ page_num }}</a
+          >
+        </li>
+        {% endif %} {% endfor %}
+        <li class="page-item {% if request.args.get('drink_page')|int == (drink_numbers / limit_per_page)|int + 1 %} disabled {% endif %}"><a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int +1) }}">Next</a></li>
+      </ul>
+    </nav>
   </div>
 </section>
-
 
 {% endblock %}
