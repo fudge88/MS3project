@@ -1,5 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 <section class="register-container text-white text-center">
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul class="flashes">
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
 <div class="jumbotron">
 <div class="content-section">
   <form method="POST" action="">

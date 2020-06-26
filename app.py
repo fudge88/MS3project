@@ -17,7 +17,7 @@ app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 mongo = PyMongo(app)
 drinks = mongo.db.users.find()
 
-
+@app.route('/')
 @app.route("/home")
 def home():
     form = RegistrationForm()
@@ -27,8 +27,8 @@ def home():
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if 'username' in session:
-        flash("Chill out, you're already logged in!")
-        return redirect(url_for('home'))
+        flash(f"You are already logged in as {session['username']}!")
+        return redirect(url_for('user_posts'))
     form = RegistrationForm()
     if request.method == 'POST':
         if form.validate_on_submit():
@@ -37,16 +37,16 @@ def register():
                 'username': request.form['username']
             })
         else:
-            flash(f'Not Allowed', 'danger')
+            flash('Not Allowed', 'danger')
             return redirect(url_for('register'))
         if existing_account:
-            flash(f'Welcome back {form.username.data}!', 'success')
-            return redirect(url_for('home'))
+            flash(f'Welcome back {form.username.data}!')
+            return redirect(url_for('get_drinks'))
         else:
             new_account = {'username': request.form['username']}
             account.insert_one(new_account)
             session['username'] = request.form['username']
-            flash(f'Welcome to the family {form.username.data}!', 'success')
+            flash(f'Welcome to Tutti Smooti & Co. {form.username.data}!')
             return redirect(url_for('home'))
     return render_template(
         'register.html', title='Register', form=form, drinks=drinks
@@ -56,8 +56,8 @@ def register():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if 'username' in session:
-        flash('you are logged in as ' + session['username'])
-        return redirect(url_for('home'))
+        flash(f"you are logged in as  {session['username']}")
+        return redirect(url_for('user_posts'))
     form = LoginForm()
     if request.method == 'POST':
         if form.validate_on_submit():
@@ -67,10 +67,10 @@ def login():
             })
         if existing_account:
             session['username'] = request.form['username']
-            flash(f'Welcome back {form.username.data}!', 'success')
-            return redirect(url_for('home'))
+            flash(f'Welcome back {form.username.data}!')
+            return redirect(url_for('user_posts'))
         else:
-            flash('Please register first, to get blending!', 'danger')
+            flash('Please register first, to get blending!')
             return redirect(url_for('register'))
     return render_template(
         'login.html', title='Login', form=form, drinks=drinks
@@ -80,10 +80,10 @@ def login():
 @app.route("/logout")
 def logout():
     session.pop("username",  None)
+    flash('You have been logged out')
     return redirect(url_for("home"))
 
 
-@app.route('/')
 @app.route('/get_drinks')
 def get_drinks():
     categories = mongo.db.drink_categories.find()
@@ -114,7 +114,7 @@ def browse_category(category):
 @app.route('/add_drinks')
 def add_drinks():
     if 'username' not in session:
-        flash('Please LogIn to add Smoothie', 'danger')
+        flash('Please Login to add Smoothie')
         return redirect(url_for('login'))
     form = PostForm()
     categories = mongo.db.drink_categories.find()
@@ -141,8 +141,8 @@ def insert_drink():
         )
     if form.validate_on_submit():
         flash('Your Smoothie has been added to the collection!')
-        return redirect(url_for('my_drinks'))
-    return redirect(url_for('get_drinks'))
+        return redirect(url_for('view_card'))
+    return redirect(url_for('user_posts'))
 
 
 @app.route('/view_card/<card_id>')
@@ -170,8 +170,7 @@ def edit_drink(drink_id):
         mongo.db.drinks.update(
                 {"_id": ObjectId(drink_id)}, update_smoothie
             )
-        print(request.form.get("ingredients"))
-        return redirect(url_for('get_drinks'))
+        return redirect(url_for('user_posts'))
     return render_template(
         'editdrinks.html', drink=drink, drinks=drinks,
         categories=mongo.db.drink_categories.find()
@@ -183,11 +182,11 @@ def delete_drink(drink_id):
     drinks = mongo.db.drinks.find_one({'_id': ObjectId(drink_id)})
     if session['username'] == drinks['username']:
         mongo.db.drinks.remove({'_id': ObjectId(drink_id)})
-        flash('Your Smoothie has been deleted!', 'success')
+        flash('Your Smoothie has been deleted!')
         return redirect(url_for('user_posts'))
     else:
-        flash('Not allowed, you can only delete your own smoothie!', 'danger')
-        return redirect(url_for('home'))
+        flash('Not allowed, you can only delete your own smoothie!')
+        return redirect(url_for('get_drinks'))
 
 
 @app.route('/drinks', methods=['GET'])

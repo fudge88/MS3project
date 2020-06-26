@@ -8,11 +8,7 @@
     </div>
     <div class="row">
       <div class="column">
-      {% if drink_id.image %}
         <img src="{{drink_id.img_url}}" style="width: 100%;" />
-        {% else %}
-        <img src="{{url_for('static', filename='img/error-img.jpg')}}" style="width: 100%;" />
-        {% endif %}
       </div>
       <div class="column">
         <p>{{drink_id.description}}</p>
@@ -27,13 +23,22 @@
         <br />
          <span class="mr-3"><i class="fas fa-clock"></i> <strong>Total Time: </strong>{{drink_id.prep_time}} mins</span>
         <span><i class="fas fa-user"></i> <strong>Yield: </strong>{{drink_id.serves}} serving</span>
+        {% if session['username'] %}
         <a
+          class="btn btn-secondary"
+          style="float: right;"
+          href="{{url_for('user_posts')}}"
+          role="button"
+          >Back</a
+        >
+        {% else %}
+                <a
           class="btn btn-secondary"
           style="float: right;"
           href="{{url_for('get_drinks')}}"
           role="button"
-          >Back</a
-        >
+          >Back</a>
+        {% endif %}
       </div>
     </div>
   </div>

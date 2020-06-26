@@ -66,7 +66,7 @@
   <div class="">
     <div class="row">
       {% for drink in drinks %}
-      <div class="col-lg-3 col-md-4 col-12">
+      <div class="col-md-4 col-lg-3 col-12">
         <div class="card">
           <div class="card-image">
             <img class="card-img-top img-position" src="{{drink.img_url}}" />
@@ -98,7 +98,7 @@
       <ul class="pagination justify-content-center">
         <li class="page-item {% if request.args.get('drink_page')|int == 1 %} disabled {% endif %}">
 
-          <a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int -1) }}" tabindex="-1" aria-disabled="true"
+          <a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int - 1) }}" tabindex="-1" aria-disabled="true"
             >Previous</a
           >
         </li>
@@ -108,14 +108,12 @@
         </li>
         {% else %}
         <li class="page-item">
-          <a
-            class="page-link"
-            href="{{ url_for('get_drinks', drink_page=page_num) }}"
-            >{{ page_num }}</a
-          >
+          <a class="page-link" href="{{ url_for('get_drinks', drink_page=page_num) }}" >{{ page_num }}</a>
         </li>
-        {% endif %} {% endfor %}
+        {% endif %} 
+      {% endfor %} 
         <li class="page-item {% if request.args.get('drink_page')|int == (drink_numbers / limit_per_page)|int + 1 %} disabled {% endif %}"><a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int +1) }}">Next</a></li>
+    
       </ul>
     </nav>
   </div>

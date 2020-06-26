@@ -1,65 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" type="text/css">
-    <script src="https://kit.fontawesome.com/e89976506e.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+      type="text/css"
+    />
+    <script
+      src="https://kit.fontawesome.com/e89976506e.js"
+      crossorigin="anonymous"
+    ></script>
     <title>TuttiSmooti&co.</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" 
-    type="image/x-icon" sizes="200x200">
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='img/favicon.ico') }}"
+      type="image/x-icon"
+      sizes="200x200"
+    />
   </head>
   <body>
-
-<header>
-    <nav class="navBar fixed-top">
-      <span class="open-sideMenu">
-        <a href="#" onclick="openSlideMenu()"
+  <div class="fixed-top">
+    <header>
+      <nav class="navBar ">
+        <span class="open-sideMenu">
+          <a href="#" onclick="openSlideMenu()">
+            <svg width="30" height="30"></svg><i class="fas fa-bars"></i
+          ></a>
+        </span>
+        <ul class="navbar-navLinks">
+          <li><a href="{{url_for('home')}}">Home</a></li>
+          <li><a href="{{url_for('get_drinks')}}">Smoothies</a></li>
+          <li><a href="{{url_for('register')}}">Register</a></li>
+        </ul>
+        {% if session['username'] %}
+        <button class="navBar-btn btn-warning">
+          <a href="{{url_for('logout')}}">Logout</a>
+        </button>
+        {% else %}
+        <button class="navBar-btn btn-warning">
+          <a href="{{url_for('login')}}">Login</a>
+        </button>
+        {% endif %}
+      </nav>
+      <div id="side-menuBar" class="side-navBar">
+        <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+        {% if session['username'] %}
+        <li>
+          <a href="{{url_for('user_posts', posts=session[username])}}"
+            >My Smoothies</a
           >
-        <svg width="30" height="30"></svg><i class="fas fa-bars"></i></a>
-      </span>
-      <ul class="navbar-navLinks">
-    <li><a href="{{url_for('home')}}">Home</a></li>
-    <li><a href="{{url_for('get_drinks')}}">Smoothies</a></li>
-    <li><a href="{{url_for('register')}}">Register</a></li>
-    </ul>
-    {% if session['username'] %}
-    <li><a href="{{url_for('logout')}}">Logout</a></li>
-    {% else %}
-    <button class="navBar-btn btn-warning"><a href="{{url_for('login')}}">Login</a></button>
-    {% endif %}
-    </nav>
-    <div id="side-menuBar" class="side-navBar">
-      <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
-    
-    <li><a href="{{url_for('user_posts', posts=session[username])}}">My Smoothies</a></li>
-    
-     <li><a href="{{url_for('add_drinks')}}">Quick Add</a></li>
-     
-     <li><a href="{{url_for('logout')}}">Logout</a></li>
-    </div>
-</header> 
+        </li>
+        {% endif %}
 
-<div role="main">
-    <div class="row">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                    {% for category, message in messages %}
-            <div class="col-md-6 offset-md-3 alert-message alert alert-{{ category }}">
-                        {{ message }}
-            </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %} </div>
-        {% block content %} {% endblock %}
-      
+        <li><a href="{{url_for('add_drinks')}}">Quick Add</a></li>
+
+        <li><a href="{{url_for('logout')}}">Logout</a></li>
+      </div>
+    </header>
+
+    <div role="main">
+    <div class="container">
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %}
+    </div>
+     </div>
+  </div>
+
+    {% block content %} {% endblock %}
    
-</div>
-  <!-- Footer -->
+
+    <!-- Footer -->
     <footer class="footer bg-light">
       <div class="container">
         <div class="row">
@@ -69,11 +98,10 @@
                 <a href="{{url_for('get_drinks')}}">Recipes</a>
               </li>
               <li class="list-inline-item">&sdot;</li>
-              
+
               <li class="list-inline-item hvr-grow">
                 <a href="{{url_for('login')}}">Login</a>
               </li>
-              
             </ul>
             <p class="text-muted small mb-4 mb-lg-0">
               &copy; Tutti Smooti & Co. 2020. All Rights Reserved.
@@ -102,7 +130,7 @@
       </div>
     </footer>
 
- <script>
+    <script>
       function openSlideMenu() {
         document.getElementById("side-menuBar").style.width = "250px";
         document.getElementById("main").style.marginLeft = "250px";
@@ -113,11 +141,21 @@
       }
     </script>
 
-
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
- 
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
