@@ -41,10 +41,9 @@
             <svg width="30" height="30"></svg><i class="fas fa-bars"></i
           ></a>
         </span>
-        <ul class="navbar-navLinks">
+        <ul class="navbar-navLinks d-none d-md-block">
           <li><a href="{{url_for('home')}}">Home</a></li>
           <li><a href="{{url_for('get_drinks')}}">Smoothies</a></li>
-          <li><a href="{{url_for('register')}}">Register</a></li>
         </ul>
         {% if session['username'] %}
         <button class="navBar-btn btn-warning">
@@ -65,10 +64,10 @@
           >
         </li>
         {% endif %}
-
+        <li><a class="d-md-none" href="{{url_for('home')}}">Home</a></li>
+        <li><a class="d-md-none" href="{{url_for('get_drinks')}}">Smoothies</a></li>
         <li><a href="{{url_for('add_drinks')}}">Quick Add</a></li>
-
-        <li><a href="{{url_for('logout')}}">Logout</a></li>
+        <li><a href="{{url_for('register')}}">Register</a></li>
       </div>
     </header>
 

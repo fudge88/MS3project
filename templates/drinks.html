@@ -21,7 +21,7 @@
 
 <section>
   <ul class="nav justify-content-center">
-    <li class="nav-item">
+    <li class="nav-item d-none d-lg-block">
       <a class="nav-link disabled drink-navbar" href="#" tabindex="-1" aria-disabled="true"
         >Searching for something in particular?</a
       >
@@ -55,7 +55,7 @@
         >Add Smoothie</a
       >
     </li>
-    <li class="nav-item">
+    <li class="nav-item d-none d-md-block">
       <a class="nav-link" href="{{ url_for('register') }}"> Not Registered?</a>
     </li>
   </ul>
@@ -92,6 +92,7 @@
           ></div>
         </div>
       </div>
+      <hr>
       {% endfor %}
     </div>
 

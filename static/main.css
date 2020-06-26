@@ -425,13 +425,18 @@ height: 100vh;
     header.masthead h1{
         font-size:4rem;
         }
-header.smoothiehead{
+    header.smoothiehead{
         padding-top:12rem;
         padding-bottom:12rem;
         }
     header.smoothieshead h1{
-    font-size:4rem;
-}    
+        font-size:4rem;
+        }    
+    .justify-content-center {
+        justify-content: space-between;
+        padding: 15px 5px;
+        margin-bottom: -3rem;
+        }
     }
         
 .showcase .showcase-text{
@@ -494,17 +499,19 @@ footer.footer{
 }
 
 @media (min-width: 920px){
-.drink-navbar{
-    display: none;
-}
+
 }
 
 @media (min-width: 700px){
     
 }
 
-@media (min-width: 470px){
-    
+@media (max-width: 470px){
+    .justify-content-center {
+    justify-content: space-between;
+    padding: 15px 5px;
+    margin-bottom: -3rem;
+}
 }
 
 

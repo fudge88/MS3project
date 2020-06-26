@@ -64,7 +64,7 @@ def login():
             account = mongo.db.users
             existing_account = account.find_one({
                 'username': request.form['username']
-            })
+                })
         if existing_account:
             session['username'] = request.form['username']
             flash(f'Welcome back {form.username.data}!')
