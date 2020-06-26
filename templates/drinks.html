@@ -22,7 +22,7 @@
 <section>
   <ul class="nav justify-content-center">
     <li class="nav-item">
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
+      <a class="nav-link disabled drink-navbar" href="#" tabindex="-1" aria-disabled="true"
         >Searching for something in particular?</a
       >
     </li>
@@ -66,7 +66,7 @@
   <div class="">
     <div class="row">
       {% for drink in drinks %}
-      <div class="col-md-4 col-lg-3 col-12">
+      <div class="col-md-4 col-lg-3 col-sm-6 col-12">
         <div class="card">
           <div class="card-image">
             <img class="card-img-top img-position" src="{{drink.img_url}}" />
@@ -83,12 +83,13 @@
           <p class="mb-0">Category: {{ drink.category_name }}</p>
           <small>By: {{drink.username}}</small>
           <br />
+          <div class="button-cards">
           <a
             href="{{ url_for('view_card', card_id=drink._id) }}"
             type="button"
-            class="btn btn-success"
+            class="btn btn-success button-cards"
             >Get the Recipie!</a
-          >
+          ></div>
         </div>
       </div>
       {% endfor %}

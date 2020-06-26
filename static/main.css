@@ -123,10 +123,14 @@ body{
     margin-bottom: 2rem;
 }
 
+.button-cards .form-control-lg{
+    border-radius: 10px;
+    width: fit-content;
+}
 
 .col-lg-3{
 padding-bottom: 5rem;
-padding-top: 3rem;
+margin-top: 3rem;
 }
 
 header.masthead{
@@ -273,7 +277,7 @@ header.smoothieshead h1{
 }
 
 .card{
-    width: 20rem;
+    width: 19rem;
     padding: 5px 20px 40px 20px;
     border: none;
     height: 35rem;
@@ -483,4 +487,29 @@ footer.footer{
     padding-top:3rem;
     padding-bottom:2rem;
     }
+
+.drinks-container{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+@media (min-width: 920px){
+.drink-navbar{
+    display: none;
+}
+}
+
+@media (min-width: 700px){
+    
+}
+
+@media (min-width: 470px){
+    
+}
+
+
+
+
+
+
 
