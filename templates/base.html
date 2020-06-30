@@ -57,6 +57,8 @@
       </nav>
       <div id="side-menuBar" class="side-navBar">
         <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+        <li><a class="d-md-none" href="{{url_for('home')}}">Home</a></li>
+        <li><a class="d-md-none" href="{{url_for('get_drinks')}}">Smoothies</a></li>
         {% if session['username'] %}
         <li>
           <a href="{{url_for('user_posts', posts=session[username])}}"
@@ -64,8 +66,6 @@
           >
         </li>
         {% endif %}
-        <li><a class="d-md-none" href="{{url_for('home')}}">Home</a></li>
-        <li><a class="d-md-none" href="{{url_for('get_drinks')}}">Smoothies</a></li>
         <li><a href="{{url_for('add_drinks')}}">Quick Add</a></li>
         <li><a href="{{url_for('register')}}">Register</a></li>
       </div>
