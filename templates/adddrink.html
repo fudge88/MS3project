@@ -1,19 +1,17 @@
 {% extends 'base.html' %} {% block content %}
 
-<section class="add-container text-white">
-
-<div class="jumbotron">
-
+<div class="container user-input">
+<h2 class="centre">Add My Smoothie!</h2>
 
 <form method="POST" action="{{ url_for('insert_drink') }}">
-    
+
     <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Add My Smoothie!</legend>
+      
 <!--drink name-->
       <div class="form-group">
-        {{ form.drink_name.label(class="form-control-label") }} 
+        {{ form.drink_name.label(class="form-control-label", class="validate", minlength="5", maxlength="25") }} 
         {% if form.drink_name.errors %} 
-        {{ form.drink_name(class="form-control form-control-lg is-invalid") }}
+        {{ form.drink_name(class="form-control form-control-lg is-invalid", class="validate", minlength="4", maxlength="25") }}
         <div class="invalid-feedback">
           {% for error in form.drink_name.errors %}
           <span>{{ error }}</span>
@@ -134,4 +132,6 @@
 </div>
 
 </section>
+
+
 {% endblock %}
