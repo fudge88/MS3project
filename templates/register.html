@@ -1,14 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<section class="register-container text-white text-center">
-      {% with messages = get_flashed_messages() %}
-      {% if messages %}
-      <ul class="flashes">
-      {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-      </ul>
-      {% endif %}
-      {% endwith %}
+<section class="register-container text-white">
 <div class="jumbotron">
 <div class="content-section">
   <form method="POST" action="">
@@ -16,20 +7,21 @@
     <fieldset class="form-group">
       <legend class="border-bottom mb-4">Create a username to register</legend>
       <div class="form-group">
-        {{ form.username.label(class="form-control-label") }} {% if
-        form.username.errors %} {{ form.username(class="form-control
-        form-control-lg is-invalid") }}
+        {{ form.username.label(class="form-control-label") }} 
+        {% if
+        form.username.errors %} 
+        {{ form.username(class="form-control is-invalid") }}
         <div class="invalid-feedback">
           {% for error in form.username.errors %}
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.username(class="form-control form-control-lg") }} {%
+        {% else %} {{ form.username(placeholder="Must have atleast 5-15 characters", class="form-control") }} {%
         endif %}
       </div>
     </fieldset>
     <div class="form-group">
-      {{ form.submit(class="btn btn-lg btn-warning hvr-buzz") }}
+      {{ form.submit(class="btn btn-warning hvr-buzz") }}
     </div>
   </form>
 </div>

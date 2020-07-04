@@ -37,7 +37,7 @@ def register():
                 'username': request.form['username']
             })
         else:
-            flash('Not Allowed', 'danger')
+            flash('Please check the username typed meets the requirements', 'danger')
             return redirect(url_for('register'))
         if existing_account:
             flash(f'Welcome back {form.username.data}!')
