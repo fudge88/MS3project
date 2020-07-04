@@ -55,6 +55,10 @@ def register():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    account = mongo.db.users
+    existing_account = account.find_one({
+                'username': request.form['username']
+                })
     if 'username' in session:
         flash(f"you are logged in as  {session['username']}")
         return redirect(url_for('user_posts'))
