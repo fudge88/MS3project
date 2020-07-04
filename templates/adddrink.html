@@ -11,13 +11,13 @@
       <div class="form-group">
         {{ form.drink_name.label(class="form-control-label", class="validate", minlength="5", maxlength="25") }} 
         {% if form.drink_name.errors %} 
-        {{ form.drink_name(class="form-control form-control-lg is-invalid", class="validate", minlength="4", maxlength="25") }}
+        {{ form.drink_name(class="form-control form-control-lg is-invalid", class="validate", minlength="5", maxlength="25") }}
         <div class="invalid-feedback">
           {% for error in form.drink_name.errors %}
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.drink_name(class="form-control form-control-lg") }} 
+        {% else %} {{ form.drink_name(placeholder="Limit of 5-25 characters", class="form-control form-control-lg") }} 
         {% endif %}
       </div>
 
@@ -76,7 +76,7 @@
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.img_url(class="form-control form-control-lg") }} 
+        {% else %} {{ form.img_url(placeholder="Paste Image URL address here", class="form-control form-control-lg") }} 
         {% endif %}
       </div>
 
@@ -91,7 +91,7 @@
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.description(class="form-control form-control-lg") }} 
+        {% else %} {{ form.description(placeholder="Limit of 50-170 characters", class="form-control form-control-lg", minlength="50", maxlength="170") }} 
         {% endif %}
       </div>
 
@@ -105,7 +105,7 @@
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.ingredients(class="form-control form-control-lg") }} 
+        {% else %} {{ form.ingredients(placeholder="Add each ingredient on a new line", class="form-control form-control-lg") }} 
         {% endif %}
       </div>
 
@@ -119,7 +119,7 @@
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.directions(class="form-control form-control-lg") }} 
+        {% else %} {{ form.directions(placeholder="Limit of 10-170 characters", class="form-control form-control-lg", minlength="10", maxlength="170") }} 
         {% endif %}
       </div>
 
