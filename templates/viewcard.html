@@ -3,14 +3,22 @@
   <div class="container-view">
     <div style="text-align: center;">
       <h2>{{drink_id.drink_name}}</h2>
-      <a href="https://erudus.com/14-major-food-allergens-for-eu-food-information-for-consumers/" target="_blank" class="allergens"
-                >Confused about the ingredients? click here for allergens <i class="fas fa-file-medical"></i></a>
+      <a
+        href="https://erudus.com/14-major-food-allergens-for-eu-food-information-for-consumers/"
+        target="_blank"
+        class="allergens"
+        >Confused about the ingredients? click here for allergens
+        <i class="fas fa-file-medical"></i
+      ></a>
     </div>
     <div class="row">
-      <div class="column">
+      <div class="column d-none d-md-block">
         <img src="{{drink_id.img_url}}" style="width: 100%;" />
       </div>
-      <div class="column">
+      <div class="d-md-none">
+        <img src="{{drink_id.img_url}}" style="width: 100%;" class="mt-3 mb-3"/>
+      </div>
+      <div class="column d-none d-md-block">
         <p>{{drink_id.description}}</p>
         <br />
         <ul>
@@ -21,8 +29,14 @@
         <br />
         <p>{{drink_id.directions}}</p>
         <br />
-         <span class="mr-3"><i class="fas fa-clock"></i> <strong>Total Time: </strong>{{drink_id.prep_time}} mins</span>
-        <span><i class="fas fa-user"></i> <strong>Yield: </strong>{{drink_id.serves}} serving</span>
+        <span class="mr-3"
+          ><i class="fas fa-clock"></i>
+          <strong>Total Time: </strong>{{drink_id.prep_time}} mins</span
+        >
+        <span
+          ><i class="fas fa-user"></i>
+          <strong>Yield: </strong>{{drink_id.serves}} serving</span
+        >
         {% if session['username'] %}
         <a
           class="btn btn-secondary"
@@ -32,12 +46,50 @@
           >Back</a
         >
         {% else %}
-                <a
+        <a
           class="btn btn-secondary"
           style="float: right;"
           href="{{url_for('get_drinks')}}"
           role="button"
-          >Back</a>
+          >Back</a
+        >
+        {% endif %}
+      </div>
+      <div class="d-md-none">
+        <p>{{drink_id.description}}</p>
+        <br />
+        <ul>
+          {% for ingredient in drink_id.ingredients %}
+          <li>{{ingredient}}</li>
+          {% endfor %}
+        </ul>
+        <br />
+        <p>{{drink_id.directions}}</p>
+        <br />
+        <p class="mr-3"
+          ><i class="fas fa-clock"></i>
+          <strong>Total Time: </strong>{{drink_id.prep_time}} mins</p
+        >
+        <p
+          ><i class="fas fa-user"></i>
+          <strong>Yield: </strong>{{drink_id.serves}} serving</p
+        >
+        {% if session['username'] %}
+        <a
+          class="btn btn-secondary"
+          style="float: right;"
+          href="{{url_for('user_posts')}}"
+          role="button"
+          >Back</a
+        >
+        {% else %}
+        <a
+          class="btn btn-secondary"
+          style="float: right;"
+          href="{{url_for('get_drinks')}}"
+          role="button"
+          >Back</a
+        >
         {% endif %}
       </div>
     </div>

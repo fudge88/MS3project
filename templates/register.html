@@ -5,7 +5,8 @@
   <form method="POST" action="">
     {{ form.hidden_tag() }}
     <fieldset class="form-group">
-      <legend class="border-bottom mb-4">Create a username to register</legend>
+      <h3 class="border-bottom mb-4 d-none d-sm-block">Create a username to register</h3>
+      <h2 class="border-bottom mb-4 d-block d-sm-none">Register</h2>
       <div class="form-group">
         {{ form.username.label(class="form-control-label") }} 
         {% if
@@ -16,12 +17,12 @@
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.username(placeholder="Must have atleast 5-15 characters", class="form-control") }} {%
+        {% else %} {{ form.username(placeholder="Limit of 5-15 characters", class="form-control form-control-lg") }} {%
         endif %}
       </div>
     </fieldset>
     <div class="form-group">
-      {{ form.submit(class="btn btn-warning hvr-buzz") }}
+      {{ form.submit(class="btn btn-lg btn-warning hvr-buzz") }}
     </div>
   </form>
 </div>

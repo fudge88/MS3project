@@ -495,7 +495,14 @@ footer.footer{
 
 }
 
-@media (min-width: 700px){
+@media (max-width: 700px){
+    .container-view {
+    border-radius: 0;
+    background-color: #111111b8;
+    padding: 6rem 3rem;
+    font-size: larger;
+    margin: 0rem; 
+}
     
 }
 
@@ -505,6 +512,7 @@ footer.footer{
     padding: 15px 5px;
     margin-bottom: -3rem;
 }
+
 }
 
 
