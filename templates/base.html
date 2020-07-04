@@ -46,14 +46,17 @@
           <li><a href="{{url_for('get_drinks')}}">Smoothies</a></li>
         </ul>
         {% if session['username'] %}
-        <button class="navBar-btn btn-warning">
+        <button class="navBar-btn btn-warning d-none d-md-block">
           <a href="{{url_for('logout')}}">Logout</a>
         </button>
         {% else %}
-        <button class="navBar-btn btn-warning">
+        <button class="navBar-btn btn-warning d-none d-md-block">
           <a href="{{url_for('login')}}">Login</a>
         </button>
         {% endif %}
+            <span class="navBar-brand d-md-none">
+      TootiSmooti & Co.
+    </span>
       </nav>
       <div id="side-menuBar" class="side-navBar">
         <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
@@ -72,6 +75,16 @@
         {% else %}
         <li><a href="{{url_for('register')}}">Register</a></li>
          {% endif %}
+
+         {% if session['username'] %}
+        <li>
+          <a class="d-md-none" href="{{url_for('logout')}}">Logout</a>
+        </li>
+        {% else %}
+        <li>
+          <a class="d-md-none" href="{{url_for('login')}}">Login</a>
+        </li>
+        {% endif %}
       </div>
     </header>
 

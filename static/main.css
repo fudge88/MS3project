@@ -96,7 +96,7 @@ body{
     font-size: x-large;
     margin-top: 3rem;
     border-radius: 15px;
-    color: white;
+    color: #e9ecef;
 }
 
 #main{
@@ -191,6 +191,15 @@ header.masthead{
     border-radius: 15px;
     height: 2.7rem;
     margin: 5px 20px;
+}
+
+.navBar-brand{
+    color: #e9ecef;
+    font-size: x-large;
+    font-weight: 600;
+    float: right;
+    padding-top: 15px;
+    padding-right: 30px;
 }
 
 .btn,
