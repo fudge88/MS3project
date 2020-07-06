@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% block content %}
-<section class="add-container text-white">
+<section class="add-container text-white background-colour">
   <div class="container-view">
     <div style="text-align: center;">
       <h2>{{drink_id.drink_name}}</h2>
       <a
         href="https://erudus.com/14-major-food-allergens-for-eu-food-information-for-consumers/"
         target="_blank"
-        class="allergens"
+        class="sign-up-link"
         >Confused about the ingredients? click here for allergens
         <i class="fas fa-file-medical"></i
       ></a>
@@ -39,7 +39,7 @@
         >
         {% if session['username'] %}
         <a
-          class="btn btn-secondary"
+          class="btn btn-warning"
           style="float: right;"
           href="{{url_for('user_posts')}}"
           role="button"
@@ -47,7 +47,7 @@
         >
         {% else %}
         <a
-          class="btn btn-secondary"
+          class="btn btn-warning"
           style="float: right;"
           href="{{url_for('get_drinks')}}"
           role="button"
@@ -76,7 +76,7 @@
         >
         {% if session['username'] %}
         <a
-          class="btn btn-secondary"
+          class="btn btn-warning"
           style="float: right;"
           href="{{url_for('user_posts')}}"
           role="button"
@@ -84,7 +84,7 @@
         >
         {% else %}
         <a
-          class="btn btn-secondary"
+          class="btn btn-warning"
           style="float: right;"
           href="{{url_for('get_drinks')}}"
           role="button"

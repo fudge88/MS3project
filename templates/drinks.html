@@ -56,7 +56,7 @@
       >
     </li>
     <li class="nav-item d-none d-md-block">
-      <a class="nav-link" href="{{ url_for('register') }}"> Not Registered?</a>
+      <a class="nav-link register-link" href="{{ url_for('register') }}"> Not Registered?</a>
     </li>
   </ul>
 </section>
@@ -98,7 +98,7 @@
 
     <nav class= "page-numbers" aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
-        <li class="page-item {% if request.args.get('drink_page')|int == 1 %} disabled {% endif %}">
+        <li class="page-item {% if request.args.get('drink_page')|int == 1 or request.args.get('drink_page') == None %} disabled {% endif %}">
           <a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int - 1) }}" tabindex="-1" aria-disabled="true"
             >Previous</a>
         </li>

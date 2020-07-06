@@ -17,7 +17,7 @@
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.drink_name(placeholder="Limit of 5-25 characters", class="form-control form-control-lg") }} 
+        {% else %} {{ form.drink_name(placeholder="Limit of 5-25 characters", class="form-control form-control-lg", minlength="5", maxlength="25") }} 
         {% endif %}
       </div>
 

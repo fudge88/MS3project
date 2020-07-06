@@ -66,10 +66,10 @@ def login():
             existing_account = account.find_one({
                 'username': request.form['username']
                 })
-        if existing_account:
-            session['username'] = request.form['username']
-            flash(f'Welcome back {form.username.data}!')
-            return redirect(url_for('user_posts'))
+            if existing_account:
+                session['username'] = request.form['username']
+                flash(f'Welcome back {form.username.data}!')
+                return redirect(url_for('user_posts'))
         else:
             flash('Please register first, to get blending!')
             return redirect(url_for('register'))
@@ -111,7 +111,7 @@ def browse_category(category):
     limit_per_page = 12
     drink_page = int(request.args.get('drink_page', 1))
     page_number = range(1, int(math.ceil(drink_numbers / limit_per_page)) + 1)
-    drinks = drink_numbers.sort('_id', pymongo.ASCENDING).skip(
+    drinks = drinks.sort('_id', pymongo.ASCENDING).skip(
         (drink_page - 1)*limit_per_page).limit(limit_per_page)
 
     return render_template(
