@@ -17,7 +17,7 @@
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.username(placeholder="Limit of 5-15 characters", class="form-control form-control-lg") }} {%
+        {% else %} {{ form.username(placeholder="Limit of 5-15 characters", class="form-control form-control-lg", minlength="5", maxlength="15") }} {%
         endif %}
       </div>
     </fieldset>

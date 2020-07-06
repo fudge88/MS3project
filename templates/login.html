@@ -16,7 +16,7 @@
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.username(placeholder="username is case sensitive", class="form-control form-control-lg") }} {%
+        {% else %} {{ form.username(placeholder="username is case sensitive", class="form-control form-control-lg", minlength="5", maxlength="15") }} {%
         endif %}
       </div>
     </fieldset>

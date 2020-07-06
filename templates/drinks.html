@@ -96,13 +96,11 @@
       {% endfor %}
     </div>
 
-    <nav aria-label="Page navigation example">
+    <nav class= "page-numbers" aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
         <li class="page-item {% if request.args.get('drink_page')|int == 1 %} disabled {% endif %}">
-
           <a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int - 1) }}" tabindex="-1" aria-disabled="true"
-            >Previous</a
-          >
+            >Previous</a>
         </li>
         {% for page_num in page_number %} {% if page_num == drink_page %}
         <li class="page-item active">
@@ -115,7 +113,6 @@
         {% endif %} 
       {% endfor %} 
         <li class="page-item {% if request.args.get('drink_page')|int == (drink_numbers / limit_per_page)|int + 1 %} disabled {% endif %}"><a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int +1) }}">Next</a></li>
-    
       </ul>
     </nav>
   </div>

@@ -40,6 +40,7 @@ def register():
             flash('Please check the username typed meets the requirements', 'danger')
             return redirect(url_for('register'))
         if existing_account:
+            session['username'] = request.form['username']
             flash(f'Welcome back {form.username.data}!')
             return redirect(url_for('get_drinks'))
         else:
@@ -55,8 +56,6 @@ def register():
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    account = mongo.db.users
-    existing_account = account.find_one({'username': request.form['username']})
     if 'username' in session:
         flash(f"you are logged in as  {session['username']}")
         return redirect(url_for('user_posts'))
@@ -108,8 +107,17 @@ def get_drinks():
 def browse_category(category):
     categories = mongo.db.drink_categories.find()
     drinks = mongo.db.drinks.find({'category_name': category})
+    drink_numbers = drinks.count()
+    limit_per_page = 12
+    drink_page = int(request.args.get('drink_page', 1))
+    page_number = range(1, int(math.ceil(drink_numbers / limit_per_page)) + 1)
+    drinks = drink_numbers.sort('_id', pymongo.ASCENDING).skip(
+        (drink_page - 1)*limit_per_page).limit(limit_per_page)
+
     return render_template(
-        'drinks.html', category=category, drinks=drinks, categories=categories
+        'drinks.html', category=category, drinks=drinks, categories=categories,
+        drink_numbers=drink_numbers, limit_per_page=limit_per_page,
+        page_number=page_number
         )
 
 

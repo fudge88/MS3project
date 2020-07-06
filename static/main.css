@@ -82,6 +82,21 @@ body{
     margin-left: 50px;
 }
 
+.page-numbers{
+    padding-bottom: 5rem;
+}
+
+.page-link{
+    color: #111111b8;
+}
+
+.page-item.active .page-link{
+    z-index: 1;
+    color: black;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
 .allergens{
     color: #e9ecef;
 }
