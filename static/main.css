@@ -291,7 +291,7 @@ header.smoothieshead h1{
     color: #dc3545;
 }
 
-.btn-danger{
+.card-btns .fa-trash-alt{
     color: #fff;
     background-color: #dc3545;
     border-color: #dc3545;
@@ -320,7 +320,6 @@ header.smoothieshead h1{
 }
 
 .card{
-    width: 19rem;
     padding: 5px 20px 40px 20px;
     border: none;
     height: 35rem;
