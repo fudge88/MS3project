@@ -291,7 +291,11 @@ header.smoothieshead h1{
     color: #dc3545;
 }
 
-
+.btn-danger{
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
 
 .flashes{
     list-style-type: none;
