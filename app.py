@@ -137,18 +137,18 @@ def add_drinks():
 @app.route('/insert_drink', methods=['POST'])
 def insert_drink():
     drinks = mongo.db.drinks
-        drinks.insert_one(
-            {"username": session['username'],
-                "drink_name": request.form.get("drink_name"),
-                "description": request.form.get("description"),
-                "ingredients": request.form.get("ingredients").splitlines(),
-                "directions": request.form.get("directions"),
-                "serves": request.form.get("serves"),
-                "prep_time": request.form.get("prep_time"),
-                "img_url": request.form.get("img_url"),
-                "category_name": request.form.get("category_name")}
-        )
-        flash('Your Smoothie has been added to the collection!')
+    drinks.insert_one(
+        {"username": session['username'],
+            "drink_name": request.form.get("drink_name"),
+            "description": request.form.get("description"),
+            "ingredients": request.form.get("ingredients").splitlines(),
+            "directions": request.form.get("directions"),
+            "serves": request.form.get("serves"),
+            "prep_time": request.form.get("prep_time"),
+            "img_url": request.form.get("img_url"),
+            "category_name": request.form.get("category_name")}
+    )
+    flash('Your Smoothie has been added to the collection!')
     return redirect(url_for('user_posts'))
 
 
