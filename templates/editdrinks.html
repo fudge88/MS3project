@@ -28,7 +28,7 @@
 
       <div class="col-md-2 mb-2">
         <select class="custom-select" id="validationDefault03 prep_time" name="prep_time" required>
-          <option selected disabled value="">Prep time</option>
+          <option selected disabled value="{{ drink.prep_time }}">{{ drink.prep_time }} mins</option>
           <option value="5">5 mins</option>
           <option value="10">10 mins</option>
           <option value="20+">20+ mins</option>
@@ -40,8 +40,8 @@
 
       <div class="col-md-2 mb-2">
         <select class="custom-select" id="validationDefault04 serves" name="serves" required>
-          <option selected disabled value="">Serves...</option>
-          <option value="1">1</option>
+          <option selected value="{{ drink.serves }}">{{ drink.serves }} selected</option>
+           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>

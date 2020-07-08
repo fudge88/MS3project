@@ -448,6 +448,12 @@ height: 100vh;
     display: inline;
 }
 
+@media (min-width:576px){
+    .card {
+    padding: 0;
+}
+}
+
 @media (min-width:768px){
     header.masthead{
         padding-top:12rem;
@@ -489,6 +495,7 @@ height: 100vh;
     .showcase .showcase-text{
         padding:7rem;
         }
+
     }
     
     

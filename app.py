@@ -21,7 +21,8 @@ drinks = mongo.db.users.find()
 @app.route("/home")
 def home():
     form = RegistrationForm()
-    return render_template('index.html', form=form, drinks=drinks)
+    categories = mongo.db.drink_categories.find()
+    return render_template('index.html', form=form, drinks=drinks, categories=categories)
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -135,9 +136,7 @@ def add_drinks():
 
 @app.route('/insert_drink', methods=['POST'])
 def insert_drink():
-    form = LoginForm()
     drinks = mongo.db.drinks
-    if request.method == 'POST':
         drinks.insert_one(
             {"username": session['username'],
                 "drink_name": request.form.get("drink_name"),
@@ -149,9 +148,7 @@ def insert_drink():
                 "img_url": request.form.get("img_url"),
                 "category_name": request.form.get("category_name")}
         )
-    if form.validate_on_submit():
         flash('Your Smoothie has been added to the collection!')
-        return redirect(url_for('view_card'))
     return redirect(url_for('user_posts'))
 
 
