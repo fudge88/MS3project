@@ -5,7 +5,10 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
-      <h1 class="mb-3">Tutti Smooti & Co.</h1>
+      <h1 class="mb-3 d-none d-lg-block">Tutti Smooti & Co.</h1>
+      {% if session['username'] %}
+      <h2 class="mb-4">welcome back {{session['username']}}!</h2>
+      {% else %}
         <h2 class="mb-4">Ready to get blending? Sign up now!</h2>
       </div>
       <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
@@ -22,6 +25,7 @@
               </div>
               {% else %} {{ form.username(class="form-control form-control-lg")
               }} {% endif %}
+              
             </div>
             <!-- </div> -->
             <div class="col-12 col-md-3">
@@ -34,6 +38,7 @@
             </div>
           </div>
         </form>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -68,13 +73,13 @@
 <!-- Image Showcases -->
 <section class="showcase">
   <div class="container-fluid p-0">
-    <div class="row no-gutters dessert">
+    <div class="row no-gutters mobile-side-space dessert">
       <div
         class="col-lg-6 order-lg-2 text-white showcase-img"
         style="background-image: url('{{ url_for('static', filename='img/dessert1.jpg') }}')"
       ></div>
       <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-        <h3 class="caps hvr-grow">
+        <h3 class="caps hvr-grow mt-5">
           <i class="fas fa-ice-cream"></i> Dessert Smoothies
         </h3>
         <p class="lead mb-0">
@@ -82,19 +87,20 @@
           and other energy-boosting goodness to start your day off right.
           Recipies from pumpkin pie to chocolate pudding, what will you try?
         </p>
-        
-        <a class="btn btn-success" href="{{ url_for('browse_category', category='Dessert' ) }}" 
+        <div class="category-btn">
+        <a class="btn btn-success mt-3 mb-5" href="{{ url_for('browse_category', category='Dessert' ) }}" 
         role="button">Dessert Smoothies</a>
+        </div>
        
       </div>
     </div>
-    <div class="row no-gutters protein">
+    <div class="row no-gutters mobile-side-space protein">
       <div
         class="col-lg-6 text-white showcase-img"
         style="background-image: url('{{ url_for('static', filename='img/protein.jpg') }}')"
       ></div>
       <div class="col-lg-6 my-auto showcase-text">
-        <h3 class="caps hvr-grow">
+        <h3 class="caps hvr-grow mt-5">
           <i class="fas fa-dumbbell"></i> Protein Smoothies
         </h3>
         <p class="lead mb-0">
@@ -102,19 +108,19 @@
           your favourite jeans again, make these protein shake recipes to
           complement your protein powder, maximise flavour and boost results.
         </p>
-        
-        <a class="btn btn-success" href="{{ url_for('browse_category', category='Protein') }}" 
+        <div class="category-btn">
+        <a class="btn btn-success mt-3 mb-5" href="{{ url_for('browse_category', category='Protein') }}" 
         role="button">Protein Smoothies</a>
-        
+        </div>
       </div>
     </div>
-    <div class="row no-gutters vegan">
+    <div class="row no-gutters mobile-side-space vegan">
       <div
         class="col-lg-6 order-lg-2 text-white showcase-img"
         style="background-image: url('{{ url_for('static', filename='img/vegan.jpg') }}')"
       ></div>
       <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-        <h3 class="caps hvr-grow">
+        <h3 class="caps hvr-grow mt-5">
           <i class="fas fa-seedling"></i> Vegan Smoothies
         </h3>
         <p class="lead mb-0">
@@ -122,10 +128,10 @@
           milks, you can blend up filling vegan smoothies that taste just as
           delicious as any other. Give our tasty—vegan smoothie combos a try.
         </p>
-        
-        <a class="btn btn-success" href="{{ url_for('browse_category', category='Vegan') }}" 
+        <div class="category-btn">
+        <a class="btn btn-success mt-3 mb-5" href="{{ url_for('browse_category', category='Vegan') }}" 
         role="button">Vegan Smoothies</a>
-        
+        </div>
       </div>
     </div>
   </div>
@@ -138,6 +144,12 @@
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
+       {% if session['username'] %}
+       <h2 class="mb-4">Hey {{session['username']}}, why not add a recipe!?</h2>
+<a class="btn btn-warning" href="{{url_for('add_drinks')}}" role="button"
+        >Add Smoothie</a
+      >
+       {% else %}
         <h2 class="mb-4">Ready to get blending? Sign up now!</h2>
       </div>
       <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
@@ -166,6 +178,7 @@
             </div>
           </div>
         </form>
+        {% endif %}
       </div>
     </div>
   </div>

@@ -409,6 +409,8 @@ height: 100vh;
     margin: 3em 8em;
 }
 
+
+
 .login-container {
   height: 100vh;
   background: url("/static/img/loginimg1.jpg") no-repeat center center fixed;
@@ -554,7 +556,15 @@ footer.footer{
     font-size: larger;
     margin: 0rem; 
 }
-    
+    .category-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mobile-side-space{
+    padding-left: 15px;
+    padding-right: 15px;
+}
 }
 
 @media (max-width: 470px){
