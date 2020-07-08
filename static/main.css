@@ -1,3 +1,5 @@
+ /* ---TEXT & HEADINGS--- */
+
  *{
     margin: 0x;
     padding: 0px;
@@ -17,16 +19,79 @@ body{
     text-transform: uppercase;
 }
 
-
-.nav .btn {
-    margin-right: 25px;
+.posts-heading{
+    font-size: 5rem;
 }
+  
+header.masthead h1{
+    font-size:2rem;
+}
+
+header.smoothieshead h1{
+    font-size:2rem;
+}
+
+.text-muted {
+    color: #d0d2d8!important;
+}
+
+
+/* ---FLASH MESSAGES--- */
+
+.flashes{
+    background-color: #dc3545;
+    text-align: center;
+    font-size: x-large;
+    margin-top: 3rem;
+    border-radius: 15px;
+    color: #e9ecef;
+}
+
+.flashes{
+    list-style-type: none;
+}
+
+
+/* ---POSITIONING--- */
 
 .justify-content-center {
     justify-content: space-between;
     padding: 15px 60px;
-    margin-bottom: -3rem;
 }
+
+.col-lg-3{
+    padding-bottom: 5rem;
+    margin-top: 3rem;
+}
+
+.intro{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.right-span{
+    float: right;
+}
+
+.column {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.showcase .showcase-text{
+    padding:3rem;
+    }
+
+
+/* ---NAVBAR--- */
 
 .navBar{
     background-color: #111111b8;
@@ -49,6 +114,9 @@ body{
     list-style: none;
 }
 
+.nav .btn {
+    margin-right: 25px;
+}
 
 .side-navBar{
     height: 100%;
@@ -62,138 +130,6 @@ body{
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
-}
-
-.side-navBar a{
-    padding: 10px 10px 10px 30px;
-    text-decoration: none;
-    font-size: 22px;
-    color: #d0d2d8;
-    display: block;
-    transition: 0.3s;
-}
-
-
-.side-navBar .btn-close{
-    position: absolute;
-    top: 0;
-    right: 22px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-.page-numbers{
-    padding-bottom: 5rem;
-}
-
-.page-link{
-    color: #111111b8;
-}
-
-.page-item.active .page-link{
-    z-index: 1;
-    color: black;
-    background-color: #ffc107;
-    border-color: #ffc107;
-}
-
-.allergens{
-    color: #e9ecef;
-}
-
-.allergens:hover{
-        color: #dc3545;
-}
-
-.flashes{
-    background-color: #dc3545;
-    text-align: center;
-    font-size: x-large;
-    margin-top: 3rem;
-    border-radius: 15px;
-    color: #e9ecef;
-}
-
-#main{
-    transition: margin-left 0.5s;
-    padding:20px;
-    overflow: hidden;
-    width: 100%;
-}
-
-
-@media(max-width:568px){
-    .navBar-navLink{display: none}
-}
-
-
-/*home page*/
-.posts-heading{
-    font-size: 5rem;
-}
-
-.user_posts{
-    position:relative;
-    background-color:#343a40;
-    background:url(/static/img/postsimg.jpg) no-repeat center center;
-    background-size:cover;
-    padding-top:18rem;
-    padding-bottom:18rem;
-    margin-bottom: 2rem;
-}
-
-.button-cards .form-control-lg{
-    border-radius: 10px;
-    width: fit-content;
-}
-
-.col-lg-3{
-padding-bottom: 5rem;
-margin-top: 3rem;
-}
-
-header.masthead{
-    position:relative;
-    background-color:#343a40;
-    background:url(/static/img/headerimg1.jpg) no-repeat center center;
-    background-size:cover;
-    padding-top:8rem;
-    padding-bottom:8rem;
-    }
-
-.smoothieshead{
-    position:relative;
-    background-color:#343a40;
-    background:url(/static/img/smoothiesimg2.jpg) no-repeat center center;
-    background-size:cover;
-    padding-top: 10rem;
-    padding-bottom: 10rem;
-    }
-    
-/*header.masthead .overlay{
-    position:absolute;
-    background-color:#212529;
-    height:100%;
-    width:100%;
-    top:0;
-    left:0;
-    opacity:.3;
-}*/
-
-.overlay{
-    position:absolute;
-    background-color:#212529;
-    height:100%;
-    width:100%;
-    top:0;
-    left:0;
-    opacity:.3;
-}
-
-.alert-message{
-    text-align: center;
-    z-index: 3041;
-    top: 6rem;
 }
 
 .navBar-btn a{
@@ -217,39 +153,51 @@ header.masthead{
     padding-right: 30px;
 }
 
-.btn,
-.form-control-lg {
-    border-radius: 10px;
+.side-navBar a{
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #d0d2d8;
+    display: block;
+    transition: 0.3s;
 }
 
-    
-header.masthead h1{
-    font-size:2rem;
+.side-navBar .btn-close{
+    position: absolute;
+    top: 0;
+    right: 22px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
-header.smoothieshead h1{
-    font-size:2rem;
+#main{
+    transition: margin-left 0.5s;
+    padding:20px;
+    overflow: hidden;
+    width: 100%;
 }
 
-.intro{
-    padding-top: 5rem;
+/* ---PAGINATION--- */
+.page-numbers{
     padding-bottom: 5rem;
 }
 
+.page-link{
+    color: #111111b8;
+}
+
+.page-item.active .page-link{
+    z-index: 1;
+    color: black;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+
+/* ---COLOURS--- */
+/* icon colours */
 .intro-icons{
     color: #f56881;
-}
-
-.dessert{
-    background-color: #f7d6b552;
-}
-
-.protein{
-    background-color: #edffe496;
-}
-
-.vegan{
-    background-color: #ffe4ed96;
 }
 
 .fa-ice-cream{
@@ -264,6 +212,117 @@ header.smoothieshead h1{
     color: #ef62a8;
 }
 
+/* index background block colours */
+.dessert{
+    background-color: #f7d6b552;
+}
+
+.protein{
+    background-color: #edffe496;
+}
+
+.vegan{
+    background-color: #ffe4ed96;
+}
+
+
+/* ---HERO IMAGES--- */
+/* register */
+.register-container{
+      height: 100vh;
+  background: url("/static/img/registerimg1.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* login */
+.login-container {
+  height: 100vh;
+  background: url("/static/img/loginimg1.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* user_drinks */
+.user_posts{
+    position:relative;
+    background-color:#343a40;
+    background:url(/static/img/postsimg.jpg) no-repeat center center;
+    background-size:cover;
+    padding-top:18rem;
+    padding-bottom:18rem;
+    margin-bottom: 2rem;
+}
+
+/* index */
+header.masthead{
+    position:relative;
+    background-color:#343a40;
+    background:url(/static/img/headerimg1.jpg) no-repeat center center;
+    background-size:cover;
+    padding-top:8rem;
+    padding-bottom:8rem;
+    }
+
+.showcase .showcase-img{
+    min-height:30rem;
+    background-size:cover;
+    }
+
+.call-to-action{
+    position:relative;
+    background-color:#343a40;
+    background:url("/static/img/headerimg1.jpg") no-repeat center center;
+    background-size:cover;
+    padding-top:7rem;
+    padding-bottom:7rem;
+    }
+
+/* drinks */
+.smoothieshead{
+    position:relative;
+    background-color:#343a40;
+    background:url(/static/img/smoothiesimg2.jpg) no-repeat center center;
+    background-size:cover;
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    }
+
+/* viewcard */
+.container-view {
+    border-radius: 25px;
+    background-color: #111111b8;
+    padding: 3rem 3rem;
+    font-size: larger;
+    margin: 5rem;
+}
+
+.container-view img{
+    border-radius: 25px;
+     width: 25rem;
+    height: 25rem;
+    object-fit: cover; 
+}
+
+/* jumbotron */
+.jumbotron{
+    background-color: #111111b8;
+    border-radius: 20px;
+    padding: 3em 3em;
+}
+
+
+/* ---FOOTER--- */
 .footer-links a{
     color: #dc3545;
 }
@@ -282,6 +341,12 @@ header.smoothieshead h1{
     text-decoration: none;
 }
 
+footer.footer{
+    padding-top:3rem;
+    padding-bottom:2rem;
+    }
+
+/* ---LINKS--- */
 .sign-up-link{
     color: #ffc107;
 }
@@ -291,22 +356,36 @@ header.smoothieshead h1{
     color: #dc3545;
 }
 
+
+/* ---BUTTONS--- */
+.card-btns{
+text-align: center;
+}
+
 .card-btns .fa-trash-alt{
     color: #fff;
     background-color: #dc3545;
     border-color: #dc3545;
 }
 
-.flashes{
-    list-style-type: none;
+.btn,
+.form-control-lg {
+    border-radius: 10px;
 }
 
-.card-img-view{
-   width: 30vw;
-    height: 30vw;
-    object-fit: cover; 
-    border-radius: 15px;
-    margin-left: 50px;
+.button-cards .form-control-lg{
+    border-radius: 10px;
+    width: fit-content;
+}
+
+
+/* ---SMOOTHIE CARDS--- */
+
+.card{
+    padding: 5px 20px 40px 20px;
+    border: none;
+    height: 35rem;
+    margin-bottom: 5rem;
 }
 
 .card-height{
@@ -319,15 +398,12 @@ header.smoothieshead h1{
     object-fit: cover;
 }
 
-.card{
-    padding: 5px 20px 40px 20px;
-    border: none;
-    height: 35rem;
-    margin-bottom: 5rem;
-}
-
-.card-btns .btn{
-    width: 5rem;
+.card-img-view{
+   width: 30vw;
+    height: 30vw;
+    object-fit: cover; 
+    border-radius: 15px;
+    margin-left: 50px;
 }
 
 .img-position{
@@ -341,114 +417,27 @@ header.smoothieshead h1{
     height: 4rem;
 }
 
-
-.right-span{
-    float: right;
-}
-
-.card-btns{
-text-align: center;
-}
-
-.text-muted {
-    color: #d0d2d8!important;
-}
-
-.container-view {
-    border-radius: 25px;
-    background-color: #111111b8;
-    padding: 3rem 3rem;
-    font-size: larger;
-    margin: 5rem;
-}
-
-.container-view img{
-    border-radius: 25px;
-     width: 25rem;
-    height: 25rem;
-    object-fit: cover; 
-}
-
-/* Create two columns that float next to eachother */
-.column {
-  float: left;
-  width: 50%;
-  margin-top: 6px;
-  padding: 20px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.card-btns .btn{
+    width: 5rem;
 }
 
 
+/* ---FORMS--- */
 .user-input{
     margin-top: 8rem;
     margin-bottom: 3rem
-}
-
-.view-container{
-height: 100vh;
-  background: url("/static/img/icecubes1.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.view-container .jumbotron {
-    background-color: #111111b8;
-    border-radius: 20px;
-    padding: 3em 8em;
-    margin: 3em 8em;
-}
-
-
-
-.login-container {
-  height: 100vh;
-  background: url("/static/img/loginimg1.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.register-container{
-      height: 100vh;
-  background: url("/static/img/registerimg1.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.jumbotron{
-    background-color: #111111b8;
-    border-radius: 20px;
-    padding: 3em 3em;
 }
 
 .formbox{
     height: 80%;
 }
 
-.login-button{
-    width: 8rem;
-    display: inline;
+
+/* MEDIA QUERIES */
+@media(max-width:568px){
+    .navBar-navLink{display: none}
 }
+
 
 @media (min-width:576px){
     .card {
@@ -482,72 +471,14 @@ height: 100vh;
     padding: 4rem;
 }
         }
-    }
-        
-.showcase .showcase-text{
-    padding:3rem;
-    }
-    
-.showcase .showcase-img{
-    min-height:30rem;
-    background-size:cover;
-    }
-    
+
 @media (min-width:768px){
     .showcase .showcase-text{
         padding:7rem;
         }
 
-    }
+    }    
     
-    
-.testimonials{
-    padding-top:7rem;
-    padding-bottom:7rem;
-    }
-    
-.testimonials .testimonial-item{
-    max-width:18rem;
-    }
-    
-.testimonials .testimonial-item img{
-    max-width:12rem;
-    box-shadow:0 5px 5px 0 #adb5bd
-    }
-    
-.call-to-action{
-    position:relative;
-    background-color:#343a40;
-    background:url("/static/img/headerimg1.jpg") no-repeat center center;
-    background-size:cover;
-    padding-top:7rem;
-    padding-bottom:7rem;
-    }
-    
-.call-to-action .overlay{
-    position:absolute;
-    background-color:#212529;
-    height:100%;
-    width:100%;
-    top:0;
-    left:0;
-    opacity:.3;
-    }
-    
-footer.footer{
-    padding-top:3rem;
-    padding-bottom:2rem;
-    }
-
-.drinks-container{
-    margin-left: 2rem;
-    margin-right: 2rem;
-}
-
-@media (min-width: 920px){
-
-}
-
 @media (max-width: 700px){
     .container-view {
     border-radius: 0;
@@ -573,12 +504,11 @@ footer.footer{
 }
 
 @media (max-width: 470px){
-    .justify-content-center {
+.justify-content-center {
     justify-content: space-between;
     padding: 15px 5px;
     margin-bottom: -3rem;
 }
-
 }
 
 
