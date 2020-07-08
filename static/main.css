@@ -479,7 +479,7 @@ height: 100vh;
         .background-colour{
         color: #fff!important;
     background-color: #f7d6b552;
-    padding: 6rem;
+    padding: 4rem;
 }
         }
     }
@@ -564,6 +564,11 @@ footer.footer{
 .mobile-side-space{
     padding-left: 15px;
     padding-right: 15px;
+}
+.user_posts {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    margin-bottom: 0;
 }
 }
 
