@@ -1,87 +1,88 @@
 {% extends 'base.html' %} {% block content %}
-
+<!-- centralised container for adding the smoothie -->
 <div class="container user-input">
-<h2 class="centre">Add My Smoothie!</h2>
-
-<form method="POST" action="{{ url_for('insert_drink') }}">
-
+  <h2 class="centre">Add My Smoothie!</h2>
+  <!-- the form calls on the insert_drink route to push the input into the DB -->
+  <form method="POST" action="{{ url_for('insert_drink') }}">
     <fieldset class="form-group">
-      
-<!--drink name-->
+      <!--drink name-->
       <div class="form-group">
-        {{ form.drink_name.label(class="form-control-label", class="validate", minlength="5", maxlength="25") }} 
+        {{ form.drink_name.label(class="form-control-label", class="validate") }} 
+        if there's errors 
         {% if form.drink_name.errors %} 
         {{ form.drink_name(class="form-control is-invalid", class="validate", minlength="5", maxlength="25") }}
+        <!-- feedback for errors -->
         <div class="invalid-feedback">
           {% for error in form.drink_name.errors %}
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.drink_name(placeholder="Limit of 5-25 characters", class="form-control", minlength="5", maxlength="25") }} 
+        {% else %} 
+        <!-- drink name input field -->
+        {{ form.drink_name(placeholder="Limit of 5-25 characters", class="form-control", minlength="5", maxlength="25") }} 
         {% endif %}
       </div>
 
-<!--select options-->
-<!--choose category select option-->
-<div class="row">
-<div class="col-md-4 mb-4">
-        <select class="custom-select" id="validationDefault02 category"
-          name="category_name" required>
-          <option selected disabled value="">Category</option>
-          {% for cat in categories %}
-          <option value="{{ cat.category_name }}">{{ cat.category_name }}</option>
-          {% endfor %}
-        </select>
-        <div class="invalid-tooltip">
-          Please select a valid category
+      <!--DROP DOWNS-->
+      <!--category drop down-->
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <select class="custom-select" id="validationDefault02 category" name="category_name" required>
+            <option selected disabled value="">Category</option>
+            <!-- for loop iterates all catergories in a drop down list -->
+            {% for cat in categories %}
+            <option value="{{ cat.category_name }}">{{ cat.category_name }}</option>
+            {% endfor %}
+          </select>
+          <div class="invalid-tooltip">
+            Please select a valid category
+          </div>
         </div>
-      </div>
-<!--prep_time select option-->
-      <div class="col-md-4 mb-4">
-        <select class="custom-select" id="validationDefault03 prep_time" name="prep_time" required>
-          <option selected disabled value="">Prep time</option>
-          <option value="5">5 mins</option>
-          <option value="10">10 mins</option>
-          <option value="20+">20+ mins</option>
-        </select>
-        <div class="invalid-tooltip">
-          Please select a valid time
+        <!--prep time drop down-->
+        <div class="col-md-4 mb-4">
+          <select class="custom-select" id="validationDefault03 prep_time" name="prep_time" required>
+            <option selected disabled value="">Prep time</option>
+            <option value="5">5 mins</option>
+            <option value="10">10 mins</option>
+            <option value="20+">20+ mins</option>
+          </select>
+          <div class="invalid-tooltip">
+            Please select a valid time
+          </div>
+        </div>
+
+        <!--servings yield drop down-->
+        <div class="col-md-4 mb-4">
+          <select class="custom-select" id="validationDefault04 serves" name="serves" required>
+            <option selected disabled value="">Serves...</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <div class="invalid-tooltip">
+            Please select a valid option
+          </div>
         </div>
       </div>
 
-<!--serving select option-->
-      <div class="col-md-4 mb-4">
-        <select class="custom-select" id="validationDefault04 serves" name="serves" required>
-          <option selected disabled value="">Serves...</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <div class="invalid-tooltip">
-          Please select a valid option
-        </div>
-      </div>
-      </div>
-   
-
-<!--drink image-->
+      <!-- drink name input field -->
       <div class="form-group">
         {{ form.img_url.label(class="form-control-label") }} 
         {% if form.img_url.errors %} 
         {{ form.img_url(class="form-control is-invalid") }}
         <div class="invalid-feedback">
-          {% for error in form.img_url.errors %}
-          <span>{{ error }}</span>
-          {% endfor %}
+            {% for error in form.img_url.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
         </div>
-        {% else %} {{ form.img_url(placeholder="Paste Image URL address here", class="form-control") }} 
-        {% endif %}
+        {% else %} 
+        {{ form.img_url(placeholder="Paste Image URL address here",
+        class="form-control") }} {% endif %}
       </div>
 
-
-<!--drink description-->
+      <!--drink description input field-->
       <div class="form-group">
         {{ form.description.label(class="form-control-label") }} 
         {% if form.description.errors %} 
@@ -91,11 +92,12 @@
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.description(placeholder="Limit of 50-170 characters", class="form-control", minlength="50", maxlength="170") }} 
+        {% else %} 
+        {{ form.description(placeholder="Limit of 50-170 characters", class="form-control", minlength="50", maxlength="170") }} 
         {% endif %}
       </div>
 
-<!--drink ingredients-->
+      <!--drink ingredients input field-->
       <div class="form-group">
         {{ form.ingredients.label(class="form-control-label") }} 
         {% if form.ingredients.errors %} 
@@ -105,11 +107,12 @@
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.ingredients(placeholder="Add each ingredient on a new line", class="form-control") }} 
+        {% else %} 
+        {{ form.ingredients(placeholder="Add each ingredient on a new line", class="form-control") }} 
         {% endif %}
       </div>
 
-<!--drink directions-->
+      <!--drink directions input field-->
       <div class="form-group">
         {{ form.directions.label(class="form-control-label") }} 
         {% if form.directions.errors %} 
@@ -119,18 +122,15 @@
           <span>{{ error }}</span>
           {% endfor %}
         </div>
-        {% else %} {{ form.directions(placeholder="Limit of 10-170 characters", class="form-control", minlength="10", maxlength="170") }} 
+        {% else %} 
+        {{ form.directions(placeholder="Limit of 10-170 characters", class="form-control", minlength="10", maxlength="170") }} 
         {% endif %}
       </div>
 
-<!-- submit button-->
+      <!-- submit button-->
     </fieldset>
-    <div class="form-group">
-      {{ form.submit(class="btn btn-warning") }}
-    </div>
+    <div class="form-group">{{ form.submit(class="btn btn-warning") }}</div>
   </form>
 </div>
-
-
 
 {% endblock %}
