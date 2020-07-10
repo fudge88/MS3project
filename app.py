@@ -93,7 +93,7 @@ def get_drinks():
     drink_page = int(request.args.get('drink_page', 1))
     drink_numbers = mongo.db.drinks.count()
     page_number = range(1, int(math.ceil(drink_numbers / limit_per_page)) + 1)
-    drinks = mongo.db.drinks.find().sort('_id', pymongo.ASCENDING).skip(
+    drinks = mongo.db.drinks.find().sort('_id', pymongo.DESCENDING).skip(
         (drink_page - 1)*limit_per_page).limit(limit_per_page)
 
     return render_template(
@@ -112,7 +112,7 @@ def browse_category(category):
     limit_per_page = 12
     drink_page = int(request.args.get('drink_page', 1))
     page_number = range(1, int(math.ceil(drink_numbers / limit_per_page)) + 1)
-    drinks = drinks.sort('_id', pymongo.ASCENDING).skip(
+    drinks = drinks.sort('_id', pymongo.DESCENDING).skip(
         (drink_page - 1)*limit_per_page).limit(limit_per_page)
 
     return render_template(

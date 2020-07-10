@@ -37,7 +37,6 @@ header.smoothieshead h1{
 
 
 /* ---FLASH MESSAGES--- */
-
 .flashes{
     background-color: #dc3545;
     text-align: center;
@@ -45,15 +44,11 @@ header.smoothieshead h1{
     margin-top: 3rem;
     border-radius: 15px;
     color: #e9ecef;
-}
-
-.flashes{
     list-style-type: none;
 }
 
 
 /* ---POSITIONING--- */
-
 .justify-content-center {
     justify-content: space-between;
     padding: 15px 60px;
@@ -69,30 +64,25 @@ header.smoothieshead h1{
     padding-bottom: 5rem;
 }
 
-.right-span{
-    float: right;
-}
-
 .column {
-  float: left;
-  width: 50%;
-  margin-top: 6px;
-  padding: 20px;
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
 }
 
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .showcase .showcase-text{
     padding:3rem;
-    }
+}
 
 
 /* ---NAVBAR--- */
-
 .navBar{
     background-color: #111111b8;
     overflow: hidden;
@@ -227,33 +217,33 @@ header.smoothieshead h1{
 
 
 /* ---HERO IMAGES--- */
-/* register */
+/* register page */
 .register-container{
-      height: 100vh;
-  background: url("/static/img/registerimg1.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    height: 100vh;
+    background: url("/static/img/registerimg1.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* login */
-.login-container {
-  height: 100vh;
-  background: url("/static/img/loginimg1.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* login page */
+.login-container{
+    height: 100vh;
+    background: url("/static/img/loginimg1.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* user_drinks */
+/* user_drinks page */
 .user_posts{
     position:relative;
     background-color:#343a40;
@@ -264,7 +254,7 @@ header.smoothieshead h1{
     margin-bottom: 2rem;
 }
 
-/* index */
+/* index page */
 header.masthead{
     position:relative;
     background-color:#343a40;
@@ -272,12 +262,12 @@ header.masthead{
     background-size:cover;
     padding-top:8rem;
     padding-bottom:8rem;
-    }
+}
 
 .showcase .showcase-img{
     min-height:30rem;
     background-size:cover;
-    }
+}
 
 .call-to-action{
     position:relative;
@@ -286,9 +276,9 @@ header.masthead{
     background-size:cover;
     padding-top:7rem;
     padding-bottom:7rem;
-    }
+}
 
-/* drinks */
+/* drinks page */
 .smoothieshead{
     position:relative;
     background-color:#343a40;
@@ -296,10 +286,10 @@ header.masthead{
     background-size:cover;
     padding-top: 10rem;
     padding-bottom: 10rem;
-    }
+}
 
-/* viewcard */
-.container-view {
+/* viewcard page */
+.container-view{
     border-radius: 25px;
     background-color: #111111b8;
     padding: 3rem 3rem;
@@ -309,7 +299,7 @@ header.masthead{
 
 .container-view img{
     border-radius: 25px;
-     width: 25rem;
+    width: 25rem;
     height: 25rem;
     object-fit: cover; 
 }
@@ -327,7 +317,7 @@ header.masthead{
     color: #dc3545;
 }
 
-.footer-links a:hover {
+.footer-links a:hover{
     color: #000000;
     text-decoration: none;
 }
@@ -336,7 +326,7 @@ header.masthead{
     color: #000000;
 }
 
-.footer-icons a:hover {
+.footer-icons a:hover{
     color: #dc3545;
     text-decoration: none;
 }
@@ -344,7 +334,8 @@ header.masthead{
 footer.footer{
     padding-top:3rem;
     padding-bottom:2rem;
-    }
+}
+
 
 /* ---LINKS--- */
 .sign-up-link{
@@ -359,7 +350,7 @@ footer.footer{
 
 /* ---BUTTONS--- */
 .card-btns{
-text-align: center;
+    text-align: center;
 }
 
 .card-btns .fa-trash-alt{
@@ -369,7 +360,7 @@ text-align: center;
 }
 
 .btn,
-.form-control-lg {
+.form-control-lg{
     border-radius: 10px;
 }
 
@@ -380,7 +371,6 @@ text-align: center;
 
 
 /* ---SMOOTHIE CARDS--- */
-
 .card{
     padding: 5px 20px 40px 20px;
     border: none;
@@ -392,18 +382,10 @@ text-align: center;
     height: 9rem;
 }
 
-.card-img-top {
+.card-img-top{
     width: 100%;
     height: 20rem;
     object-fit: cover;
-}
-
-.card-img-view{
-   width: 30vw;
-    height: 30vw;
-    object-fit: cover; 
-    border-radius: 15px;
-    margin-left: 50px;
 }
 
 .img-position{
@@ -425,91 +407,86 @@ text-align: center;
 /* ---FORMS--- */
 .user-input{
     margin-top: 8rem;
-    margin-bottom: 3rem
-}
-
-.formbox{
-    height: 80%;
+    margin-bottom: 3rem;
 }
 
 
-/* MEDIA QUERIES */
+/*---MEDIA QUERIES--- */
+/* MAX */
+@media (max-width: 470px){
+    .justify-content-center{
+        justify-content: space-between;
+        padding: 15px 5px;
+        margin-bottom: -3rem;
+    }
+}
+
 @media(max-width:568px){
-    .navBar-navLink{display: none}
+    .navBar-navLink{
+        display: none;
+    }
 }
 
 
+@media (max-width: 700px){
+    .container-view {
+        border-radius: 0;
+        background-color: #111111b8;
+        padding: 6rem 3rem;
+        font-size: larger;
+        margin: 0rem;   
+    }
+    .category-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .user_posts {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+        margin-bottom: 0;
+    }
+}
+
+/* MIN */
 @media (min-width:576px){
     .card {
-    padding: 0;
-}
+        padding: 0;
+    }
 }
 
 @media (min-width:768px){
     header.masthead{
         padding-top:12rem;
         padding-bottom:12rem;
-        }
+    }
     header.masthead h1{
         font-size:4rem;
-        }
+    }
     header.smoothiehead{
         padding-top:12rem;
         padding-bottom:12rem;
-        }
+    }
     header.smoothieshead h1{
         font-size:4rem;
-        }    
-    .justify-content-center {
+    }    
+    .justify-content-center{
         justify-content: space-between;
         padding: 15px 5px;
         margin-bottom: -3rem;
-        }
-        .background-colour{
+    }
+    .background-colour{
         color: #fff!important;
-    background-color: #f7d6b552;
-    padding: 4rem;
-}
-        }
-
-@media (min-width:768px){
+        background-color: #f7d6b552;
+        padding: 4rem;
+    }
     .showcase .showcase-text{
         padding:7rem;
-        }
-
-    }    
+    }
+}    
     
-@media (max-width: 700px){
-    .container-view {
-    border-radius: 0;
-    background-color: #111111b8;
-    padding: 6rem 3rem;
-    font-size: larger;
-    margin: 0rem; 
-}
-    .category-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.mobile-side-space{
-    padding-left: 15px;
-    padding-right: 15px;
-}
-.user_posts {
-    padding-top: 8rem;
-    padding-bottom: 8rem;
-    margin-bottom: 0;
-}
-}
 
-@media (max-width: 470px){
-.justify-content-center {
-    justify-content: space-between;
-    padding: 15px 5px;
-    margin-bottom: -3rem;
-}
-}
 
 
 
