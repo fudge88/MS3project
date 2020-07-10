@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% block content %}
-<!-- header/hero image with text -->
+<!-- HERO IMAGE -->
+<!-- header with text -->
 <header class="smoothieshead text-white text-center">
   <div class="container">
     <div class="row">
@@ -13,7 +14,7 @@
     </div>
   </div>
 </header>
-<!-- center navigation bar -->
+<!-- CENTER NAVBAR -->
 <section>
   <ul class="nav justify-content-center">
     <li class="nav-item d-none d-lg-block">
@@ -46,7 +47,7 @@
   </ul>
 </section>
 
-<!--smoothie cards-->
+<!--SMOOTHIE CARDS-->
 <section class="container-fluid">
     <div class="row">
     <!-- for loop calls on get_drinks route using the variable "drinks" -->
@@ -76,7 +77,7 @@
       {% endfor %}
     </div>
     
-    <!-- pagination -->
+    <!-- PAGINATION -->
     <nav class= "page-numbers" aria-label="Page navigation">
       <ul class="pagination justify-content-center">
         <!-- if statement using MultiDict with the parsed contents of the 'drink_page', if results show 1 or none disable previous button -->
