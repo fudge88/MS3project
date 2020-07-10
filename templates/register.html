@@ -1,38 +1,46 @@
 {% extends 'base.html' %} {% block content %}
+<!-- background image -->
 <section class="register-container text-white">
-<div class="jumbotron">
-<div class="content-section">
-  <form method="POST" action="">
-    {{ form.hidden_tag() }}
-    <fieldset class="form-group">
-      <h3 class="border-bottom mb-4 d-none d-sm-block">Create a username to register</h3>
-      <h2 class="border-bottom mb-4 d-block d-sm-none">Register</h2>
-      <div class="form-group">
-        {{ form.username.label(class="form-control-label") }} 
-        {% if
-        form.username.errors %} 
-        {{ form.username(class="form-control is-invalid") }}
-        <div class="invalid-feedback">
-          {% for error in form.username.errors %}
-          <span>{{ error }}</span>
-          {% endfor %}
+<!-- blackbox to contain the form and text -->
+  <div class="jumbotron">
+    <div class="content-section">
+      <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+        <!-- show this heading on md and lg screens -->
+          <h3 class="border-bottom caps mb-4 d-none d-sm-block">
+            Create a username to register
+          </h3>
+          <!-- show this heading on sm screens -->
+          <h2 class="border-bottom caps mb-4 d-block d-sm-none">Register</h2>
+          <div class="form-group">
+            {{ form.username.label(class="form-control-label") }} 
+            {% if form.username.errors %} 
+            {{ form.username(class="form-control
+            is-invalid") }}
+            <div class="invalid-feedback">
+              {% for error in form.username.errors %}
+              <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+            {% else %} 
+            <!-- username input field -->
+            {{ form.username(placeholder="Limit of 5-15 characters", class="form-control form-control-lg", 
+            minlength="5", maxlength="15") }} 
+            {% endif %}
+          </div>
+        </fieldset>
+        <!-- submit button -->
+        <div class="form-group">
+          {{ form.submit(class="btn btn-lg btn-warning hvr-buzz") }}
         </div>
-        {% else %} {{ form.username(placeholder="Limit of 5-15 characters", class="form-control form-control-lg", minlength="5", maxlength="15") }} {%
-        endif %}
-      </div>
-    </fieldset>
-    <div class="form-group">
-      {{ form.submit(class="btn btn-lg btn-warning hvr-buzz") }}
+      </form>
     </div>
-  </form>
-</div>
-<div class="border-top pt-3">
-  <small class="text-muted">
-    Already Registered?
-    <a class="ml-2 sign-up-link" href="{{ url_for('login') }}">Sign In</a>
-  </small>
-</div>
-</div>
+    <div class="border-top pt-3">
+    <!-- redirect link to register  -->
+      <small class="text-muted">Already Registered?<a class="ml-2 sign-up-link" href="{{ url_for('login') }}">Sign In</a></small>
+    </div>
+  </div>
 </section>
 
 {% endblock %}

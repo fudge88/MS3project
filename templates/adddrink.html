@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <!-- centralised container for adding the smoothie -->
 <div class="container user-input">
-  <h2 class="centre">Add My Smoothie!</h2>
+  <h2 class="centre caps">Add My Smoothie!</h2>
   <!-- the form calls on the insert_drink route to push the input into the DB -->
   <form method="POST" action="{{ url_for('insert_drink') }}">
     <fieldset class="form-group">
