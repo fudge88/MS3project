@@ -1,61 +1,44 @@
 {% extends 'base.html' %} {% block content %}
+<!-- header/hero image with text -->
 <header class="smoothieshead text-white text-center">
   <div class="container">
     <div class="row">
       <div class="col-xl-9 mx-auto">
         <h1 class="mb-3 d-none d-lg-block">Tutti Smooti & Co.</h1>
-        <h5>
-          Did you know, you can target health benefits with the ingredients you
-          choose to blend!
-        </h5>
-        <a class="sign-up-link"
-          href="https://thatsmyjamok.com/23-important-benefits-of-drinking-healthy-smoothies/"
-          target="_blank"
-          >Find out more here</a
-        >
+        <h5>Did you know, you can target health benefits with the ingredients you choose to blend!</h5>
+        <!-- hyperlink to an external website- opens on a new tab -->
+        <a class="sign-up-link" href="https://thatsmyjamok.com/23-important-benefits-of-drinking-healthy-smoothies/"
+          target="_blank">Find out more here</a>
       </div>
     </div>
   </div>
 </header>
-<!--category bar-->
-
+<!-- center navigation bar -->
 <section>
   <ul class="nav justify-content-center">
     <li class="nav-item d-none d-lg-block">
-      <a class="nav-link disabled drink-navbar" href="#" tabindex="-1" aria-disabled="true"
-        >Searching for something in particular?</a
-      >
+      <a class="nav-link disabled drink-navbar" href="#" tabindex="-1" aria-disabled="true">Searching for something in particular?</a>
     </li>
     <li class="nav-item">
+    <!-- category drop down menu -->
       <div class="dropdown">
-        <button
-          class="btn btn-warning dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Browse Categories
-        </button>
-
+        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" 
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse Categories</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <!-- for loop nests the function that calls on the categories to be filtered -->
           {% for cat in categories %}
-          <a
-            class="dropdown-item"
-            href="{{ url_for('browse_category', category=cat.category_name) }}"
-            >{{ cat.category_name }}</a
-          >
+          <!-- this creates a list of all categories available- once clicked this function filters chosen category -->
+          <a class="dropdown-item" href="{{ url_for('browse_category', category=cat.category_name) }}">{{ cat.category_name }}</a>
           {% endfor %}
         </div>
       </div>
     </li>
+    <!-- this button triggers the function to add drinks, this then redirects depending on login status -->
     <li class="nav-item">
-      <a class="btn btn-success" href="{{url_for('add_drinks')}}" role="button"
-        >Add Smoothie</a
-      >
+      <a class="btn btn-success" href="{{url_for('add_drinks')}}" role="button">Add Smoothie</a>
     </li>
     {% if not session['username'] %}
+    <!-- this hyperlink appears to all users who are not logged in- this redirects to registration page -->
     <li class="nav-item d-none d-md-block">
       <a class="nav-link register-link" href="{{ url_for('register') }}"> Not Registered?</a>
     </li>
@@ -65,8 +48,9 @@
 
 <!--smoothie cards-->
 <section class="container-fluid">
-  <div class="">
     <div class="row">
+    <!-- for loop calls on get_drinks route using the variable "drinks" -->
+    <!-- the 'drink.' notation allows each key value to be pulled -->
       {% for drink in drinks %}
       <div class="col-md-4 col-lg-3 col-sm-6 col-12">
         <div class="card">
@@ -74,10 +58,8 @@
             <img class="card-img-top img-position" src="{{drink.img_url}}" />
           </div>
           <div class="card-content">
-            <br />
-            <h5 class="card-title mb-0">
-              {{drink.drink_name}}
-            </h5>
+            <br/>
+            <h5 class="card-title mb-0">{{drink.drink_name}}</h5>
             <div class="card-height">
               <p>{{drink.description}}</p>
             </div>
@@ -85,39 +67,41 @@
           <p class="mb-0">Category: {{ drink.category_name }}</p>
           <small>By: {{drink.username}}</small>
           <br />
+          <!-- this button calls the view_card route which allows the user to see the details of indiviual drinks using the drink ID -->
           <div class="button-cards">
-          <a
-            href="{{ url_for('view_card', card_id=drink._id) }}"
-            type="button"
-            class="btn btn-success button-cards"
-            >Get the Recipie!</a
-          ></div>
+          <a href="{{ url_for('view_card', card_id=drink._id) }}" type="button" class="btn btn-success button-cards">Get the Recipie!</a></div>
         </div>
       </div>
       <hr>
       {% endfor %}
     </div>
-
-    <nav class= "page-numbers" aria-label="Page navigation example">
+    
+    <!-- pagination -->
+    <nav class= "page-numbers" aria-label="Page navigation">
       <ul class="pagination justify-content-center">
+        <!-- if statement using MultiDict with the parsed contents of the 'drink_page', if results show 1 or none disable previous button -->
         <li class="page-item {% if request.args.get('drink_page')|int == 1 or request.args.get('drink_page') == None %} disabled {% endif %}">
-          <a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int - 1) }}" tabindex="-1" aria-disabled="true"
-            >Previous</a>
+          <a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int - 1) }}" 
+          tabindex="-1" aria-disabled="true">Previous</a>
         </li>
-        {% for page_num in page_number %} {% if page_num == drink_page %}
+        <!-- for loop calling on pagination var in the route -->
+        {% for page_num in page_number %} 
+        {% if page_num == drink_page %}
+        <!-- this jinja statement creates a list of number of pages highlighting the current active page -->
         <li class="page-item active">
           <a class="page-link" href="#">{{ page_num }}</a>
         </li>
         {% else %}
+        <!-- this jinja statement creates a list of number of pages should no page be selected-->
         <li class="page-item">
           <a class="page-link" href="{{ url_for('get_drinks', drink_page=page_num) }}" >{{ page_num }}</a>
         </li>
         {% endif %} 
       {% endfor %} 
+      <!-- if statement using MultiDict with the parsed contents of the 'drink_page', if results are integar + 1 disable next button -->
         <li class="page-item {% if request.args.get('drink_page')|int == (drink_numbers / limit_per_page)|int + 1 %} disabled {% endif %}"><a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int +1) }}">Next</a></li>
       </ul>
     </nav>
-  </div>
 </section>
 
 {% endblock %}
