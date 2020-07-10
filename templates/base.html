@@ -1,125 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" >
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- CDNs -->
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" type="text/css">
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <!-- static- css file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" type="text/css"/>
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/e89976506e.js" crossorigin="anonymous"></script>
+    <!-- Page title -->
     <title>TuttiSmooti&co.</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" sizes="200x200">
+    <!-- Favicon icon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon" sizes="200x200"/>
   </head>
+
   <body>
-  <div class="fixed-top">
-    <header>
-      <nav class="navBar ">
-        <span class="open-sideMenu">
-          <a href="#" onclick="openSlideMenu()">
-            <svg width="30" height="30"></svg><i class="fas fa-bars"></i
-          ></a>
-        </span>
-        <ul class="navbar-navLinks d-none d-md-block">
-          <li><a href="{{url_for('home')}}">Home</a></li>
-          <li><a href="{{url_for('get_drinks')}}">Smoothies</a></li>
-        </ul>
-        {% if session['username'] %}
-        <button class="navBar-btn btn-warning d-none d-md-block">
-          <a href="{{url_for('logout')}}">Logout</a>
-        </button>
-        {% else %}
-        <button class="navBar-btn btn-warning d-none d-md-block">
-          <a href="{{url_for('login')}}">Login</a>
-        </button>
-        {% endif %}
-            <span class="navBar-brand d-md-none">
-      TootiSmooti & Co.
-    </span>
-      </nav>
-      <div id="side-menuBar" class="side-navBar">
-        <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
-        <li><a class="d-md-none" href="{{url_for('home')}}">Home</a></li>
-        <li><a class="d-md-none" href="{{url_for('get_drinks')}}">Smoothies</a></li>
-        {% if session['username'] %}
-        <li>
-          <a href="{{url_for('user_posts', posts=session[username])}}"
-            >My Smoothies</a
-          >
-        </li>
-        {% endif %}
-        
-        {% if session['username'] %}
-        <li><a href="{{url_for('add_drinks')}}">Quick Add</a></li>
-        {% else %}
-        <li><a href="{{url_for('register')}}">Register</a></li>
-         {% endif %}
+  <!-- TOP NAVIGATION -->
+    <div class="fixed-top">
+      <header>
+        <nav class="navBar">
+        <!-- JS used to slide open side menu when burger icon is clicked -->
+          <span class="open-sideMenu">
+            <a href="#" onclick="openSlideMenu()">
+              <svg width="30" height="30"></svg><i class="fas fa-bars"></i></a>
+          </span>
+          <!-- nav links md and lg screens-->
+          <ul class="navbar-navLinks d-none d-md-block">
+            <li><a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="{{url_for('get_drinks')}}">Smoothies</a></li>
+          </ul>
+          <!-- nav button to trigger logout function if user is logged in -->
+          {% if session['username'] %}
+          <button class="navBar-btn btn-warning d-none d-md-block">
+            <a href="{{url_for('logout')}}">Logout</a>
+          </button>
+          {% else %}
+          <!-- nav button to trigger login function if user is not logged in -->
+          <button class="navBar-btn btn-warning d-none d-md-block">
+            <a href="{{url_for('login')}}">Login</a>
+          </button>
+          {% endif %}
+          <!-- website brand toappear on sm screen only -->
+          <span class="navBar-brand d-md-none">TootiSmooti & Co.</span>
+        </nav>
 
-         {% if session['username'] %}
-        <li>
-          <a class="d-md-none" href="{{url_for('logout')}}">Logout</a>
-        </li>
-        {% else %}
-        <li>
-          <a class="d-md-none" href="{{url_for('login')}}">Login</a>
-        </li>
-        {% endif %}
+        <!-- SIDE NAVIGAVTION -->
+        <div id="side-menuBar" class="side-navBar">
+          <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+          <!-- links to appear on small screen only -->
+          <li><a class="d-md-none" href="{{url_for('home')}}">Home</a></li><li>
+            <a class="d-md-none" href="{{url_for('get_drinks')}}">Smoothies</a>
+          </li>
+          <!-- if user is logged in grant access to a page showing their drinks only -->
+          {% if session['username'] %}
+          <li><a href="{{url_for('user_posts', posts=session[username])}}">My Smoothies</a></li>
+          {% endif %} 
+          <!-- if user is logged in grant quick access to adding a drink -->
+          {% if session['username'] %}
+          <li><a href="{{url_for('add_drinks')}}">Quick Add</a></li>
+          {% else %}
+          <!-- if user is not logged in prompt registration -->
+          <li><a href="{{url_for('register')}}">Register</a></li>
+          {% endif %} 
+          <!-- nav button to trigger logout function if user is logged in -->
+          {% if session['username'] %}
+          <li><a class="d-md-none" href="{{url_for('logout')}}">Logout</a></li>
+          {% else %}
+          <!-- nav button to trigger login function if user is not logged in -->
+          <li><a class="d-md-none" href="{{url_for('login')}}">Login</a></li>
+          {% endif %}
+        </div>
+      </header>
+
+<!-- MAIN BODY -->
+      <div role="main">
+        <div class="container">
+        <!-- flash messages to appear on any page according to route response to actions -->
+          {% with messages = get_flashed_messages() %} {% if messages %}
+          <ul class="flashes">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %} 
+          {% endwith %}
+        </div>
       </div>
-    </header>
-
-    <div role="main">
-    <div class="container">
-      {% with messages = get_flashed_messages() %} {% if messages %}
-      <ul class="flashes">
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %} {% endwith %}
     </div>
-     </div>
-  </div>
 
-    {% block content %} {% endblock %}
-   
 
-    <!-- Footer -->
+    {% block content %} 
+    {% endblock %}
+
+
+    <!-- FOOTER -->
     <footer class="footer bg-light">
       <div class="container">
         <div class="row">
+        <!-- internal hyperlinks to appear on the left of the footer -->
           <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
             <ul class="list-inline mb-2 footer-links">
-              <li class="list-inline-item hvr-grow">
-                <a href="{{url_for('get_drinks')}}">Recipes</a>
-              </li>
+              <li class="list-inline-item hvr-grow"><a href="{{url_for('get_drinks')}}">Recipes</a></li>
               <li class="list-inline-item">&sdot;</li>
-
-              <li class="list-inline-item hvr-grow">
-                <a href="{{url_for('login')}}">Login</a>
-              </li>
+              <li class="list-inline-item hvr-grow"><a href="{{url_for('login')}}">Login</a></li>
             </ul>
-            <p class="text-muted small mb-4 mb-lg-0">
-              &copy; Tutti Smooti & Co. 2020. All Rights Reserved.
-            </p>
+            <!-- copyright text -->
+            <p class="text-muted small mb-4 mb-lg-0">&copy; Tutti Smooti & Co. 2020. All Rights Reserved.</p>
           </div>
+          <!-- social media hyperlinked icons to appear on the the right -->
           <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
             <ul class="list-inline mb-0 footer-icons">
-              <li class="list-inline-item mr-3">
-                <a href="https://www.facebook.com/" target="_blank">
-                  <i class="fab fa-facebook fa-2x fa-fw hvr-grow"></i>
-                </a>
+              <!-- facebook -->
+              <li class="list-inline-item mr-3"><a href="https://www.facebook.com/" target="_blank">
+              <i class="fab fa-facebook fa-2x fa-fw hvr-grow"></i></a>
               </li>
-              <li class="list-inline-item mr-3">
-                <a href="https://twitter.com/explore" target="_blank">
-                  <i class="fab fa-twitter-square fa-2x fa-fw hvr-grow"></i>
-                </a>
+              <!-- twitter -->
+              <li class="list-inline-item mr-3"><a href="https://twitter.com/explore" target="_blank">
+              <i class="fab fa-twitter-square fa-2x fa-fw hvr-grow"></i></a>
               </li>
-              <li class="list-inline-item">
-                <a href="https://www.instagram.com/" target="_blank">
-                  <i class="fab fa-instagram fa-2x fa-fw hvr-grow"></i>
-                </a>
+              <!-- instagram -->
+              <li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank">
+              <i class="fab fa-instagram fa-2x fa-fw hvr-grow"></i></a>
               </li>
             </ul>
           </div>
@@ -127,6 +131,8 @@
       </div>
     </footer>
 
+
+    <!-- JS for the side nav function -->
     <script>
       function openSlideMenu() {
         document.getElementById("side-menuBar").style.width = "250px";
@@ -138,21 +144,17 @@
       }
     </script>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      crossorigin="anonymous"></script>
+    <!-- popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
       integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      crossorigin="anonymous"></script>
+    <!-- bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
   </body>
 </html>
