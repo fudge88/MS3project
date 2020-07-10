@@ -5,7 +5,7 @@
   <!-- the form calls on the insert_drink route to push the input into the DB -->
   <form method="POST" action="{{ url_for('insert_drink') }}">
     <fieldset class="form-group">
-      <!--drink name-->
+      <!--drink name input field-->
       <div class="form-group">
         {{ form.drink_name.label(class="form-control-label", class="validate") }} 
         if there's errors 
@@ -18,7 +18,6 @@
           {% endfor %}
         </div>
         {% else %} 
-        <!-- drink name input field -->
         {{ form.drink_name(placeholder="Limit of 5-25 characters", class="form-control", minlength="5", maxlength="25") }} 
         {% endif %}
       </div>
@@ -38,6 +37,7 @@
             Please select a valid category
           </div>
         </div>
+        
         <!--prep time drop down-->
         <div class="col-md-4 mb-4">
           <select class="custom-select" id="validationDefault03 prep_time" name="prep_time" required>
@@ -67,7 +67,7 @@
         </div>
       </div>
 
-      <!-- drink name input field -->
+      <!-- image URL input field -->
       <div class="form-group">
         {{ form.img_url.label(class="form-control-label") }} 
         {% if form.img_url.errors %} 
@@ -78,8 +78,8 @@
             {% endfor %}
         </div>
         {% else %} 
-        {{ form.img_url(placeholder="Paste Image URL address here",
-        class="form-control") }} {% endif %}
+        {{ form.img_url(placeholder="Paste Image URL address here", class="form-control") }} 
+        {% endif %}
       </div>
 
       <!--drink description input field-->

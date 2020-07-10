@@ -1,24 +1,30 @@
 {% extends 'base.html' %} {% block content %}
-
+<!-- centralised container for adding the smoothie -->
 <div class="container user-input">
-<h2 class="centre">Update my Smoothie!</h2>
+  <h2 class="centre">Update my Smoothie!</h2>
+  <!-- the form calls on the insert_drink route to push the input into the DB -->
+  <!-- the value fields have been used to populate teh recipe data for ease of use -->
   <form method="POST" class="needs-validation" novalidate>
     <div class="form-row">
       <div class="col-md-6 mb-4">
+      <!--drink name input field-->
         <input type="text" class="form-control" id="validationDefault01 drink_name"
-          name="drink_name" placeholder="Smoothie Name" value="{{drink.drink_name}}" required />
+          name="drink_name" placeholder="Smoothie Name" value="{{drink.drink_name}}" required/>
       </div>
 
+      <!--DROP DOWNS-->
+      <!--category drop down-->
       <div class="col-md-2 mb-2">
-        <select class="custom-select" id="validationDefault02 category"
-          name="category_name" required>
+        <select class="custom-select" id="validationDefault02 category" name="category_name" required>
           <option selected disabled value="">Category</option>
-          {% for cat in categories %}
+          <!-- for loop iterates all catergories in a drop down list -->
+          {% for cat in categories %} 
+          <!-- this allows category to be populated and allow drp down -->
           {% if cat.category_name == drink.category_name %}
           <option value="{{ cat.category_name }}" selected>{{ cat.category_name }}</option>
           {% else %}
           <option value="{{ cat.category_name }}">{{ cat.category_name }}</option>
-          {% endif %}
+          {% endif %} 
           {% endfor %}
         </select>
         <div class="invalid-tooltip">
@@ -26,8 +32,9 @@
         </div>
       </div>
 
+      <!--prep time drop down-->
       <div class="col-md-2 mb-2">
-        <select class="custom-select" id="validationDefault03 prep_time" name="prep_time" required>
+        <select  class="custom-select" id="validationDefault03 prep_time" name="prep_time" required>
           <option selected disabled value="{{ drink.prep_time }}">{{ drink.prep_time }} mins</option>
           <option value="5">5 mins</option>
           <option value="10">10 mins</option>
@@ -38,10 +45,11 @@
         </div>
       </div>
 
+      <!--servings yield drop down-->
       <div class="col-md-2 mb-2">
         <select class="custom-select" id="validationDefault04 serves" name="serves" required>
           <option selected value="{{ drink.serves }}">serves {{ drink.serves }}</option>
-           <option value="1">1</option>
+          <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
@@ -53,31 +61,34 @@
       </div>
     </div>
 
+    <!--drink description input field-->
     <div class="form-group">
-      <textarea class="form-control" rows="3" placeholder="Smoothie Description"
-        id="validationDefault05 description" name="description" required>{{drink.description}}</textarea>
+      <textarea class="form-control" rows="3" placeholder="Smoothie Description" id="validationDefault05 description" 
+      name="description" required>{{drink.description}}</textarea>
     </div>
 
+    <!-- image URL input field -->
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Image URL"
-        id="validationDefault06 img_url" name="img_url" value="{{drink.img_url}}" required />
+      <input type="text" class="form-control" placeholder="Image URL" id="validationDefault06 img_url" 
+      name="img_url" value="{{drink.img_url}}"/>
     </div>
 
+    <!--drink ingredients input field-->
     <div class="form-group">
-      <textarea class="form-control" id="validationDefault07 ingredients"
-        name="ingredients" rows="5" placeholder="Ingredients" required >{% for ingredient in drink.ingredients -%}
-{{ingredient + "\n"}}
-{%- endfor %}
-        </textarea>
+      <textarea class="form-control" id="validationDefault07 ingredients" name="ingredients" rows="5" 
+      placeholder="Ingredients" required>
+        {% for ingredient in drink.ingredients -%} {{ingredient + "\n"}} {%- endfor %}</textarea>
     </div>
 
+    <!--drink directions input field-->
     <div class="form-group">
-      <textarea class="form-control" id="validationDefault08 directions" name="directions"
-        rows="3" placeholder="Directions" required >{{drink.directions}}</textarea>
+      <textarea class="form-control" id="validationDefault08 directions" name="directions" rows="3" 
+      placeholder="Directions" required>
+        {{drink.directions}}</textarea>
     </div>
-    <!-- <a href="" class="btn btn-warning" type="submit" name="action">Updated</a> -->
+    
+    <!-- submit button-->
     <button class="btn btn-warning" type="submit" name="action">Update</button>
-
   </form>
 </div>
 
