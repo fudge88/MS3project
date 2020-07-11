@@ -14,6 +14,7 @@ class RegistrationForm(FlaskForm):
         ])
     submit = SubmitField('Lets Go!')
 
+
 # login form
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[
@@ -21,6 +22,7 @@ class LoginForm(FlaskForm):
         ])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+
 
 # add drink form
 class PostForm(FlaskForm):

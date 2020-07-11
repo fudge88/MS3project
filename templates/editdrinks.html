@@ -75,17 +75,16 @@
 
     <!--drink ingredients input field-->
     <div class="form-group">
+    <!-- for loop to iterate every ingredient on a new line using '\n' -->
       <textarea class="form-control" id="validationDefault07 ingredients" name="ingredients" rows="5" 
-      placeholder="Ingredients" required>
-      <!-- for loop to iterate every ingredient on a new line using '\n' -->
-        {% for ingredient in drink.ingredients -%} {{ingredient + "\n"}} {%- endfor %}</textarea>
+      placeholder="Ingredients" required>{% for ingredient in drink.ingredients -%} 
+      {{ingredient + "\n"}} {%- endfor %}</textarea>
     </div>
 
     <!--drink directions input field-->
     <div class="form-group">
       <textarea class="form-control" id="validationDefault08 directions" name="directions" rows="3" 
-      placeholder="Directions" required>
-        {{drink.directions}}</textarea>
+      placeholder="Directions" required>{{drink.directions}}</textarea>
     </div>
 
     <!-- submit button-->
