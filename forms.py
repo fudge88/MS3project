@@ -4,29 +4,35 @@ from wtforms.validators import DataRequired, Length, EqualTo, optional
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(min=5, max=15)])
+    username = StringField('Username', validators=[
+        DataRequired(), Length(min=5, max=15)
+        ])
     submit = SubmitField('Lets Go!')
 
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), Length(min=5, max=15)])
+    username = StringField('Username', validators=[
+        DataRequired(), Length(min=5, max=15)
+        ])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
 
 class PostForm(FlaskForm):
     drink_name = StringField('Smoothie Name',
-                              validators=[DataRequired()])
+                             validators=[DataRequired()])
     description = TextAreaField('Smoothie Description',
-                                       validators=[DataRequired()])
+                                validators=[DataRequired()])
     ingredients = TextAreaField('Ingredients',
-                                       validators=[DataRequired()])
+                                validators=[DataRequired()])
     directions = TextAreaField('Directions',
-                                       validators=[DataRequired()])
+                               validators=[DataRequired()])
     serves = IntegerField('Number of Servings', validators=[DataRequired()])
     prep_time = IntegerField('Prep Time (mins)',
-                                validators=[DataRequired()])
+                             validators=[DataRequired()])
     img_url = StringField('Smoothie Image', validators=[DataRequired()])
     category_name = IntegerField('Smoothie category',
-                                validators=[DataRequired()])
-    submit = SubmitField('Add Recipe')
+                                 validators=[DataRequired()])
+    submit = SubmitField(
+        'Add Recipe'
+        )
