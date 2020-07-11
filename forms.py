@@ -3,13 +3,18 @@ from wtforms import StringField, SubmitField, BooleanField, TextAreaField, Integ
 from wtforms.validators import DataRequired, Length, EqualTo, optional
 
 
+# WTForms used to create forms, the properties are attributed here
+# such as data type, the required fields, character restrictions
+
+
+# registration form
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[
         DataRequired(), Length(min=5, max=15)
         ])
     submit = SubmitField('Lets Go!')
 
-
+# login form
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[
         DataRequired(), Length(min=5, max=15)
@@ -17,7 +22,7 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
-
+# add drink form
 class PostForm(FlaskForm):
     drink_name = StringField('Smoothie Name',
                              validators=[DataRequired()])
