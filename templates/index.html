@@ -79,8 +79,12 @@
   <div class="container-fluid p-0">
   <!-- Dessert text info on the left, image on the right -->
     <div class="row no-gutters mobile-side-space dessert">
-      <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: 
+    <!-- md and lg screen image -->
+      <div class="col-lg-6 d-none d-md-block order-lg-2 text-white showcase-img" style="background-image: 
       url('{{ url_for('static', filename='img/dessert1.jpg') }}')"></div>
+      <!-- Small screen image -->
+      <div class="col-12 d-md-none text-white showcase-img" style="background-image: 
+      url('{{ url_for('static', filename='img/dessert-sm.jpg') }}')"></div>
       <div class="col-lg-6 order-lg-1 my-auto showcase-text">
         <h3 class="caps hvr-grow mt-5"><i class="fas fa-ice-cream"></i> Dessert Smoothies</h3>
         <p class="lead mb-0">
@@ -96,8 +100,11 @@
     </div>
     <!-- Protein text info on the left, image on the right -->
     <div class="row no-gutters mobile-side-space protein">
-      <div class="col-lg-6 text-white showcase-img" style="background-image: 
+      <div class="col-lg-6 d-none d-md-block text-white showcase-img" style="background-image: 
       url('{{ url_for('static', filename='img/protein.jpg') }}')"></div>
+      <!-- Small screen image -->
+      <div class="col-12 d-md-none text-white showcase-img" style="background-image: 
+      url('{{ url_for('static', filename='img/protein-sm.jpg') }}')"></div>
       <div class="col-lg-6 my-auto showcase-text">
         <h3 class="caps hvr-grow mt-5"><i class="fas fa-dumbbell"></i> Protein Smoothies</h3>
         <p class="lead mb-0">
@@ -113,8 +120,11 @@
     </div>
     <!-- Vegan text info on the left, image on the right -->
     <div class="row no-gutters mobile-side-space vegan">
-      <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: 
+      <div class="col-lg-6 d-none d-md-block order-lg-2 text-white showcase-img" style="background-image: 
       url('{{ url_for('static', filename='img/vegan.jpg') }}')"></div>
+      <!-- Small screen image -->
+      <div class="col-12 d-md-none text-white showcase-img" style="background-image: 
+      url('{{ url_for('static', filename='img/vegan-sm.jpg') }}')"></div>
       <div class="col-lg-6 order-lg-1 my-auto showcase-text">
         <h3 class="caps hvr-grow mt-5"><i class="fas fa-seedling"></i> Vegan Smoothies</h3>
         <p class="lead mb-0">

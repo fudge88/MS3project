@@ -14,6 +14,7 @@
     </div>
   </div>
 </header>
+
 <!-- CENTER NAVBAR -->
 <section>
   <ul class="nav justify-content-center">
@@ -100,7 +101,8 @@
         {% endif %} 
       {% endfor %} 
       <!-- if statement using MultiDict with the parsed contents of the 'drink_page', if results are integar + 1 disable next button -->
-        <li class="page-item {% if request.args.get('drink_page')|int == (drink_numbers / limit_per_page)|int + 1 %} disabled {% endif %}"><a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int +1) }}">Next</a></li>
+        <li class="page-item {% if request.args.get('drink_page')|int == (drink_numbers / limit_per_page)|int + 1 %} disabled {% endif %}">
+        <a class="page-link" href="{{ url_for('get_drinks', drink_page=request.args.get('drink_page')|int + 1) }}">Next</a></li>
       </ul>
     </nav>
 </section>

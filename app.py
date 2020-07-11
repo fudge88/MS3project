@@ -32,7 +32,6 @@ It calls upon the RegistrationForm() from forms.py, this checks
 if the username exists in the DB using the find_one() method.
 If an existing username if found, the user will be logged in.
 If all scenarios are exhausted, this route will CREATE a new user.
-
 """
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -253,8 +252,9 @@ def view_card(card_id):
 
 # Edit Smoothie
 """
-This route works simularly to the 'insert_drink' route, with a change of method.
-Here the update() method is used instead of insert_one() method.
+This route works simularly to the 'insert_drink' route, with a
+change of method. Here the update() method is used instead of
+insert_one() method.
 """
 @app.route('/edit_drink/<drink_id>', methods=['GET', 'POST'])
 def edit_drink(drink_id):
