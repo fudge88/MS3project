@@ -368,7 +368,20 @@ footer.footer{
     border-radius: 10px;
     width: fit-content;
 }
+.dessertBtn{
+    background-color: #f1ba57;
+    border: #f1ba57;
+}
 
+.veganBtn{
+    background-color: #ef62a8;
+    border: #ef62a8;
+}
+
+.proteinBtn{
+    background-color: #7dc124;
+    border: #7dc124;
+}
 
 /* ---SMOOTHIE CARDS--- */
 .card{
