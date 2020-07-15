@@ -423,6 +423,19 @@ footer.footer{
     margin-bottom: 3rem;
 }
 
+/*scrollbar*/
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #5a5c5b;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #252525;
+}
 
 /*---MEDIA QUERIES--- */
 /* MAX */
