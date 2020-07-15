@@ -8,15 +8,15 @@
     <div class="form-row">
       <div class="col-md-6 mb-4">
       <!--drink name input field-->
-        <input type="text" class="form-control" id="validationDefault01 drink_name"
+        <input type="text" class="form-control" id="drink_name"
           name="drink_name" placeholder="Smoothie Name" value="{{drink.drink_name}}" required/>
       </div>
 
       <!--DROP DOWNS-->
       <!--category drop down-->
       <div class="col-md-2 mb-2">
-        <select class="custom-select" id="validationDefault02 category" name="category_name" required>
-          <option selected disabled value="">Category</option>
+        <select class="custom-select" id="category" name="category_name" required>
+          <option disabled value="">Category</option>
           <!-- for loop iterates all catergories in a drop down list -->
           {% for cat in categories %} 
           <!-- this allows category to be populated and allow drp down -->
@@ -34,8 +34,8 @@
 
       <!--prep time drop down-->
       <div class="col-md-2 mb-2">
-        <select  class="custom-select" id="validationDefault03 prep_time" name="prep_time" required>
-          <option selected disabled value="{{ drink.prep_time }}">{{ drink.prep_time }} mins</option>
+        <select class="custom-select" id="prep_time" name="prep_time" required>
+          <option disabled value="" selected="{{ drink.prep_time }}">{{ drink.prep_time }} mins</option>
           <option value="5">5 mins</option>
           <option value="10">10 mins</option>
           <option value="20+">20+ mins</option>
@@ -47,8 +47,8 @@
 
       <!--servings yield drop down-->
       <div class="col-md-2 mb-2">
-        <select class="custom-select" id="validationDefault04 serves" name="serves" required>
-          <option selected value="{{ drink.serves }}">serves {{ drink.serves }}</option>
+        <select class="custom-select" id="serves" name="serves" required>
+          <option value="" selected="{{ drink.serves }}">serves {{ drink.serves }}</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -63,27 +63,27 @@
 
     <!--drink description input field-->
     <div class="form-group">
-      <textarea class="form-control" rows="3" placeholder="Smoothie Description" id="validationDefault05 description" 
+      <textarea class="form-control" rows="3" placeholder="Smoothie Description" id="description" 
       name="description" required>{{drink.description}}</textarea>
     </div>
 
     <!-- image URL input field -->
     <div class="form-group">
-      <input type="text" class="form-control" placeholder="Image URL" id="validationDefault06 img_url" 
+      <input type="text" class="form-control" placeholder="Image URL" id="img_url" 
       name="img_url" value="{{drink.img_url}}"/>
     </div>
 
     <!--drink ingredients input field-->
     <div class="form-group">
     <!-- for loop to iterate every ingredient on a new line using '\n' -->
-      <textarea class="form-control" id="validationDefault07 ingredients" name="ingredients" rows="5" 
+      <textarea class="form-control" id="ingredients" name="ingredients" rows="5" 
       placeholder="Ingredients" required>{% for ingredient in drink.ingredients -%} 
       {{ingredient + "\n"}} {%- endfor %}</textarea>
     </div>
 
     <!--drink directions input field-->
     <div class="form-group">
-      <textarea class="form-control" id="validationDefault08 directions" name="directions" rows="3" 
+      <textarea class="form-control" id="directions" name="directions" rows="3" 
       placeholder="Directions" required>{{drink.directions}}</textarea>
     </div>
 

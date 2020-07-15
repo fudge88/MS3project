@@ -16,7 +16,7 @@
 </header>
 
 <!-- CENTER NAVBAR -->
-<section>
+<nav>
   <ul class="nav justify-content-center">
     <li class="nav-item d-none d-lg-block">
       <a class="nav-link disabled drink-navbar" href="#" tabindex="-1" aria-disabled="true">Searching for something in particular?</a>
@@ -46,7 +46,7 @@
     </li>
     {% endif %}
   </ul>
-</section>
+</nav>
 
 <!--SMOOTHIE CARDS-->
 <section class="container-fluid">
@@ -57,7 +57,7 @@
       <div class="col-md-4 col-lg-3 col-sm-6 col-12">
         <div class="card">
           <div class="card-image">
-            <img class="card-img-top img-position" src="{{drink.img_url}}" />
+            <img class="card-img-top img-position" src="{{drink.img_url}}" alt="Smoothie image here"/>
           </div>
           <div class="card-content">
             <br/>

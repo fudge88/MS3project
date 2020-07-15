@@ -34,14 +34,14 @@
           </ul>
           <!-- nav button to trigger logout function if user is logged in -->
           {% if session['username'] %}
-          <button class="navBar-btn btn-warning d-none d-md-block">
+          <div class="navBar-btn btn-warning d-none d-md-block">
             <a href="{{url_for('logout')}}">Logout</a>
-          </button>
+          </div>
           {% else %}
           <!-- nav button to trigger login function if user is not logged in -->
-          <button class="navBar-btn btn-warning d-none d-md-block">
-            <a href="{{url_for('login')}}">Login</a>
-          </button>
+          <div class="navBar-btn btn-warning d-none d-md-block">
+            <a href="{{url_for('login')}}" class="navBar-btn btn-warning d-none d-md-block">Login</a>
+          </div>
           {% endif %}
           <!-- website brand toappear on sm screen only -->
           <span class="navBar-brand d-md-none">TootiSmooti & Co.</span>
@@ -52,9 +52,9 @@
           <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
           <!-- links to appear on small screen only -->
           <li><a class="d-md-none" href="{{url_for('home')}}">Home</a></li><li>
-            <a class="d-md-none" href="{{url_for('get_drinks')}}">Smoothies</a>
-          </li>
-          <!-- if user is logged in grant access to a page showing their drinks only -->
+            <a class="d-md-none" href="{{url_for('get_drinks')}}">Smoothies
+          </<li>li>
+ logged in grant access to a page showing their drinks only -->
           {% if session['username'] %}
           <li><a href="{{url_for('user_posts', posts=session[username])}}">My Smoothies</a></li>
           {% endif %} 
@@ -72,6 +72,7 @@
           <!-- nav button to trigger login function if user is not logged in -->
           <li><a class="d-md-none" href="{{url_for('login')}}">Login</a></li>
           {% endif %}
+          </ul>
         </div>
       </header>
 
