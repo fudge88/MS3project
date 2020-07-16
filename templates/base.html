@@ -50,11 +50,11 @@
         <!-- SIDE NAVIGAVTION -->
         <div id="side-menuBar" class="side-navBar">
           <a href="#" class="btn-close" onclick="closeSlideMenu()">&times;</a>
+          <ul>
           <!-- links to appear on small screen only -->
-          <li><a class="d-md-none" href="{{url_for('home')}}">Home</a></li><li>
-            <a class="d-md-none" href="{{url_for('get_drinks')}}">Smoothies
-          </<li>li>
- logged in grant access to a page showing their drinks only -->
+          <li><a class="d-md-none" href="{{url_for('home')}}">Home</a></li>
+          <li><a class="d-md-none" href="{{url_for('get_drinks')}}">Smoothies</a></li>
+          <!-- if user is logged in grant access to a page showing their drinks only -->
           {% if session['username'] %}
           <li><a href="{{url_for('user_posts', posts=session[username])}}">My Smoothies</a></li>
           {% endif %} 

@@ -1,12 +1,13 @@
 import os
 import json
-from flask import Flask, render_template, url_for, flash, redirect, session, request, abort
+from flask import Flask, render_template, url_for, flash, \
+    redirect, session, request
 from forms import RegistrationForm, LoginForm, PostForm
-if os.path.exists('env.py'):
-    import env
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 import math
+if os.path.exists('env.py'):
+    import env
 
 
 # Installation of Flask-PyMongo
@@ -317,6 +318,5 @@ def user_posts():
 
 
 if __name__ == "__main__":
-        app.run(host=os.environ.get("IP", "0.0.0.0"),
-        port=int(os.environ.get("PORT", "5000")),
-        debug=True)
+    app.run(host=os.environ.get("IP", "0.0.0.0"),
+            port=int(os.environ.get("PORT", "5000")), debug=True)

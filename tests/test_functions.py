@@ -28,7 +28,7 @@ class DBSource(unittest.TestCase):
 
 class TestUser(unittest.TestCase):
 
-    ef test_addDataSource(self):
+    def test_addDataSource(self):
         # arrange
         id = '5a924d7a29a6e5484dcf68be'
         headers = [('Content-Type', 'application/json')]
