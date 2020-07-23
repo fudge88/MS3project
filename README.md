@@ -620,7 +620,10 @@ This Jinja Documentation really helpe dme in understanding, the templating requi
 Mentor Ignatius for guiding me and advising me to achieve more. he also helped me with my 'logical  
 thinking', and helped to to bridge the connection between safeguarding users posts using sessions.
 
-The 'tutor me' staff at code institute who spent a lot of time, guiding me to finally reach this stage!
+The 'tutor me' staff at code institute who spent a lot of time, guiding me to finally reach this stage!  
+I wouldlike to thank other students whohave supported me, through this project, with complex code  
+i'd liek to thank Matt for his time and effort he put into teaching me. I would also like to thank  
+Shane Muirhead whos project helped with the pagination aspect of TuttiSmooti.
 
 I decided on TuttiSmooti, as i belive the examiners may have seen far too many Cook Books,  
 for MS3's. I tried to change things a little, without loosing the significance of the CRUD functions,  
