@@ -89,23 +89,23 @@ the content would display.
 
 ***Home Page:***  
 
-![Home Page wirefame here](/static/img/md-img/home.JPG) 
+![Home Page wirefame here](/static/Wireframes/home.JPG) 
 
 ***Smoothies Page:***  
 
-![Smoothies Page wirefame here](/static/img/md-img/smoothies.JPG) 
+![Smoothies Page wirefame here](/static/Wireframes/smoothies.JPG) 
 
 ***View Recipe:***  
 
-![View Page wirefame here](/static/img/md-img/view.JPG) 
+![View Page wirefame here](/static/Wireframes/view.JPG) 
 
 ***My Smoothies:*** (users posts)  
 
-![My Smoothies Page wirefame here](/static/img/md-img/mysmoothies.JPG) 
+![My Smoothies Page wirefame here](/static/Wireframes/mysmoothies.JPG) 
 
 ***Add/Edit Smoothies:***  
 
-![Add/edit Page wirefame here](/static/img/md-img/add-edit.JPG) 
+![Add/edit Page wirefame here](/static/Wireframes/add-edit.JPG) 
 
 The mobile and large screen design does not differ much, apart from the reduced content  
 on the delivery of results shown on each row. There’s also a reduction of text used in headings on a  
