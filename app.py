@@ -35,6 +35,8 @@ if the username exists in the DB using the find_one() method.
 If an existing username if found, the user will be logged in.
 If all scenarios are exhausted, this route will CREATE a new user.
 """
+
+
 @app.route("/register", methods=['GET', 'POST'])
 def register():
     if 'username' in session:
@@ -76,6 +78,8 @@ If an existing username if found, the user will be logged in.
 If all scenarios are exhausted, this route will redirect the
 user to teh register page.
 """
+
+
 @app.route("/login", methods=['GET', 'POST'])
 def login():
     if 'username' in session:
@@ -106,6 +110,8 @@ This route runs a function which ends the 'user session',
 when invoked this logs the user out, and redirects them to home.
 This route also flashes a message to confirm the user has been logged out.
 """
+
+
 @app.route("/logout")
 def logout():
     session.pop("username",  None)
@@ -127,6 +133,8 @@ when submitted the function is passed to the registration route from
 the html page. If a specific categroy button has been selected on
 the html page, the categories variable will allow this function to run.
 """
+
+
 @app.route('/')
 @app.route("/home")
 def home():
@@ -146,6 +154,8 @@ parameter of a integar, in this case the number of drinks in the DB,
 which is divided by 12. +1 adds a new page number as required.
 The results are sorted using _id in a decending order.
 """
+
+
 @app.route('/get_drinks')
 def get_drinks():
     categories = mongo.db.drink_categories.find()
@@ -170,6 +180,8 @@ This route searches the catergory collection in the DB, this has a
 Pagination has been incorporated into this, so catergory results also
 adopt the systematic display of 12 drinks per page.
 """
+
+
 @app.route('/drinks/<category>')
 def browse_category(category):
     categories = mongo.db.drink_categories.find()
@@ -197,6 +209,8 @@ into the form this route works in conjunction with insert_drinks route.
 The categories variable allows jinja to loop the categories in a drop
 down option inthe html.
 """
+
+
 @app.route('/add_drinks')
 def add_drinks():
     if 'username' not in session:
@@ -221,6 +235,8 @@ the username key, thus recording the author of the smoothie.
 The method .insert_one() is used to push the data to the DB, if
 successful the user will recieve a flash message.
 """
+
+
 @app.route('/insert_drink', methods=['POST'])
 def insert_drink():
     drinks = mongo.db.drinks
@@ -245,6 +261,8 @@ This route allows the user to get single recipes using the 'drink_id
 variable. The variables path seeks the id associated to the specific
 ObjectId to the drink the user has requested to see.
 """
+
+
 @app.route('/view_card/<card_id>')
 def view_card(card_id):
     drink_id = mongo.db.drinks.find_one({"_id": ObjectId(card_id)})
@@ -258,6 +276,8 @@ This route works simularly to the 'insert_drink' route, with a
 change of method. Here the update() method is used instead of
 insert_one() method.
 """
+
+
 @app.route('/edit_drink/<drink_id>', methods=['GET', 'POST'])
 def edit_drink(drink_id):
     drink = mongo.db.drinks.find_one({"_id": ObjectId(drink_id)})
@@ -292,6 +312,8 @@ drink, and teh user recieved a confirmation flash message. If a match
 is not made the user is redirected, and are informed they dont have
 authority.
 """
+
+
 @app.route('/delete_drink/<drink_id>', methods=['GET'])
 def delete_drink(drink_id):
     drinks = mongo.db.drinks.find_one({'_id': ObjectId(drink_id)})
@@ -310,6 +332,8 @@ This route allows the user that is currently logged in to see
 the drinks that they have added to the website. This is done by matching
 the DB username key with the session username.
 """
+
+
 @app.route('/drinks', methods=['GET'])
 def user_posts():
     drinks = mongo.db.drinks.find({'username': session['username']})

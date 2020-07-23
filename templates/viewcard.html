@@ -11,7 +11,7 @@
         class="sign-up-link">Confused about the ingredients? click here for allergens<i class="fas fa-file-medical"></i></a>
     </div>
 
-<!-- RECIPE DETAILS -->
+<!-- SMOOTHIE RECIPE DETAILS -->
     <div class="row">
       <!-- MEDIUM AND LARGE SCREEN -->
       <!-- crated 2 columns to present image and recipe side by side on md screen and up-->
@@ -23,25 +23,23 @@
         <br />
         <!-- for loop used to iterate each ingredient -->
         <ul>
-        {% for ingredient in drink_id.ingredients %}
-        <li>{{ingredient}}</li>
-        {% endfor %}
+            {% for ingredient in drink_id.ingredients %}
+                <li>{{ingredient}}</li>
+            {% endfor %}
         </ul>
         <br />
-        <p>{{drink_id.directions}}</p>
+            <p>{{drink_id.directions}}</p>
         <br />
         <!-- prep_time and servings in span to appear next to one another -->
-        <span class="mr-3"><i class="fas fa-clock"></i>
-          <strong>Total Time: </strong>{{drink_id.prep_time}} mins</span>
-        <span><i class="fas fa-user"></i>
-          <strong>Yield: </strong>{{drink_id.serves}} serving</span>
+        <span class="mr-3"><i class="fas fa-clock"></i><strong>Total Time: </strong>{{drink_id.prep_time}} mins</span>
+        <span><i class="fas fa-user"></i><strong>Yield: </strong>{{drink_id.serves}} serving</span>
         <!-- if users in logged in take them back to their own drinks page -->
-        {% if session['username'] %}
-        <a class="btn btn-warning" style="float: right;" href="{{url_for('user_posts')}}" role="button">Back</a>
-        {% else %}
+            {% if session['username'] %}
+            <a class="btn btn-warning" style="float: right;" href="{{url_for('user_posts')}}" role="button">Back</a>
+            {% else %}
         <!-- all users not logged in take them back to their main drinks page -->
-        <a class="btn btn-warning" style="float: right;" href="{{url_for('get_drinks')}}" role="button">Back</a>
-        {% endif %}
+            <a class="btn btn-warning" style="float: right;" href="{{url_for('get_drinks')}}" role="button">Back</a>
+            {% endif %}
       </div>
 
       <!-- SMALL SCREEN -->
@@ -53,20 +51,24 @@
         <p>{{drink_id.description}}</p>
         <br />
         <!-- for loop used to iterate each ingredient -->
-        <ul>{% for ingredient in drink_id.ingredients %}<li>{{ingredient}}</li>{% endfor %}</ul>
+        <ul>
+            {% for ingredient in drink_id.ingredients %}
+            <li>{{ingredient}}</li>
+            {% endfor %}
+        </ul>
         <br />
-        <p>{{drink_id.directions}}</p>
+            <p>{{drink_id.directions}}</p>
         <br />
         <!-- prep_time and servings in seperate <p> tags to appear stacked -->
         <p class="mr-3"><i class="fas fa-clock"></i><strong>Total Time: </strong>{{drink_id.prep_time}} mins</p>
         <p><i class="fas fa-user"></i><strong>Yield: </strong>{{drink_id.serves}} serving</p>
         <!-- if users in logged in take them back to their own drinks page -->
-        {% if session['username'] %}
-        <a class="btn btn-warning" style="float: right;" href="{{url_for('user_posts')}}" role="button">Back</a>
-        {% else %}
-        <!-- all users not logged in take them back to their main drinks page -->
-        <a class="btn btn-warning" style="float: right;" href="{{url_for('get_drinks')}}" role="button">Back</a>
-        {% endif %}
+            {% if session['username'] %}
+            <a class="btn btn-warning" style="float: right;" href="{{url_for('user_posts')}}" role="button">Back</a>
+            {% else %}
+            <!-- all users not logged in take them back to their main drinks page -->
+            <a class="btn btn-warning" style="float: right;" href="{{url_for('get_drinks')}}" role="button">Back</a>
+            {% endif %}
       </div>
     </div>
   </div>

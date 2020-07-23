@@ -1,4 +1,4 @@
- /* ---TEXT & HEADINGS--- */
+ /* --- TEXT & HEADINGS --- */
 
  *{
     margin: 0x;
@@ -36,7 +36,7 @@ header.smoothieshead h1{
 }
 
 
-/* ---FLASH MESSAGES--- */
+/* --- FLASH MESSAGES --- */
 .flashes{
     background-color: #dc3545;
     text-align: center;
@@ -48,7 +48,7 @@ header.smoothieshead h1{
 }
 
 
-/* ---POSITIONING--- */
+/* --- POSITIONING --- */
 .justify-content-center {
     justify-content: space-between;
     padding: 15px 60px;
@@ -82,7 +82,7 @@ header.smoothieshead h1{
 }
 
 
-/* ---NAVBAR--- */
+/* --- NAVBAR --- */
 .navBar{
     background-color: #111111b8;
     overflow: hidden;
@@ -168,7 +168,7 @@ header.smoothieshead h1{
     width: 100%;
 }
 
-/* ---PAGINATION--- */
+/* --- PAGINATION --- */
 .page-numbers{
     padding-bottom: 5rem;
 }
@@ -185,7 +185,7 @@ header.smoothieshead h1{
 }
 
 
-/* ---COLOURS--- */
+/* --- COLOURS --- */
 /* icon colours */
 .intro-icons{
     color: #f56881;
@@ -217,7 +217,7 @@ header.smoothieshead h1{
 }
 
 
-/* ---HERO IMAGES--- */
+/* --- HERO IMAGES --- */
 /* register page */
 .register-container{
     height: 100vh;
@@ -313,7 +313,7 @@ header.masthead{
 }
 
 
-/* ---FOOTER--- */
+/* --- FOOTER --- */
 .footer-links a{
     color: #dc3545;
 }
@@ -338,7 +338,7 @@ footer.footer{
 }
 
 
-/* ---LINKS--- */
+/* --- LINKS --- */
 .sign-up-link{
     color: #ffc107;
 }
@@ -349,7 +349,7 @@ footer.footer{
 }
 
 
-/* ---BUTTONS--- */
+/* --- BUTTONS --- */
 .card-btns{
     text-align: center;
 }
@@ -384,7 +384,7 @@ footer.footer{
     border: #7dc124;
 }
 
-/* ---SMOOTHIE CARDS--- */
+/* --- SMOOTHIE CARDS --- */
 .card{
     padding: 5px 20px 40px 20px;
     border: none;
@@ -418,7 +418,7 @@ footer.footer{
 }
 
 
-/* ---FORMS--- */
+/* --- FORMS --- */
 .user-input{
     margin-top: 8rem;
     margin-bottom: 3rem;
@@ -438,7 +438,7 @@ footer.footer{
   background: #111111b8;
 }
 
-/*---MEDIA QUERIES--- */
+/*--- MEDIA QUERIES --- */
 /* MAX */
 @media (max-width: 470px){
     .justify-content-center{

@@ -7,11 +7,11 @@
       <form method="POST">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-        <!-- show this heading on md and lg screens -->
+        <!-- show this heading on md and lg screens only-->
           <h3 class="border-bottom caps mb-4 d-none d-sm-block">
             Enter username to login
           </h3>
-          <!-- show this heading on sm screens -->
+          <!-- show this heading on sm screens only -->
           <h2 class="border-bottom caps mb-4 d-block d-sm-none">Login</h2>
           <div class="form-group">
             {{ form.username.label(class="form-control-label") }} 
@@ -31,7 +31,7 @@
         </fieldset>
         <!-- submit button -->
         <div class="form-group">
-          {{ form.submit(class="btn btn-lg btn-warning hvr-buzz") }}
+          {{ form.submit(class="btn btn-lg btn-warning") }}
         </div>
         <div class="border-top pt-3">
         <!-- redirect link to register  -->
@@ -42,4 +42,5 @@
     </div>
   </div>
 </section>
+
 {% endblock %}

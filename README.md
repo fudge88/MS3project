@@ -1,4 +1,4 @@
- # **TuttiSmooti & Co.**
+ # **TuttiSmooti & Co.**  
 
 #### ***Python (Flask Plug-in) and back-end Development***
 
@@ -14,6 +14,8 @@ anyone to come along and delete ‘all’ recipes.
 The main criteria for this project was to show an understanding of data handling, data structure, and  
 user functionalities. 
 
+---
+
 ## **UX**
 
 A Big part of User Experience is to create a product that is useful, useable, and provides value.  
@@ -23,7 +25,7 @@ through functions which allow the user, control over their smoothie submissions.
 Each function is important, and carries out its purpose when invoked. Interacting with the website  
 through its functions should produce a positive emotional response.  
 
-#### **Strategy Plane:**
+### **Strategy Plane:**
 
 TuttiSmooti will provide its users with a catalogue of smoothie recipes. Smoothies have recently  
 comeback into trend, as the public have become more and more aware of what they consume. I  
@@ -33,7 +35,7 @@ create a user-friendly recipe archive for them. I have chosen to base my smoothi
 categories: Dessert, Protein and Vegan. I believe by offering categories to users will give them more  
 control and make the site more search specific to them.  
 
-#### **Scope Plane:**
+### **Scope Plane:**
 
 - As a user I would want the website to be simple and easy to use.  
 
@@ -55,7 +57,7 @@ regularity would be needed, whereby restrictions would need to be placed on any 
 than a feature. Implementing a login system was able to facilitate users who have registered to have  
  access to all functions, thus creating some form of control over the recipes added.  
 
-#### **Structure Plane:**  
+### **Structure Plane:**  
 
 To simplify the understanding behind the map of TuttiSmooti, this information architecture diagram  
 shows a tree structure of how the website is organised, and also illustrates interaction design.  
@@ -76,14 +78,14 @@ the website with ease. To facilitate easy understanding, some links/ buttons are
 available depending on user sessions.  
 
 
-#### **Skeleton Plane:**
+### **Skeleton Plane:**
 The use of wireframes helps to create a visual format of the end product, this is a Static diagram  
 that represent a visual format of the website, including content, navigation and ways for interactions.  
 Wireframes were created using moqups.com this allowed me to create a computer, tablet  
 and a mobile mock-up of what TootiSmooti & Co. would look like. This helped create a visual of how  
 the content would display.
 
-#### ***My Wireframes:***
+### ***My Wireframes:***
 
 ***Home Page:***  
 
@@ -110,7 +112,7 @@ on the delivery of results shown on each row. There’s also a reduction of text
 smaller screen. This was done to ensure a good customer  
 experience with easy read information 
 
-#### **Surface Plane:**  
+### **Surface Plane:**  
 
 All users are able to view and narrow down their search using the drop-down menu to view drinks  
  related to their chosen category. The use of pagination was implemented to restrict the number of  
@@ -123,7 +125,7 @@ view their posts, this page also offers the user tools to create, update and del
  please. The buttons are clearly labelled, illustrated and coloured to signify the functions, and ease of  
 use.
 
-#### **The colour scheme:**
+### **The colour scheme:**
 
 When thinking of smoothies, an array of colours come to mind, the option of bright vibrant fruits  
 that blend well to make a sweet concussion. Based on this, I went with vibrant, colourful hero  
@@ -136,6 +138,7 @@ of the website.
 The top and the side navbars were kept dark and opaque, with white text I found that this gave the   
 website a sleek and a classy look.  
 
+---
 
 ## **The walk through**
 
@@ -211,9 +214,10 @@ Once the user has finished using the website, there’s a ‘logout’ button in
 this sits on the top nav. When clicked this would log the user out, and leave a flash message on the   
 home screen confirming that the user has been logged out.  
 
-
+---
+ 
 ## **Features**
-#### **Existing features:**
+### **Existing features:**
 TuttiSmooti heavily relies on a cloud database to store and pull the recipes for each smoothie.  
 Non-relational databases such as MongoDB allows users to store unstructured data, but allows an  
 internal structural element. I found this would be the easiest way to manage data, giving the user  
@@ -237,7 +241,7 @@ share their recipe.
 The responsive format of the results, was created using bootstraps grid system, media queries were  
 also required for a more user friendly, easy to read display.  
 
-#### **Features left to implement:**  
+### **Features left to implement:**  
 
 Ideally, I would like the sidebar to have more content, where the user is able to amend their  
 username and profile should they wish to. I would also like to have endorsed utensils and offer  
@@ -250,23 +254,24 @@ a separate page dedicated to the user.
 Unfortunately, due to time constraints I was unable to complete these, but will look to complete  
 these in the near future.
 
+---
 
 ## **Technologies used**  
 
-#### **Front end:** 
+***Front end:***  
 ***HTML***- hypertext markup language was used to build the basic structure of a website.  
 ***CSS***- cascading style sheets was used to style HTML  
 
-#### **CDNs:** 
+***CDNs:***  
 ***Popper, JQuery Bootsrap4*** added as bundle: To assist with some content and functions of  
 website, such as the Modal, and also supported the layout using Bootstraps grid system.  
 ***Font Awesome:*** used for the Icons.  
 
-#### **Responsive Events:** 
+***Responsive Events:***  
 ***JavaScript:*** was used to assist the slide on the side navbar; this was done using  
 a ‘click’ event.
 
-#### **Back end:** 
+***Back end:***  
 ***Flask:*** micro framework for building simple apps   
 ***Flask-pymongo:*** flask python and mongoDB coalition   
 ***Flask WTF:*** WTForms and flask coalition   
@@ -274,6 +279,8 @@ a ‘click’ event.
 ***MongoDB:*** external cloud database  
 ***Heroku:*** deployment host  
 ***Favicon:*** added to change the icon on tab  
+
+---
 
 ## **Testing**  
  Ideally i would have liked to try Python Unit Testing, unfortunatly i have been unable to use  
@@ -410,6 +417,8 @@ using an xs-mobile compared to an actual mobile.
 I also found that this helped me visually in terms of, how many Recipe cards should  
 be displayed on each row depending on the screen size.
 
+---
+
 ## **Deployment**
 
 This website was deployed on Heroku. Click the link to see my Heroku deployed pages.
@@ -492,6 +501,7 @@ own posts and the 'create' and 'edit' functions would also work with this set up
 The user should type python3 app. py in the terminal which should create a browser to view their  
 app on a local server.  
 
+---
 
 ## **Credits:**
 ### **Content:**
@@ -598,7 +608,10 @@ Before constructing my website, i devulged in the most popular searches in 'flas
 CRUD', i found the following links to be useful in learning journey:  
 * [Flask tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)  
 * [WTForms & Pagination](https://www.youtube.com/channel/UC-QDfvrRIDB6F0bIO4I4HkQ)  
-* [CRUD PyMongo](https://www.youtube.com/watch?v=o8jK5enu4L4) 
+* [CRUD PyMongo](https://www.youtube.com/watch?v=o8jK5enu4L4)  
+
+This Jinja Documentation really helpe dme in understanding, the templating requirements:  
+* [Template Designer Documentation](https://jinja.palletsprojects.com/en/2.11.x/templates/#if) 
 
 ### **Acknowledgements:**
 

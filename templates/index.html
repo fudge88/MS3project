@@ -1,5 +1,4 @@
 {% extends 'base.html' %} {% block content %}
-
 <!-- HERO IMAGE PLUS REGISTERATION FORM AND TEXT -->
 <!-- responses will differ depedning on user being logged in or not -->
 <header class="masthead text-white text-center">
@@ -77,7 +76,9 @@
 <!-- INFO ON CATEGORIES AVAILABLE -->
 <section class="showcase">
   <div class="container-fluid p-0">
-  <!-- Dessert text info on the left, image on the right -->
+  
+  <!-- DESSERT -->
+  <!--  text info on the left, image on the right -->
     <div class="row no-gutters mobile-side-space dessert">
     <!-- md and lg screen image -->
       <div class="col-lg-6 d-none d-md-block order-lg-2 text-white showcase-img" 
@@ -98,7 +99,9 @@
         </div>
       </div>
     </div>
-    <!-- Protein text info on the left, image on the right -->
+
+    <!-- PROTEIN -->
+    <!-- text info on the left, image on the right -->
     <div class="row no-gutters mobile-side-space protein">
       <div class="col-lg-6 d-none d-md-block text-white showcase-img" 
       style="background-image: url('{{ url_for('static', filename='img/protein.jpg') }}')"></div>
@@ -118,7 +121,9 @@
         </div>
       </div>
     </div>
-    <!-- Vegan text info on the left, image on the right -->
+
+    <!-- VEGAN -->
+    <!-- text info on the left, image on the right -->
     <div class="row no-gutters mobile-side-space vegan">
       <div class="col-lg-6 d-none d-md-block order-lg-2 text-white showcase-img" style="background-image: 
       url('{{ url_for('static', filename='img/vegan.jpg') }}')"></div>

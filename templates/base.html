@@ -92,10 +92,8 @@
       </div>
     </div>
 
-
     {% block content %} 
     {% endblock %}
-
 
     <!-- FOOTER -->
     <footer class="footer bg-light">
@@ -104,9 +102,9 @@
         <!-- internal hyperlinks to appear on the left of the footer -->
           <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
             <ul class="list-inline mb-2 footer-links">
-              <li class="list-inline-item hvr-grow"><a href="{{url_for('get_drinks')}}">Recipes</a></li>
+              <li class="list-inline-item"><a href="{{url_for('get_drinks')}}">Recipes</a></li>
               <li class="list-inline-item">&sdot;</li>
-              <li class="list-inline-item hvr-grow"><a href="{{url_for('login')}}">Login</a></li>
+              <li class="list-inline-item"><a href="{{url_for('login')}}">Login</a></li>
             </ul>
             <!-- copyright text -->
             <p class="text-muted small mb-4 mb-lg-0">&copy; Tutti Smooti & Co. 2020. All Rights Reserved.</p>
@@ -116,22 +114,21 @@
             <ul class="list-inline mb-0 footer-icons">
               <!-- facebook -->
               <li class="list-inline-item mr-3"><a href="https://www.facebook.com/" target="_blank">
-              <i class="fab fa-facebook fa-2x fa-fw hvr-grow"></i></a>
+              <i class="fab fa-facebook fa-2x fa-fw"></i></a>
               </li>
               <!-- twitter -->
               <li class="list-inline-item mr-3"><a href="https://twitter.com/explore" target="_blank">
-              <i class="fab fa-twitter-square fa-2x fa-fw hvr-grow"></i></a>
+              <i class="fab fa-twitter-square fa-2x fa-fw"></i></a>
               </li>
               <!-- instagram -->
               <li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank">
-              <i class="fab fa-instagram fa-2x fa-fw hvr-grow"></i></a>
+              <i class="fab fa-instagram fa-2x fa-fw"></i></a>
               </li>
             </ul>
           </div>
         </div>
       </div>
     </footer>
-
 
     <!-- JS for the side nav function -->
     <script>
