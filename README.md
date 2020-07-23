@@ -276,14 +276,12 @@ a ‘click’ event.
 ***Favicon:*** added to change the icon on tab  
 
 ## **Testing**  
-## **Testing** 
+ Ideally i would have liked to try Python Unit Testing, unfortunatly i have been unable to use  
+ this at this time. I understand that the automated test, tests functions individually  
+ and would have been interesting to use, and discuss as part of my project.  However, on  
+ this ocassion i have been unable to due to time constraints, however, i will make an  
+ effort to using this in the near future. 
 
-Automated testing- python test
--unit test- testing function in isolation. Focus on 1 function (i.e. addition) to reach expected outcome- use where applicable
--integration test- testing 1+ functionalities. Checks such as character check- checks if the right input has been added to the db- this test the whole route rather than a single function. Use this mainly for the testing
--end-2-end test- mimic human behaviour in testing – from start to finish as a human would check everything- this will do the same. 
-The testing is actual bits of code.
-Tests need to be stored in a test.py file
 #### **[Html validator: ](https://validator.w3.org/#validate_by_input)**
 shows following error for index.html: 
 >*background-image: Parse Error*  
@@ -404,8 +402,13 @@ However, this was due to the comments, sitting above the routes.
 </tr>
 </tbody></table>
 
-#### **My Findings:**
+### **My Findings:**
+The use of ‘DevTools’ was great for styling and resizing the with CSS, it was also great for finding   
+spacing errors. However, DevTools offered a slight discrepancy when the website was rendered  
+using an xs-mobile compared to an actual mobile.  
 
+I also found that this helped me visually in terms of, how many Recipe cards should  
+be displayed on each row depending on the screen size.
 
 ## **Deployment**
 
@@ -416,7 +419,7 @@ This website was deployed on Heroku. Click the link to see my Heroku deployed pa
 This will create a folder containing all the dependencies for the application.  
 
 2.	You will then need to create a ‘Procfile’, by typing: 
->Echo web: python run.py > Procfile  
+>Echo web: python run. py > Procfile  
 
 This contains the base language for Heroku to base the app on. In this case it is Python.  
 
@@ -444,15 +447,15 @@ Paste the following commands into the Gitpod terminal:
 
 7.	Your app would have been successfully deployed, select ‘Open app’ to see your live app.  
 
-#### Local Deployment
+### **Local Deployment**
 As a new developer, I would encourage other users to use my code, and make further  
 improvements, or even use it to facilitate a project they may be working on.  
 
 This can be done by clicking ‘clone or download’ on my GitHub Directory for my MS3project.  
 This should then lead the user to their GitPod workspace where my code would be ready to use.  
 The user should then look into the requirements folder and install all plugins required, user  
-should also create an ‘env.py’ file which fold secret information, which links to the following  
-on the app.py  page:  
+should also create an ‘env. py’ file which fold secret information, which links to the following  
+on the app. py  page:  
 
 * Os.environ.get(‘SECRET_KEY’)
 * Os.environ.get(‘MONGO_URI’)  
@@ -483,11 +486,128 @@ should then Create a Database collection called ‘TuttiSmooti’ with 3 collect
 	>>          img_url: < string >  
 	>>          category_name < string >
 
-This should run the application. Where categories are able to be filtered, users are able to see their  
-own posts and the create and edit functions would also work with this set up. 
+This should run the application. Where 'categories' are able to be filtered, 'users' are able to see their  
+own posts and the 'create' and 'edit' functions would also work with this set up. 
 
-The user should type python3 app.py in the terminal which should create a browser to view their  
+The user should type python3 app. py in the terminal which should create a browser to view their  
 app on a local server.  
 
 
-**## References:**
+## **Credits:**
+### **Content:**
+The contents were created by myself, the Smoothies that have been added to the website  
+have been from the following websites:  
+
+* [Protein Smoothies](https://www.myprotein.com/thezone/recipe/protein-shake-recipes/?affil=mpppc&thg_ppc_campaign=71700000057978287&product_id=&gclid=CjwKCAjwwYP2BRBGEiwAkoBpAlf2Giu5Dq0mkzacRX87VwXyy4inIJ9tjT_oWHVjI5gUMI9kAeA4xhoCzcUQAvD_BwE&gclsrc=aw.ds])
+* [Desser Smoothies](https://www.allrecipes.com/article/guilt-free-smoothies-taste-dessert/)
+* [Vegan Smoothies](https://www.shape.com/healthy-eating/healthy-drinks/6-satisfying-vegan-smoothies)
+
+### **Media:**
+Images Collection from: [Dreamstime](https://www.dreamstime.com/) 
+
+***Hero & Background Images:***
+
+> Home Page:  
+> <strong>File ID</strong> 111373341 | © <a href="https://www.dreamstime.com/arx0nt_info">Vladislav Nosik</a> | <a href="https://www.dreamstime.com/">Dreamstime.com</a>  
+
+> My Smoothies Page:  
+> <strong>File ID</strong> 150009313 | © <a href="https://www.dreamstime.com/whitestep_info">Whitestep</a> | <a href="https://www.dreamstime.com/">Dreamstime.com</a>  
+
+> Smoothies Page:  
+> <strong>File ID</strong> 169542342 | © <a href="https://www.dreamstime.com/jenifoto406_info">Jenifoto406</a> | <a href="https://www.dreamstime.com/">Dreamstime.com</a>
+
+> Register Page:  
+> <strong>File ID</strong> 122073851 | © <a href="https://www.dreamstime.com/fiveph_info">Fiveph</a> | <a href="https://www.dreamstime.com/">Dreamstime.com</a>
+
+> Login Page:  
+> <strong>File ID</strong> 122158626 | © <a href="https://www.dreamstime.com/fiveph_info">Fiveph</a> | <a href="https://www.dreamstime.com/">Dreamstime.com</a>
+
+***Home Page Images:***
+
+> Dessert Image:  
+> <strong>File ID</strong> 124733453 | © <a href="https://www.dreamstime.com/artjazz_info">Artjazz</a> | <a href="https://www.dreamstime.com/">Dreamstime.com</a>
+
+> Protein Image:  
+> <strong>File ID</strong> 136476011 | © <a href="https://www.dreamstime.com/galitskaya_info">Elizaveta Galitskaya</a> | <a href="https://www.dreamstime.com/">Dreamstime.com</a>  
+
+> Vegan Image:  
+> <strong>File ID</strong> 90686693 | © <a href="https://www.dreamstime.com/rimmabondd_info">Rimma Bondarenko</a> | <a href="https://www.dreamstime.com/">Dreamstime.com</a>  
+
+### **Styling:**
+[Google Fonts:](https://fonts.google.com/)  
+Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif  
+
+[Font Awesome](https://fontawesome.com/)  (Icons Used):  
+
+***Navbar:***
+* fa-bars
+
+***Home Page:***
+* fa-glass-whiskey
+* fa-hand-scissors
+* fa-blender  
+* fa-glass-whiskey 
+* fa-ice-cream
+* fa-dumbbell
+* fa-seeding
+
+***View Recipe:***
+* fa-user
+* fa-clock
+
+***Social Media:***
+* fa-facebook
+* fa-twitter-square
+* fa-instagram
+
+
+### **Other Styling Aspects:**  
+
+The 'Hawaiian Drink' that appears on the tab:  
+[Favicon](https://www.favicon-generator.org/search/---/D)
+
+Creating the Sidenav:  
+[Dev Ed](https://www.youtube.com/watch?v=gXkqy0b4M5g)
+
+Home Page styling:  
+[Start Bootstrap Template](https://startbootstrap.com/previews/landing-page/)
+
+Recipe Cards, Pagination and Grid system:  
+[Bootstrap4](https://getbootstrap.com/docs/4.5/getting-started/introduction/)  
+
+Displaying and Hidding Elements at breakpoints:  
+[Stack Overflow](https://stackoverflow.com/questions/35351353/missing-visible-and-hidden-in-bootstrap-v4)
+
+### **Information Sources**
+[Data Modeling](https://docs.mongodb.com/manual/core/data-modeling-introduction/)  
+[Python Packages](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)  
+[Python environments](https://pypi.org/project/python-dotenv/)  
+[RESTful Routes](https://medium.com/@shubhangirajagrawal/the-7-restful-routes-a8e84201f206)  
+[Sessions](https://flask.palletsprojects.com/en/1.1.x/quickstart/#sessions)  
+[Flask Login](https://flask-login.readthedocs.io/en/latest/)  
+[W3Schools](https://www.w3schools.com/howto/howto_js_sidenav.asp)  
+
+### **Code:**  
+I had used  [Corey Schafer 1-9 Tutorials](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH) to help get my project started, this was interesting  
+as i qickly found that this was the *old* way of coding in a Python app. However, it was fun to learn,  
+use and understand as i belive in a real life situation I may be faced with outdated code. The  
+difference can be seen between 'adddrink.html' and 'editdrinks.html', where the more up-to-date  
+style of coding has been used.
+
+Before constructing my website, i devulged in the most popular searches in 'flask, PyMongo, and  
+CRUD', i found the following links to be useful in learning journey:  
+* [Flask tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)  
+* [WTForms & Pagination](https://www.youtube.com/channel/UC-QDfvrRIDB6F0bIO4I4HkQ)  
+* [CRUD PyMongo](https://www.youtube.com/watch?v=o8jK5enu4L4) 
+
+### **Acknowledgements:**
+
+Mentor Ignatius for guiding me and advising me to achieve more. he also helped me with my 'logical  
+thinking', and helped to to bridge the connection between safeguarding users posts using sessions.
+
+The 'tutor me' staff at code institute who spent a lot of time, guiding me to finally reach this stage!
+
+I decided on TuttiSmooti, as i belive the examiners may have seen far too many Cook Books,  
+for MS3's. I tried to change things a little, without loosing the significance of the CRUD functions,  
+and smoothies just seemed to bethe next best thing.  
+
